@@ -183,8 +183,8 @@ Full spec in `docs/EFFECTS.md`.
 
 ## Open decisions
 
-- GitHub repo `hughesdo/Sizzle_FX`: local git on `main` (first commit 274f84d); repo not created yet,
-  waiting on Don's public/private choice (the agent was blocked from creating a public repo).
+- GitHub repo: https://github.com/hughesdo/Sizzle_FX (PRIVATE, Don's choice: the help video uses VIDEO2
+  footage). Ask Don before making it public.
 - Hosting target for the static build (GitHub Pages / Cloudflare Pages); WebGPU for RVM/SAM2 needs HTTPS.
 - Keyframed uniforms vs per-segment static values (static for now).
 
@@ -221,4 +221,4 @@ END:   update Status checkboxes, Verified, Open decisions; add a dated line to t
   body effects, SAM 2 select + track, browser + server export, result) and published as the in-app help
   page with a 14-section written guide. Nothing committed yet; GitHub repo still waiting on Don.
 - 2026-10-30 git init + first commit (334 files, ~50 MB incl. the 40 MB help video). Ignored: regenerable
-  demo clip + narration WAVs. Secret/personal-path scan clean. GitHub repo creation pending Don's visibility pick.
+  demo clip + narration WAVs. Secret/personal-path scan clean. Pushed to private repo hughesdo/Sizzle_FX.
