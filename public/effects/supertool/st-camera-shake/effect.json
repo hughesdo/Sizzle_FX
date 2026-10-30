@@ -1,0 +1,63 @@
+{
+  "id": "st-camera-shake",
+  "name": "Camera Shake",
+  "category": "Distort",
+  "kind": "filter",
+  "description": "SuperTool: shake, drums, kick, snare, audio",
+  "tags": [
+    "shake",
+    "drums",
+    "kick",
+    "snare",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "shakeIntensity": {
+      "type": "float",
+      "default": 2,
+      "label": "shakeIntensity",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "How hard camera shakes (0.0-5.0)"
+    },
+    "beatDecay": {
+      "type": "float",
+      "default": 5,
+      "label": "beatDecay",
+      "min": 1,
+      "max": 15,
+      "step": 0.5,
+      "description": "How fast shake fades (1.0=slow, 10.0=fast)"
+    },
+    "beatThreshold": {
+      "type": "float",
+      "default": 0.2,
+      "label": "beatThreshold",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Minimum beat strength to trigger (0.0-1.0)"
+    },
+    "maxShakeRadius": {
+      "type": "float",
+      "default": 0.05,
+      "label": "maxShakeRadius",
+      "min": 0,
+      "max": 0.2,
+      "step": 0.01,
+      "description": "Maximum shake distance (0.0-0.1)"
+    }
+  }
+}

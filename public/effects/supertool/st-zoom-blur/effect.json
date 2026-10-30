@@ -1,0 +1,71 @@
+{
+  "id": "st-zoom-blur",
+  "name": "Zoom Blur",
+  "category": "Blur",
+  "kind": "filter",
+  "description": "SuperTool: zoom, blur, speed, motion",
+  "tags": [
+    "zoom",
+    "blur",
+    "speed",
+    "motion",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "baseStrength": {
+      "type": "float",
+      "default": 0.05,
+      "label": "baseStrength",
+      "min": 0,
+      "max": 0.3,
+      "step": 0.01,
+      "description": "Zoom-blur strength at silence"
+    },
+    "audioStrength": {
+      "type": "float",
+      "default": 0.1,
+      "label": "audioStrength",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.01,
+      "description": "Extra blur added by the bass band"
+    },
+    "blurSamples": {
+      "type": "float",
+      "default": 10,
+      "label": "blurSamples",
+      "min": 4,
+      "max": 24,
+      "step": 1,
+      "description": "Sample count (higher = smoother)"
+    },
+    "centerX": {
+      "type": "float",
+      "default": 0.5,
+      "label": "centerX",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Horizontal zoom center"
+    },
+    "centerY": {
+      "type": "float",
+      "default": 0.5,
+      "label": "centerY",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Vertical zoom center"
+    }
+  }
+}

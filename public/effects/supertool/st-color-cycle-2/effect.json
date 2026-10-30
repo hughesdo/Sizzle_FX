@@ -1,0 +1,107 @@
+{
+  "id": "st-color-cycle-2",
+  "name": "Color Cycle 2",
+  "category": "Color",
+  "kind": "filter",
+  "description": "SuperTool: color, rainbow, vibration, pulse",
+  "tags": [
+    "color",
+    "rainbow",
+    "vibration",
+    "pulse",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "vibrateIntensity": {
+      "type": "float",
+      "default": 1.5,
+      "label": "vibrateIntensity",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "Overall bass-vibration strength"
+    },
+    "rainbowSpeed": {
+      "type": "float",
+      "default": 0.3,
+      "label": "rainbowSpeed",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "description": "Rainbow cycle speed"
+    },
+    "rainbowFrequency": {
+      "type": "float",
+      "default": 8,
+      "label": "rainbowFrequency",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "description": "Rainbow spatial frequency"
+    },
+    "bassVibration": {
+      "type": "float",
+      "default": 1,
+      "label": "bassVibration",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "How much bass jitters the image"
+    },
+    "midPulse": {
+      "type": "float",
+      "default": 0.8,
+      "label": "midPulse",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "How much mids pulse the brightness"
+    },
+    "trebleFlash": {
+      "type": "float",
+      "default": 1.2,
+      "label": "trebleFlash",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "How much treble adds white flash"
+    },
+    "audioReactivity": {
+      "type": "float",
+      "default": 1,
+      "label": "audioReactivity",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Overall audio mix amount"
+    },
+    "timeSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "timeSpeed",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Global animation speed"
+    },
+    "colorMix": {
+      "type": "float",
+      "default": 0.7,
+      "label": "colorMix",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend of rainbow tint over the video"
+    }
+  }
+}

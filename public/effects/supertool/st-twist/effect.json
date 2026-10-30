@@ -1,0 +1,71 @@
+{
+  "id": "st-twist",
+  "name": "Twist",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: twist, swirl, distortion, spiral",
+  "tags": [
+    "twist",
+    "swirl",
+    "distortion",
+    "spiral",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "twistStrength": {
+      "type": "float",
+      "default": 3,
+      "label": "twistStrength",
+      "min": 0,
+      "max": 20,
+      "step": 0.1,
+      "description": "Base swirl amount (grows with distance from center)"
+    },
+    "audioTwist": {
+      "type": "float",
+      "default": 5,
+      "label": "audioTwist",
+      "min": 0,
+      "max": 30,
+      "step": 0.1,
+      "description": "Extra swirl added by the bass band"
+    },
+    "centerX": {
+      "type": "float",
+      "default": 0.5,
+      "label": "centerX",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Horizontal swirl center (0=left, 1=right)"
+    },
+    "centerY": {
+      "type": "float",
+      "default": 0.5,
+      "label": "centerY",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Vertical swirl center (0=bottom, 1=top)"
+    },
+    "animationSpeed": {
+      "type": "float",
+      "default": 0.5,
+      "label": "animationSpeed",
+      "min": 0,
+      "max": 5,
+      "step": 0.05,
+      "description": "Continuous rotation speed over time"
+    }
+  }
+}

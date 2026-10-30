@@ -1,0 +1,99 @@
+{
+  "id": "st-voronoi-cells",
+  "name": "Voronoi Cells",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: voronoi, cells, overlay, audio",
+  "tags": [
+    "voronoi",
+    "cells",
+    "overlay",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "cellScale": {
+      "type": "float",
+      "default": 5,
+      "label": "cellScale",
+      "min": 1,
+      "max": 20,
+      "step": 0.5,
+      "description": "Base cell size"
+    },
+    "audioCellScale": {
+      "type": "float",
+      "default": 5,
+      "label": "audioCellScale",
+      "min": 0,
+      "max": 20,
+      "step": 0.5,
+      "description": "Audio effect on cell size"
+    },
+    "cellAnimation": {
+      "type": "float",
+      "default": 1,
+      "label": "cellAnimation",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "Cell animation speed"
+    },
+    "bassAnimation": {
+      "type": "float",
+      "default": 5,
+      "label": "bassAnimation",
+      "min": 0,
+      "max": 20,
+      "step": 0.5,
+      "description": "Bass effect on animation"
+    },
+    "cellIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "cellIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Brightness of cells"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 1,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Audio reactivity multiplier"
+    },
+    "blendAmount": {
+      "type": "float",
+      "default": 0.3,
+      "label": "blendAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend with video"
+    },
+    "cellColor": {
+      "type": "color",
+      "default": [
+        0.4,
+        0.7,
+        1
+      ],
+      "label": "cellColor",
+      "description": "RGB color of cells"
+    }
+  }
+}

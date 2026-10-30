@@ -1,0 +1,99 @@
+{
+  "id": "st-datamosh",
+  "name": "Datamosh",
+  "category": "Glitch",
+  "kind": "filter",
+  "description": "SuperTool: datamosh, glitch, corruption, compression, audio",
+  "tags": [
+    "datamosh",
+    "glitch",
+    "corruption",
+    "compression",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "glitchThreshold": {
+      "type": "float",
+      "default": 0.6,
+      "label": "glitchThreshold",
+      "min": 0.3,
+      "max": 0.9,
+      "step": 0.05,
+      "description": "Bass level needed to trigger datamosh"
+    },
+    "blockSizeMin": {
+      "type": "float",
+      "default": 0.05,
+      "label": "blockSizeMin",
+      "min": 0.01,
+      "max": 0.1,
+      "step": 0.01,
+      "description": "Minimum block size for displacement"
+    },
+    "blockSizeMax": {
+      "type": "float",
+      "default": 0.15,
+      "label": "blockSizeMax",
+      "min": 0.1,
+      "max": 0.3,
+      "step": 0.01,
+      "description": "Maximum block size for displacement"
+    },
+    "displacementH": {
+      "type": "float",
+      "default": 0.2,
+      "label": "displacementH",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.05,
+      "description": "Horizontal block displacement amount"
+    },
+    "displacementV": {
+      "type": "float",
+      "default": 0.1,
+      "label": "displacementV",
+      "min": 0,
+      "max": 0.3,
+      "step": 0.05,
+      "description": "Vertical block displacement amount"
+    },
+    "smearAmount": {
+      "type": "float",
+      "default": 0.05,
+      "label": "smearAmount",
+      "min": 0,
+      "max": 0.2,
+      "step": 0.01,
+      "description": "Motion smear/blur amount"
+    },
+    "smearSamples": {
+      "type": "float",
+      "default": 5,
+      "label": "smearSamples",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "description": "Number of samples for motion smear"
+    },
+    "colorShift": {
+      "type": "float",
+      "default": 0.03,
+      "label": "colorShift",
+      "min": 0,
+      "max": 0.1,
+      "step": 0.005,
+      "description": "RGB channel shift amount"
+    }
+  }
+}

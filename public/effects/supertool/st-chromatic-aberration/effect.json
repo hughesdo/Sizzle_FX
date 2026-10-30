@@ -1,0 +1,62 @@
+{
+  "id": "st-chromatic-aberration",
+  "name": "Chromatic Aberration",
+  "category": "Glitch",
+  "kind": "filter",
+  "description": "SuperTool: chromatic, aberration, rgb-split, stem-gated",
+  "tags": [
+    "chromatic",
+    "aberration",
+    "rgb-split",
+    "stem-gated",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "triggerThreshold": {
+      "type": "float",
+      "default": 0.15,
+      "label": "triggerThreshold",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Audio RMS level required before the effect kicks in"
+    },
+    "audioIntensity": {
+      "type": "float",
+      "default": 0.055,
+      "label": "audioIntensity",
+      "min": 0,
+      "max": 0.2,
+      "step": 0.001,
+      "description": "Maximum aberration offset in UV units"
+    },
+    "offsetAngle": {
+      "type": "float",
+      "default": 0.785,
+      "label": "offsetAngle",
+      "min": 0,
+      "max": 6.2832,
+      "step": 0.01,
+      "description": "Base aberration direction (radians)"
+    },
+    "angleRange": {
+      "type": "float",
+      "default": 1.047,
+      "label": "angleRange",
+      "min": 0,
+      "max": 3.1416,
+      "step": 0.01,
+      "description": "How far spectral tilt can swing the angle (radians)"
+    }
+  }
+}

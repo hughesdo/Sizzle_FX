@@ -1,0 +1,71 @@
+{
+  "id": "st-wave-distort",
+  "name": "Wave Distort",
+  "category": "Distort",
+  "kind": "filter",
+  "description": "SuperTool: wave, distortion, displacement, wavy",
+  "tags": [
+    "wave",
+    "distortion",
+    "displacement",
+    "wavy",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "waveFrequency": {
+      "type": "float",
+      "default": 10,
+      "label": "waveFrequency",
+      "min": 1,
+      "max": 50,
+      "step": 0.5,
+      "description": "Number of wave cycles across the frame"
+    },
+    "waveSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "waveSpeed",
+      "min": 0,
+      "max": 10,
+      "step": 0.1,
+      "description": "Speed of the wave animation"
+    },
+    "baseAmplitude": {
+      "type": "float",
+      "default": 0.05,
+      "label": "baseAmplitude",
+      "min": 0,
+      "max": 0.2,
+      "step": 0.005,
+      "description": "Wave displacement at silence"
+    },
+    "audioAmplitude": {
+      "type": "float",
+      "default": 0.1,
+      "label": "audioAmplitude",
+      "min": 0,
+      "max": 0.3,
+      "step": 0.01,
+      "description": "Extra displacement added by the bass band"
+    },
+    "waveDirection": {
+      "type": "float",
+      "default": 0,
+      "label": "waveDirection",
+      "min": 0,
+      "max": 1,
+      "step": 1,
+      "description": "0=horizontal waves, 1=vertical waves"
+    }
+  }
+}

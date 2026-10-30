@@ -1,0 +1,17 @@
+{
+  "id": "subject-aura",
+  "name": "Subject Aura",
+  "category": "Body",
+  "description": "A soft, breathing halo of light radiating from behind the subject.",
+  "tags": ["aura", "halo", "glow", "matte"],
+  "audio": true,
+  "needsMask": true,
+  "uniforms": {
+    "radius":    { "type": "float", "default": 60, "min": 5, "max": 200, "step": 1, "label": "radius (px @1080)" },
+    "intensity": { "type": "float", "default": 1.2, "min": 0, "max": 4, "step": 0.01, "label": "intensity" },
+    "colorA":    { "type": "color", "default": "#ffb03a", "label": "inner colour" },
+    "colorB":    { "type": "color", "default": "#ff3b8d", "label": "outer colour" },
+    "flicker":   { "type": "float", "default": 0.3, "min": 0, "max": 1, "step": 0.01, "label": "flicker" },
+    "audioPush": { "type": "float", "default": 1.0, "min": 0, "max": 3, "step": 0.01, "label": "audio swell" }
+  }
+}

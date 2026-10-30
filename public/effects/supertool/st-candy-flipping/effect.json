@@ -1,0 +1,90 @@
+{
+  "id": "st-candy-flipping",
+  "name": "Candy Flipping",
+  "category": "Glitch",
+  "kind": "filter",
+  "description": "SuperTool: psychedelic, distortion, chromatic, flow, viscosity",
+  "tags": [
+    "psychedelic",
+    "distortion",
+    "chromatic",
+    "flow",
+    "viscosity",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "flowIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "flowIntensity",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Overall flow distortion strength"
+    },
+    "waveFrequency": {
+      "type": "float",
+      "default": 8,
+      "label": "waveFrequency",
+      "min": 0,
+      "max": 32,
+      "step": 0.5,
+      "description": "Spatial frequency of the flow waves"
+    },
+    "pulseSpeed": {
+      "type": "float",
+      "default": 2,
+      "label": "pulseSpeed",
+      "min": 0,
+      "max": 8,
+      "step": 0.1,
+      "description": "Speed of the flow animation"
+    },
+    "viscosity": {
+      "type": "float",
+      "default": 0.4,
+      "label": "viscosity",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Blend between RGB-split and flat sample (1 = clean)"
+    },
+    "chromaticShift": {
+      "type": "float",
+      "default": 0.008,
+      "label": "chromaticShift",
+      "min": 0,
+      "max": 0.05,
+      "step": 0.001,
+      "description": "Chromatic aberration offset in UV units"
+    },
+    "audioReactivity": {
+      "type": "float",
+      "default": 1.5,
+      "label": "audioReactivity",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "How strongly audio drives the effect"
+    },
+    "timeSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "timeSpeed",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Global animation speed multiplier"
+    }
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "s01_title": {
+    "duration": 10.138,
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 1.584,
+        "text": "This is Sizzle FX."
+      },
+      {
+        "start": 1.834,
+        "end": 9.538,
+        "text": "Drop in a video, drag shader effects onto a timeline, and export a finished MP4, all on your own graphics card."
+      }
+    ]
+  },
+  "s02_open": {
+    "duration": 17.732,
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 1.872,
+        "text": "Open a video."
+      },
+      {
+        "start": 2.122,
+        "end": 10.114,
+        "text": "Sizzle FX reads it, analyses the soundtrack for beats, bass and hits, and lays out a timeline with thumbnails and the waveform."
+      },
+      {
+        "start": 10.364,
+        "end": 17.132,
+        "text": "Every card in the effects library is previewed on your own footage, so you can see what an effect does before you use it."
+      }
+    ]
+  },
+  "s03_drag": {
+    "duration": 15.068,
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 5.208,
+        "text": "Drag an effect onto a lane, then drag its edges to set when it starts and stops."
+      },
+      {
+        "start": 5.458,
+        "end": 9.466,
+        "text": "Click it to open its settings. Every slider updates the preview live."
+      },
+      {
+        "start": 9.716,
+        "end": 14.468,
+        "text": "Audio drive picks what the effect listens to. Here, it punches on the kick drum."
+      }
+    ]
+  },
+  "s04_lanes": {
+    "duration": 9.97,
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 1.872,
+        "text": "Effects stack in lanes."
+      },
+      {
+        "start": 2.122,
+        "end": 9.37,
+        "text": "The bottom lane runs first, and every lane above works on that result, so a film grade on top colours everything underneath it."
+      }
+    ]
+  },
+  "s05_masks": {
+    "duration": 15.534,
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.688,
+        "text": "Now the harder trick: isolating the person."
+      },
+      {
+        "start": 2.938,
+        "end": 5.362,
+        "text": "Open masks, and pick auto person."
+      },
+      {
+        "start": 5.612,
+        "end": 10.844,
+        "text": "A matting model runs on your graphics card, once, and the result is saved with the video."
+      },
+      {
+        "start": 11.094,
+        "end": 14.934,
+        "text": "View shows exactly what it found, even on a busy background."
+      }
+    ]
+  },
+  "s06_scope": {
+    "duration": 10.978,
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 4.512,
+        "text": "With a mask, any effect can hit only the subject, or only the background."
+      },
+      {
+        "start": 4.762,
+        "end": 10.378,
+        "text": "That's the Scope setting. Here the kaleidoscope folds the room around her, and she stays untouched."
+      }
+    ]
+  },
+  "s07_body": {
+    "duration": 12.38,
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.544,
+        "text": "The Body effects are built around the mask."
+      },
+      {
+        "start": 2.794,
+        "end": 7.954,
+        "text": "Rotational Clone makes rotated ghost copies of the person, pushed by the music."
+      },
+      {
+        "start": 8.204,
+        "end": 11.78,
+        "text": "Silhouette Echo leaves coloured shadows of where she just was."
+      }
+    ]
+  },
+  "s08_sam": {
+    "duration": 15.068,
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 2.544,
+        "text": "For things that aren't people, click to select."
+      },
+      {
+        "start": 2.794,
+        "end": 8.794,
+        "text": "Click an object, right click anything to exclude, then choose whole, part, or detail."
+      },
+      {
+        "start": 9.044,
+        "end": 14.468,
+        "text": "Track it, and SAM 2 follows it. It works best inside a single shot."
+      }
+    ]
+  },
+  "s09_export": {
+    "duration": 20.996,
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 1.656,
+        "text": "When it looks right, export."
+      },
+      {
+        "start": 1.906,
+        "end": 11.842,
+        "text": "The browser renders every frame on the GPU, encodes H.264 high profile, and keeps the original audio, ready for X or YouTube."
+      },
+      {
+        "start": 12.092,
+        "end": 20.396,
+        "text": "Prefer a server? Switch the render menu. A small Python server runs the exact same effects through ModernGL and ffmpeg."
+      }
+    ]
+  },
+  "s10_result": {
+    "duration": 2.472,
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 1.872,
+        "text": "And here's the result."
+      }
+    ]
+  },
+  "s11_outro": {
+    "duration": 8.938,
+    "captions": [
+      {
+        "start": 0.0,
+        "end": 3.792,
+        "text": "Sizzle FX. A hundred and twenty nine effects, and growing."
+      },
+      {
+        "start": 4.042,
+        "end": 8.338,
+        "text": "This walkthrough lives in the help page inside the app. Happy vibe coding."
+      }
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "id": "st-color-waves",
+  "name": "Color Waves",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: color, waves, rainbow, overlay",
+  "tags": [
+    "color",
+    "waves",
+    "rainbow",
+    "overlay",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "wave1Frequency": {
+      "type": "float",
+      "default": 10,
+      "label": "wave1Frequency",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "description": "Frequency of the horizontal wave"
+    },
+    "wave1Speed": {
+      "type": "float",
+      "default": 2,
+      "label": "wave1Speed",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "description": "Speed of the horizontal wave"
+    },
+    "wave2Frequency": {
+      "type": "float",
+      "default": 8,
+      "label": "wave2Frequency",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "description": "Frequency of the vertical wave"
+    },
+    "wave2Speed": {
+      "type": "float",
+      "default": 1.5,
+      "label": "wave2Speed",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "description": "Speed of the vertical wave"
+    },
+    "wave3Frequency": {
+      "type": "float",
+      "default": 6,
+      "label": "wave3Frequency",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "description": "Frequency of the diagonal wave"
+    },
+    "wave3Speed": {
+      "type": "float",
+      "default": 3,
+      "label": "wave3Speed",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "description": "Speed of the diagonal wave"
+    },
+    "hueIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "hueIntensity",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Strength of the hue shift"
+    },
+    "mixAmount": {
+      "type": "float",
+      "default": 0.3,
+      "label": "mixAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Base mix of the wave color over the video"
+    },
+    "colorOverlay": {
+      "type": "float",
+      "default": 0.3,
+      "label": "colorOverlay",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Audio-driven additive color overlay"
+    }
+  }
+}

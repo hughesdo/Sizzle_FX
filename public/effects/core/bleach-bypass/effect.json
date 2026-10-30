@@ -1,0 +1,13 @@
+{
+  "id": "bleach-bypass",
+  "name": "Bleach Bypass",
+  "category": "Look",
+  "description": "Silver-retention film look: desaturated, hard contrast, crushed blacks, metallic highlights.",
+  "tags": ["bleach", "bypass", "film", "grade", "silver", "look"],
+  "audio": false,
+  "uniforms": {
+    "amount":   { "type": "float", "default": 0.8, "min": 0, "max": 1, "step": 0.01, "label": "amount" },
+    "contrast": { "type": "float", "default": 1.25, "min": 0.5, "max": 2.5, "step": 0.01, "label": "contrast" },
+    "tint":     { "type": "color", "default": "#e6edf2", "label": "silver tint" }
+  }
+}

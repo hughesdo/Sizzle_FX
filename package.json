@@ -1,0 +1,25 @@
+{
+  "name": "sizzle-fx",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "registry": "node scripts/build-registry.mjs",
+    "import-supertool": "node scripts/import-supertool.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "fetch-models": "node scripts/fetch-models.mjs",
+    "contract": "node scripts/export-contract.mjs",
+    "server": "server\\start.bat"
+  },
+  "devDependencies": {
+    "vite": "^6.4.5"
+  },
+  "dependencies": {
+    "@mediabunny/aac-encoder": "^1.64.0",
+    "mediabunny": "^1.64.0",
+    "onnxruntime-web": "^1.24.1"
+  }
+}

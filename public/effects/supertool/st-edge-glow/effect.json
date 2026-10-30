@@ -1,0 +1,107 @@
+{
+  "id": "st-edge-glow",
+  "name": "Edge Glow",
+  "category": "Blur",
+  "kind": "filter",
+  "description": "SuperTool: edge-detection, glow, sobel, blur",
+  "tags": [
+    "edge-detection",
+    "glow",
+    "sobel",
+    "blur",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "edgeThresholdLow": {
+      "type": "float",
+      "default": 0.1,
+      "label": "edgeThresholdLow",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Edge strength below this is suppressed"
+    },
+    "edgeThresholdHigh": {
+      "type": "float",
+      "default": 0.5,
+      "label": "edgeThresholdHigh",
+      "min": 0,
+      "max": 2,
+      "step": 0.01,
+      "description": "Edge strength above this is fully lit"
+    },
+    "glowIntensity": {
+      "type": "float",
+      "default": 2,
+      "label": "glowIntensity",
+      "min": 0,
+      "max": 8,
+      "step": 0.05,
+      "description": "Sharp edge-glow brightness"
+    },
+    "blurKernelBase": {
+      "type": "float",
+      "default": 2,
+      "label": "blurKernelBase",
+      "min": 0,
+      "max": 8,
+      "step": 0.1,
+      "description": "Base radius of the soft glow blur"
+    },
+    "blurKernelAudio": {
+      "type": "float",
+      "default": 3,
+      "label": "blurKernelAudio",
+      "min": 0,
+      "max": 8,
+      "step": 0.1,
+      "description": "Extra blur radius added at peak audio"
+    },
+    "bassColorMult": {
+      "type": "float",
+      "default": 2,
+      "label": "bassColorMult",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Bass → red glow multiplier"
+    },
+    "midColorMult": {
+      "type": "float",
+      "default": 1.5,
+      "label": "midColorMult",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Mid → green glow multiplier"
+    },
+    "highColorMult": {
+      "type": "float",
+      "default": 2,
+      "label": "highColorMult",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "High → blue glow multiplier"
+    },
+    "pulseMult": {
+      "type": "float",
+      "default": 1.5,
+      "label": "pulseMult",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Audio-driven pulse intensity"
+    }
+  }
+}

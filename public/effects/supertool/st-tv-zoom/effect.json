@@ -1,0 +1,92 @@
+{
+  "id": "st-tv-zoom",
+  "name": "TV Zoom",
+  "category": "Scene",
+  "kind": "scene",
+  "description": "SuperTool: 3d, raymarch, zoom, tablet, tv, cinematic",
+  "tags": [
+    "3d",
+    "raymarch",
+    "zoom",
+    "tablet",
+    "tv",
+    "cinematic",
+    "supertool"
+  ],
+  "audio": false,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input",
+        "iChannel1": {
+          "texture": "assets/wood_texture.jpg",
+          "wrap": "repeat",
+          "filter": "linear"
+        },
+        "iChannel2": {
+          "texture": "assets/tablet_texture.jpg",
+          "wrap": "repeat",
+          "filter": "linear"
+        }
+      }
+    }
+  ],
+  "uniforms": {
+    "animationSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "animationSpeed",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Overall pacing of the zoom-in/zoom-out cycle"
+    },
+    "pauseDuration": {
+      "type": "float",
+      "default": 1,
+      "label": "pauseDuration",
+      "min": 0,
+      "max": 8,
+      "step": 0.1,
+      "description": "Seconds to dwell at the start position before each fly-in"
+    },
+    "cameraHeight": {
+      "type": "float",
+      "default": 0,
+      "label": "cameraHeight",
+      "min": -8,
+      "max": 8,
+      "step": 0.1,
+      "description": "Vertical offset applied to the entire camera arc"
+    },
+    "zoomIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "zoomIntensity",
+      "min": 0.25,
+      "max": 4,
+      "step": 0.05,
+      "description": "FOV multiplier (1 = DISCO original look)"
+    },
+    "enableVideoTransparency": {
+      "type": "float",
+      "default": 0,
+      "label": "enableVideoTransparency",
+      "min": 0,
+      "max": 1,
+      "step": 1,
+      "description": "0 = off, 1 = fade dark video areas toward blue"
+    },
+    "transparencyThreshold": {
+      "type": "float",
+      "default": 0.3,
+      "label": "transparencyThreshold",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Brightness below this threshold fades toward blue"
+    }
+  }
+}

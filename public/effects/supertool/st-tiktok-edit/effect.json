@@ -1,0 +1,26 @@
+{
+  "id": "st-tiktok-edit",
+  "name": "TikTok Edit",
+  "category": "Glitch",
+  "kind": "filter",
+  "description": "SuperTool: tiktok, glitch, transition, shake, zoom-blur",
+  "tags": [
+    "tiktok",
+    "glitch",
+    "transition",
+    "shake",
+    "zoom-blur",
+    "supertool"
+  ],
+  "audio": false,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {}
+}

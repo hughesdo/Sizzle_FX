@@ -1,0 +1,20 @@
+{
+  "id": "silhouette-echo",
+  "name": "Silhouette Echo",
+  "category": "Body",
+  "description": "Flat coloured silhouettes of where the subject was over the last frames, layered behind them like a motion stack.",
+  "tags": ["silhouette", "echo", "trail", "layered", "matte", "history"],
+  "audio": true,
+  "needsMask": true,
+  "needsHistory": true,
+  "uniforms": {
+    "layers":    { "type": "int", "default": 6, "min": 1, "max": 15, "step": 1, "label": "layers" },
+    "spacing":   { "type": "int", "default": 2, "min": 1, "max": 5, "step": 1, "label": "frames apart" },
+    "palette":   { "type": "enum", "options": ["rainbow", "two colour", "mono fade"], "default": 0, "label": "palette" },
+    "colorA":    { "type": "color", "default": "#ff3b8d", "label": "colour A" },
+    "colorB":    { "type": "color", "default": "#3bd0ff", "label": "colour B" },
+    "opacity":   { "type": "float", "default": 0.85, "min": 0, "max": 1, "step": 0.01, "label": "opacity" },
+    "hueSpeed":  { "type": "float", "default": 0.15, "min": 0, "max": 2, "step": 0.01, "label": "colour cycle" },
+    "audioPush": { "type": "float", "default": 0.5, "min": 0, "max": 2, "step": 0.01, "label": "audio brightness" }
+  }
+}

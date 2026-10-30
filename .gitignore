@@ -1,0 +1,17 @@
+node_modules/
+dist/
+test-media/
+*.log
+public/models/
+public/ort/
+server/.venv/
+server/_work/
+server/__pycache__/
+demo/raw/
+demo/build/
+demo/narration/parts/
+demo/chrome-profile/
+demo/out/
+# regenerable demo inputs (rebuilt by demo/tools from the source video + TTS)
+demo/assets/*.mp4
+demo/narration/*.wav

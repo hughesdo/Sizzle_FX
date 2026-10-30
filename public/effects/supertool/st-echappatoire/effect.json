@@ -1,0 +1,25 @@
+{
+  "id": "st-echappatoire",
+  "name": "Echappatoire",
+  "category": "Scene",
+  "kind": "scene",
+  "description": "SuperTool: raymarch, tunnel, audio-reactive, oneoffrender",
+  "tags": [
+    "raymarch",
+    "tunnel",
+    "audio-reactive",
+    "oneoffrender",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {}
+}

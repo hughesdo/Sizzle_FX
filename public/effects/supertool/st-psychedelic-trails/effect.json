@@ -1,0 +1,117 @@
+{
+  "id": "st-psychedelic-trails",
+  "name": "Psychedelic Trails",
+  "category": "Feedback",
+  "kind": "filter",
+  "description": "SuperTool · hughesdo",
+  "tags": [
+    "psychedelic",
+    "trails",
+    "edge-detection",
+    "feedback",
+    "rainbow",
+    "multi-buffer",
+    "supertool",
+    "multipass"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "BufferA",
+      "file": "buffer_a.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    },
+    {
+      "name": "BufferB",
+      "file": "buffer_b.glsl",
+      "channels": {
+        "iChannel0": "BufferB",
+        "iChannel1": "BufferA"
+      }
+    },
+    {
+      "name": "Image",
+      "file": "image.glsl",
+      "channels": {
+        "iChannel0": "BufferA",
+        "iChannel1": "BufferB"
+      }
+    }
+  ],
+  "uniforms": {
+    "trailLength": {
+      "type": "float",
+      "default": 0.96,
+      "label": "trailLength",
+      "min": 0,
+      "max": 0.99,
+      "step": 0.01,
+      "description": "Feedback decay (0 = no trails, 0.99 = very long)"
+    },
+    "colorSpeed": {
+      "type": "float",
+      "default": 0.15,
+      "label": "colorSpeed",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "How fast hue cycles"
+    },
+    "colorSpread": {
+      "type": "float",
+      "default": 0.02,
+      "label": "colorSpread",
+      "min": 0,
+      "max": 0.1,
+      "step": 0.005,
+      "description": "How much color varies by position"
+    },
+    "effectIntensity": {
+      "type": "float",
+      "default": 0.275,
+      "label": "effectIntensity",
+      "min": 0,
+      "max": 1,
+      "step": 0.025,
+      "description": "Brightness of new tracer pixels"
+    },
+    "saturation": {
+      "type": "float",
+      "default": 2.5,
+      "label": "saturation",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "Color saturation"
+    },
+    "bassBrightness": {
+      "type": "float",
+      "default": 1.5,
+      "label": "bassBrightness",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "How much bass boosts brightness"
+    },
+    "bassHueShift": {
+      "type": "float",
+      "default": 0.15,
+      "label": "bassHueShift",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "How much bass shifts colors"
+    },
+    "highSaturation": {
+      "type": "float",
+      "default": 1,
+      "label": "highSaturation",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "How much highs boost saturation"
+    }
+  }
+}

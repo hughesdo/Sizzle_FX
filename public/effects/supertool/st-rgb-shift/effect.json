@@ -1,0 +1,62 @@
+{
+  "id": "st-rgb-shift",
+  "name": "RGB Shift",
+  "category": "Glitch",
+  "kind": "filter",
+  "description": "SuperTool: rgb-shift, chromatic, wave, glitch",
+  "tags": [
+    "rgb-shift",
+    "chromatic",
+    "wave",
+    "glitch",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "waveFrequency": {
+      "type": "float",
+      "default": 20,
+      "label": "waveFrequency",
+      "min": 5,
+      "max": 50,
+      "step": 1,
+      "description": "Vertical frequency of the shift wave"
+    },
+    "waveSpeed": {
+      "type": "float",
+      "default": 2,
+      "label": "waveSpeed",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "description": "How fast the wave scrolls"
+    },
+    "baseShift": {
+      "type": "float",
+      "default": 0.01,
+      "label": "baseShift",
+      "min": 0,
+      "max": 0.05,
+      "step": 0.001,
+      "description": "RGB separation at silence"
+    },
+    "audioShift": {
+      "type": "float",
+      "default": 0.02,
+      "label": "audioShift",
+      "min": 0,
+      "max": 0.1,
+      "step": 0.005,
+      "description": "Extra separation added by combined audio energy"
+    }
+  }
+}

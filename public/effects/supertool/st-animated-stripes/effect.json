@@ -1,0 +1,81 @@
+{
+  "id": "st-animated-stripes",
+  "name": "Animated Stripes",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: stripes, overlay, diagonal, audio",
+  "tags": [
+    "stripes",
+    "overlay",
+    "diagonal",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "stripeFrequency": {
+      "type": "float",
+      "default": 20,
+      "label": "stripeFrequency",
+      "min": 5,
+      "max": 50,
+      "step": 1,
+      "description": "Number of stripes"
+    },
+    "stripeSpeed": {
+      "type": "float",
+      "default": 5,
+      "label": "stripeSpeed",
+      "min": 0,
+      "max": 20,
+      "step": 0.5,
+      "description": "Animation speed"
+    },
+    "bassModulation": {
+      "type": "float",
+      "default": 10,
+      "label": "bassModulation",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "description": "Bass effect on stripe movement"
+    },
+    "stripeIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "stripeIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Brightness of stripes"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 1,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Audio reactivity multiplier"
+    },
+    "stripeColor": {
+      "type": "color",
+      "default": [
+        0.8,
+        0.3,
+        0.9
+      ],
+      "label": "stripeColor",
+      "description": "RGB color of stripes"
+    }
+  }
+}

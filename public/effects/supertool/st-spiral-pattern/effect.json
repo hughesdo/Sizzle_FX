@@ -1,0 +1,90 @@
+{
+  "id": "st-spiral-pattern",
+  "name": "Spiral Pattern",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: spiral, overlay, hypnotic, audio",
+  "tags": [
+    "spiral",
+    "overlay",
+    "hypnotic",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "spiralArms": {
+      "type": "float",
+      "default": 8,
+      "label": "spiralArms",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "description": "Number of spiral arms"
+    },
+    "spiralTightness": {
+      "type": "float",
+      "default": 20,
+      "label": "spiralTightness",
+      "min": 5,
+      "max": 50,
+      "step": 1,
+      "description": "How tight the spiral is"
+    },
+    "spiralSpeed": {
+      "type": "float",
+      "default": 2,
+      "label": "spiralSpeed",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "description": "Rotation speed"
+    },
+    "spiralIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "spiralIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Brightness of spiral"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 1,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Audio reactivity multiplier"
+    },
+    "blendAmount": {
+      "type": "float",
+      "default": 0.5,
+      "label": "blendAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend with video"
+    },
+    "spiralColor": {
+      "type": "color",
+      "default": [
+        0.5,
+        0.8,
+        1
+      ],
+      "label": "spiralColor",
+      "description": "RGB color of spiral"
+    }
+  }
+}

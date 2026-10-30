@@ -1,0 +1,59 @@
+{
+  "id": "st-amiga-sinus-2",
+  "name": "Amiga Sinus 2",
+  "category": "Scene",
+  "kind": "scene",
+  "description": "SuperTool · gPlatl (Shadertoy XtyXzt)",
+  "tags": [
+    "amiga",
+    "demoscene",
+    "scroller",
+    "retro",
+    "3d-text",
+    "supertool",
+    "multipass"
+  ],
+  "audio": false,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel2": {
+          "texture": "assets/amiga_font.png",
+          "wrap": "clamp",
+          "filter": "linear"
+        }
+      }
+    }
+  ],
+  "uniforms": {
+    "sinusAmplitude": {
+      "type": "float",
+      "default": 1,
+      "label": "sinusAmplitude",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "description": "Sinus wave amplitude for the main scroll text"
+    },
+    "use3DLighting": {
+      "type": "float",
+      "default": 1,
+      "label": "use3DLighting",
+      "min": 0,
+      "max": 1,
+      "step": 1,
+      "description": "3D lighting mode (0 = flat 2D, 1 = 3D shaded)"
+    },
+    "scrollSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "scrollSpeed",
+      "min": 0.1,
+      "max": 3,
+      "step": 0.1,
+      "description": "Main text scrolling speed"
+    }
+  }
+}

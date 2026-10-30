@@ -1,0 +1,25 @@
+{
+  "id": "st-vibe-drummer",
+  "name": "Vibe Drummer",
+  "category": "Color",
+  "kind": "filter",
+  "description": "SuperTool: psychedelic, beat, recolor, audio",
+  "tags": [
+    "psychedelic",
+    "beat",
+    "recolor",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {}
+}

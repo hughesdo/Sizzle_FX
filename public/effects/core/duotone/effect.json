@@ -1,0 +1,14 @@
+{
+  "id": "duotone",
+  "name": "Duotone",
+  "category": "Color",
+  "description": "Maps brightness onto two colours. Audio drive can slide the split point.",
+  "tags": ["color", "duotone", "grade", "poster"],
+  "audio": true,
+  "uniforms": {
+    "shadow":    { "type": "color", "default": "#1a0633", "label": "shadow" },
+    "highlight": { "type": "color", "default": "#ff6a3d", "label": "highlight" },
+    "contrast":  { "type": "float", "default": 1.2, "min": 0.3, "max": 3, "step": 0.01, "label": "contrast" },
+    "audioPush": { "type": "float", "default": 0.2, "min": 0, "max": 1, "step": 0.01, "label": "audio shift" }
+  }
+}

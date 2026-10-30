@@ -1,0 +1,26 @@
+{
+  "id": "st-edge-detection-dfdx-dfdy",
+  "name": "Edge Detection (dFdx/dFdy)",
+  "category": "Stylize",
+  "kind": "filter",
+  "description": "SuperTool: edge-detection, derivatives, video, audio-reactive, oneoffrender",
+  "tags": [
+    "edge-detection",
+    "derivatives",
+    "video",
+    "audio-reactive",
+    "oneoffrender",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {}
+}

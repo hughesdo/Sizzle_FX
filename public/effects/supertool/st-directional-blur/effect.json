@@ -1,0 +1,80 @@
+{
+  "id": "st-directional-blur",
+  "name": "Directional Blur",
+  "category": "Blur",
+  "kind": "filter",
+  "description": "SuperTool: directional, motion-blur, streak, blur",
+  "tags": [
+    "directional",
+    "motion-blur",
+    "streak",
+    "blur",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "blurAngle": {
+      "type": "float",
+      "default": 0,
+      "label": "blurAngle",
+      "min": 0,
+      "max": 6.28318,
+      "step": 0.1,
+      "description": "Base blur direction (radians)"
+    },
+    "angleSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "angleSpeed",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "How fast the blur direction rotates"
+    },
+    "baseBlurStrength": {
+      "type": "float",
+      "default": 0,
+      "label": "baseBlurStrength",
+      "min": 0,
+      "max": 0.1,
+      "step": 0.005,
+      "description": "Blur length at silence"
+    },
+    "audioBlurStrength": {
+      "type": "float",
+      "default": 0.02,
+      "label": "audioBlurStrength",
+      "min": 0,
+      "max": 0.15,
+      "step": 0.005,
+      "description": "Extra blur length added by mids"
+    },
+    "blurSamples": {
+      "type": "float",
+      "default": 12,
+      "label": "blurSamples",
+      "min": 4,
+      "max": 24,
+      "step": 1,
+      "description": "Sample count (higher = smoother)"
+    },
+    "audioAngleModulation": {
+      "type": "float",
+      "default": 6.28318,
+      "label": "audioAngleModulation",
+      "min": 0,
+      "max": 12.56636,
+      "step": 0.1,
+      "description": "How much bass swings the blur angle"
+    }
+  }
+}

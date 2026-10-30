@@ -1,0 +1,90 @@
+{
+  "id": "st-pulsing-dots",
+  "name": "Pulsing Dots",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: dots, grid, overlay, audio",
+  "tags": [
+    "dots",
+    "grid",
+    "overlay",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "dotGridSize": {
+      "type": "float",
+      "default": 10,
+      "label": "dotGridSize",
+      "min": 2,
+      "max": 30,
+      "step": 1,
+      "description": "Number of dots per row/column"
+    },
+    "baseDotSize": {
+      "type": "float",
+      "default": 0.2,
+      "label": "baseDotSize",
+      "min": 0.05,
+      "max": 0.5,
+      "step": 0.01,
+      "description": "Base size of dots"
+    },
+    "audioDotSize": {
+      "type": "float",
+      "default": 0.2,
+      "label": "audioDotSize",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.01,
+      "description": "Additional size from audio"
+    },
+    "dotSmoothness": {
+      "type": "float",
+      "default": 0.01,
+      "label": "dotSmoothness",
+      "min": 0.001,
+      "max": 0.1,
+      "step": 0.001,
+      "description": "Edge smoothness of dots"
+    },
+    "dotIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "dotIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Brightness of dots"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 1,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Audio reactivity multiplier"
+    },
+    "dotColor": {
+      "type": "color",
+      "default": [
+        1,
+        0.5,
+        0.8
+      ],
+      "label": "dotColor",
+      "description": "RGB color of dots"
+    }
+  }
+}

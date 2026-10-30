@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIZZLE FX // shader effects timeline</title>
+<link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+<div id="scanline"></div>
+
+<header>
+  <div class="brand">
+    <span class="logo">SIZZLE FX</span>
+    <span class="sub">shader effects timeline // gpu preview + mp4</span>
+  </div>
+  <div class="badges">
+    <span class="badge" id="badge-gpu" title="WebGL2 renderer">gpu: ?</span>
+    <span class="badge" id="badge-enc" title="H.264 High encoder">h.264: ?</span>
+    <label class="mode">render
+      <select id="render-mode" title="where the final MP4 is rendered">
+        <option value="browser">browser gpu</option>
+        <option value="server" disabled>server gpu (offline)</option>
+      </select>
+    </label>
+    <button class="tl-btn" id="btn-open">open video</button>
+    <button class="tl-btn" id="btn-save" disabled>save project</button>
+    <button class="tl-btn" id="btn-load">load project</button>
+    <a class="tl-btn help-btn" id="btn-help" href="/help.html" target="_blank" rel="noopener" title="video walkthrough + guide">? help</a>
+    <input type="file" id="video-input" accept="video/*,.mp4,.mov,.webm,.mkv" hidden>
+    <input type="file" id="project-input" accept=".json,.sfx.json" hidden>
+  </div>
+</header>
+
+<main>
+  <aside class="library" id="library"></aside>
+
+  <section class="stage">
+    <div class="preview-wrap" id="preview-wrap">
+      <canvas id="preview"></canvas>
+      <div id="mask-panel"></div>
+      <label class="drop" id="drop">
+        <span class="drop-label" id="drop-label">drop a video here or click // mp4 mov webm</span>
+      </label>
+      <div class="preview-info" id="preview-info"></div>
+    </div>
+    <div class="stage-bar">
+      <span class="meta" id="video-meta"></span>
+      <label class="meta"><input type="checkbox" id="half-res"> half-res preview</label>
+      <button class="tl-btn" id="btn-masks" title="subject masks for Scope and Body effects">◐ masks</button>
+      <span class="spacer"></span>
+      <select id="export-preset" title="encoding preset"></select>
+      <button class="tl-btn primary" id="btn-export" disabled>EXPORT MP4</button>
+    </div>
+    <div class="progress hidden" id="progress">
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="progress-row"><span class="progress-log" id="progress-log"></span><button class="tl-btn danger" id="btn-cancel">cancel</button></div>
+    </div>
+    <div class="result hidden" id="result">
+      <span class="meta" id="result-meta"></span>
+      <a id="download" class="download-btn" download>DOWNLOAD MP4</a>
+    </div>
+  </section>
+
+  <aside id="seg-panel"></aside>
+
+  <section class="timeline locked" id="timeline"></section>
+</main>
+
+<video id="video" playsinline preload="auto"></video>
+<div id="toast-host"></div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

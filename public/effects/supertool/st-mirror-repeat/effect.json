@@ -1,0 +1,80 @@
+{
+  "id": "st-mirror-repeat",
+  "name": "Mirror Repeat",
+  "category": "Distort",
+  "kind": "filter",
+  "description": "SuperTool: mirror, kaleidoscope, symmetry, geometric",
+  "tags": [
+    "mirror",
+    "kaleidoscope",
+    "symmetry",
+    "geometric",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "baseSegments": {
+      "type": "float",
+      "default": 2,
+      "label": "baseSegments",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "description": "Number of mirror segments at silence"
+    },
+    "audioSegments": {
+      "type": "float",
+      "default": 6,
+      "label": "audioSegments",
+      "min": 0,
+      "max": 8,
+      "step": 1,
+      "description": "Extra segments added by the bass band"
+    },
+    "baseRotation": {
+      "type": "float",
+      "default": 0,
+      "label": "baseRotation",
+      "min": 0,
+      "max": 6.28318,
+      "step": 0.1,
+      "description": "Static rotation offset (radians)"
+    },
+    "audioRotation": {
+      "type": "float",
+      "default": 3.14159,
+      "label": "audioRotation",
+      "min": 0,
+      "max": 6.28318,
+      "step": 0.1,
+      "description": "Bass-reactive rotation amount"
+    },
+    "centerX": {
+      "type": "float",
+      "default": 0.5,
+      "label": "centerX",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Horizontal center of the mirror"
+    },
+    "centerY": {
+      "type": "float",
+      "default": 0.5,
+      "label": "centerY",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Vertical center of the mirror"
+    }
+  }
+}

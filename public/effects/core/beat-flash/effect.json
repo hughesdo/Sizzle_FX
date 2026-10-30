@@ -1,0 +1,13 @@
+{
+  "id": "beat-flash",
+  "name": "Beat Flash",
+  "category": "Light",
+  "description": "White flash, cream wash or inversion fired by the audio drive (set drive to kick or snare).",
+  "tags": ["flash", "strobe", "invert", "wash", "beat", "timewarp"],
+  "audio": true,
+  "uniforms": {
+    "mode":      { "type": "enum", "options": ["flash", "wash", "invert", "exposure punch"], "default": 0, "label": "mode" },
+    "amount":    { "type": "float", "default": 0.9, "min": 0, "max": 2, "step": 0.01, "label": "strength" },
+    "threshold": { "type": "float", "default": 0.25, "min": 0, "max": 1, "step": 0.01, "label": "trigger above" }
+  }
+}

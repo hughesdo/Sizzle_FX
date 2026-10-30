@@ -1,0 +1,15 @@
+{
+  "id": "slit-scan",
+  "name": "Slit-Scan",
+  "category": "Temporal",
+  "description": "Each strip of the frame shows a different moment: one edge is now, the far edge is up to 15 frames ago, so motion bends and stretches.",
+  "tags": ["slit", "scan", "time", "displacement", "temporal", "history"],
+  "audio": true,
+  "needsHistory": true,
+  "uniforms": {
+    "direction": { "type": "enum", "options": ["top = now", "bottom = now", "left = now", "right = now", "centre = now (radial)"], "default": 0, "label": "direction" },
+    "depth":     { "type": "float", "default": 15, "min": 1, "max": 15, "step": 0.5, "label": "frames of delay" },
+    "bands":     { "type": "float", "default": 0, "min": 0, "max": 60, "step": 1, "label": "hard bands (0 = smooth)" },
+    "audioPush": { "type": "float", "default": 0.0, "min": 0, "max": 1, "step": 0.01, "label": "audio depth" }
+  }
+}

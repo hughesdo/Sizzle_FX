@@ -1,0 +1,99 @@
+{
+  "id": "st-wave-interference",
+  "name": "Wave Interference",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: waves, interference, overlay, audio",
+  "tags": [
+    "waves",
+    "interference",
+    "overlay",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "waveFrequency": {
+      "type": "float",
+      "default": 10,
+      "label": "waveFrequency",
+      "min": 2,
+      "max": 30,
+      "step": 1,
+      "description": "Wave pattern frequency"
+    },
+    "waveSpeed": {
+      "type": "float",
+      "default": 3,
+      "label": "waveSpeed",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "description": "Animation speed"
+    },
+    "waveSource1X": {
+      "type": "float",
+      "default": 0.5,
+      "label": "waveSource1X",
+      "min": -2,
+      "max": 2,
+      "step": 0.1,
+      "description": "First wave source position"
+    },
+    "waveSource2X": {
+      "type": "float",
+      "default": 0.5,
+      "label": "waveSource2X",
+      "min": -2,
+      "max": 2,
+      "step": 0.1,
+      "description": "Second wave source position"
+    },
+    "waveIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "waveIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Brightness of pattern"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 1,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Audio reactivity multiplier"
+    },
+    "blendAmount": {
+      "type": "float",
+      "default": 0.5,
+      "label": "blendAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend with video"
+    },
+    "waveColor": {
+      "type": "color",
+      "default": [
+        0.5,
+        0.8,
+        1
+      ],
+      "label": "waveColor",
+      "description": "RGB color of waves"
+    }
+  }
+}

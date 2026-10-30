@@ -1,0 +1,27 @@
+{
+  "id": "st-vagas-dome",
+  "name": "Vegas Dome",
+  "category": "Scene",
+  "kind": "scene",
+  "description": "SuperTool: 3d, dome, sphere, raymarch, video-mapping",
+  "tags": [
+    "3d",
+    "dome",
+    "sphere",
+    "raymarch",
+    "video-mapping",
+    "supertool"
+  ],
+  "audio": false,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input",
+        "iChannel1": "none"
+      }
+    }
+  ],
+  "uniforms": {}
+}

@@ -1,0 +1,20 @@
+{
+  "id": "ghost-trails",
+  "name": "Ghost Trails",
+  "category": "Feedback",
+  "description": "Feedback buffer that remembers bright moving things and lets them smear and drift outward. Unlimited trail length (not tied to the 16-frame history).",
+  "tags": ["feedback", "trails", "smear", "drift", "multipass"],
+  "audio": true,
+  "passes": [
+    { "name": "Trail", "file": "trail.glsl", "channels": { "iChannel0": "input", "iChannel1": "Trail" } },
+    { "name": "Image", "file": "main.glsl", "channels": { "iChannel0": "input", "iChannel1": "Trail" } }
+  ],
+  "uniforms": {
+    "persist":   { "type": "float", "default": 0.9, "min": 0.5, "max": 0.995, "step": 0.001, "label": "persistence" },
+    "drift":     { "type": "float", "default": 0.004, "min": -0.02, "max": 0.03, "step": 0.0005, "label": "zoom drift" },
+    "swirl":     { "type": "float", "default": 0.0, "min": -0.05, "max": 0.05, "step": 0.001, "label": "swirl" },
+    "audioPush": { "type": "float", "default": 0.06, "min": 0, "max": 0.2, "step": 0.001, "label": "audio persistence" },
+    "hueShift":  { "type": "float", "default": 0.02, "min": 0, "max": 0.2, "step": 0.001, "label": "hue shift per frame" },
+    "mixMode":   { "type": "enum", "options": ["lighten", "screen", "add"], "default": 0, "label": "composite" }
+  }
+}

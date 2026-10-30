@@ -1,0 +1,90 @@
+{
+  "id": "st-vortex",
+  "name": "Vortex",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: vortex, spiral, swirl, overlay",
+  "tags": [
+    "vortex",
+    "spiral",
+    "swirl",
+    "overlay",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "vortexSpeed": {
+      "type": "float",
+      "default": 2,
+      "label": "vortexSpeed",
+      "min": 0,
+      "max": 10,
+      "step": 0.1,
+      "description": "Rotation speed of the spiral"
+    },
+    "vortexFrequency": {
+      "type": "float",
+      "default": 5,
+      "label": "vortexFrequency",
+      "min": 1,
+      "max": 20,
+      "step": 0.5,
+      "description": "Number of spiral arms"
+    },
+    "vortexRadius": {
+      "type": "float",
+      "default": 10,
+      "label": "vortexRadius",
+      "min": 1,
+      "max": 30,
+      "step": 0.5,
+      "description": "How tightly the spiral winds inward"
+    },
+    "vortexIntensity": {
+      "type": "float",
+      "default": 0.5,
+      "label": "vortexIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "description": "Overall brightness of the spiral overlay"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 1,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "How much bass boosts the spiral intensity"
+    },
+    "blendMode": {
+      "type": "float",
+      "default": 0,
+      "label": "blendMode",
+      "min": 0,
+      "max": 2,
+      "step": 1,
+      "description": "0=overlay (add), 1=multiply, 2=soft add"
+    },
+    "vortexColor": {
+      "type": "color",
+      "default": [
+        1,
+        0.6,
+        0.8
+      ],
+      "label": "vortexColor",
+      "description": "Spiral tint color"
+    }
+  }
+}

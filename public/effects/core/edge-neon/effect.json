@@ -1,0 +1,15 @@
+{
+  "id": "edge-neon",
+  "name": "Edge Neon",
+  "category": "Stylize",
+  "description": "Edges light up in their own colour while the rest falls to black. Audio pumps the glow.",
+  "tags": ["edge", "neon", "outline", "sobel", "timewarp"],
+  "audio": true,
+  "uniforms": {
+    "strength":  { "type": "float", "default": 3.0, "min": 0.5, "max": 10, "step": 0.1, "label": "edge gain" },
+    "keep":      { "type": "float", "default": 0.08, "min": 0, "max": 1, "step": 0.01, "label": "keep original" },
+    "audioPush": { "type": "float", "default": 1.0, "min": 0, "max": 3, "step": 0.01, "label": "audio glow" },
+    "width":     { "type": "float", "default": 1.5, "min": 0.5, "max": 4, "step": 0.1, "label": "line width (px)" },
+    "tint":      { "type": "color", "default": "#ffffff", "label": "tint" }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "st-hue-rotate",
+  "name": "Hue Rotate",
+  "category": "Color",
+  "kind": "filter",
+  "description": "SuperTool: hue, color, rotation, cycling",
+  "tags": [
+    "hue",
+    "color",
+    "rotation",
+    "cycling",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "rotationSpeed": {
+      "type": "float",
+      "default": 0.5,
+      "label": "rotationSpeed",
+      "min": 0,
+      "max": 5,
+      "step": 0.05,
+      "description": "Constant hue rotation speed (radians/sec)"
+    },
+    "audioIntensity": {
+      "type": "float",
+      "default": 2,
+      "label": "audioIntensity",
+      "min": 0,
+      "max": 6,
+      "step": 0.05,
+      "description": "Extra hue cycling per unit of combined audio energy"
+    }
+  }
+}

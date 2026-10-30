@@ -1,0 +1,116 @@
+{
+  "id": "st-pulse-vignette",
+  "name": "Pulse Vignette",
+  "category": "Light",
+  "kind": "filter",
+  "description": "SuperTool: vignette, pulse, beat, audio",
+  "tags": [
+    "vignette",
+    "pulse",
+    "beat",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "vignetteSize": {
+      "type": "float",
+      "default": 0.7,
+      "label": "vignetteSize",
+      "min": 0.3,
+      "max": 1,
+      "step": 0.05,
+      "description": "Base size of vignette (smaller = more darkening)"
+    },
+    "vignetteSoftness": {
+      "type": "float",
+      "default": 0.3,
+      "label": "vignetteSoftness",
+      "min": 0.1,
+      "max": 0.8,
+      "step": 0.05,
+      "description": "Softness of vignette edge"
+    },
+    "pulseIntensity": {
+      "type": "float",
+      "default": 2,
+      "label": "pulseIntensity",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "How much bass affects vignette size"
+    },
+    "vignetteStrength": {
+      "type": "float",
+      "default": 0.7,
+      "label": "vignetteStrength",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Overall vignette opacity"
+    },
+    "brightnessPulse": {
+      "type": "float",
+      "default": 0.3,
+      "label": "brightnessPulse",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Brightness boost on kicks"
+    },
+    "flashThreshold": {
+      "type": "float",
+      "default": 0.6,
+      "label": "flashThreshold",
+      "min": 0.3,
+      "max": 1,
+      "step": 0.05,
+      "description": "Kick level needed for white flash"
+    },
+    "flashIntensity": {
+      "type": "float",
+      "default": 0.3,
+      "label": "flashIntensity",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Strength of white flash effect"
+    },
+    "vignetteColorR": {
+      "type": "float",
+      "default": 0.3,
+      "label": "vignetteColorR",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Red component of vignette color"
+    },
+    "vignetteColorG": {
+      "type": "float",
+      "default": 0,
+      "label": "vignetteColorG",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Green component of vignette color"
+    },
+    "vignetteColorB": {
+      "type": "float",
+      "default": 0.5,
+      "label": "vignetteColorB",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blue component of vignette color"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "st-posterize",
+  "name": "Posterize",
+  "category": "Color",
+  "kind": "filter",
+  "description": "SuperTool: posterize, retro, color-depth, stylize",
+  "tags": [
+    "posterize",
+    "retro",
+    "color-depth",
+    "stylize",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "minLevels": {
+      "type": "float",
+      "default": 3,
+      "label": "minLevels",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "description": "Fewest color levels (most posterized, at peak audio)"
+    },
+    "maxLevels": {
+      "type": "float",
+      "default": 15,
+      "label": "maxLevels",
+      "min": 8,
+      "max": 32,
+      "step": 1,
+      "description": "Most color levels (least posterized, at silence)"
+    },
+    "audioControl": {
+      "type": "float",
+      "default": 1,
+      "label": "audioControl",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "How much audio drives the posterization"
+    }
+  }
+}

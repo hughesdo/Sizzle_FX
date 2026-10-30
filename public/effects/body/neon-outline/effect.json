@@ -1,0 +1,18 @@
+{
+  "id": "neon-outline",
+  "name": "Neon Outline",
+  "category": "Body",
+  "description": "A glowing neon line traced around the subject's silhouette. Width and glow pump with the music.",
+  "tags": ["neon", "outline", "glow", "stroke", "matte"],
+  "audio": true,
+  "needsMask": true,
+  "uniforms": {
+    "width":     { "type": "float", "default": 4, "min": 1, "max": 20, "step": 0.1, "label": "line width (px @1080)" },
+    "glow":      { "type": "float", "default": 18, "min": 0, "max": 60, "step": 0.5, "label": "glow radius (px @1080)" },
+    "color":     { "type": "color", "default": "#3bffd0", "label": "colour" },
+    "rainbow":   { "type": "bool", "default": 0, "label": "rainbow" },
+    "intensity": { "type": "float", "default": 1.4, "min": 0, "max": 4, "step": 0.01, "label": "intensity" },
+    "darkenBg":  { "type": "float", "default": 0.0, "min": 0, "max": 1, "step": 0.01, "label": "darken background" },
+    "audioPush": { "type": "float", "default": 1.0, "min": 0, "max": 3, "step": 0.01, "label": "audio pump" }
+  }
+}

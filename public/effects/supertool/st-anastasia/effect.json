@@ -1,0 +1,26 @@
+{
+  "id": "st-anastasia",
+  "name": "Anastasia",
+  "category": "Scene",
+  "kind": "scene",
+  "description": "SuperTool: mirror, tunnel, video, audio-reactive, oneoffrender",
+  "tags": [
+    "mirror",
+    "tunnel",
+    "video",
+    "audio-reactive",
+    "oneoffrender",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {}
+}

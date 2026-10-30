@@ -1,0 +1,117 @@
+{
+  "id": "st-edge-neon",
+  "name": "Edge Neon",
+  "category": "Distort",
+  "kind": "filter",
+  "description": "SuperTool: neon, edge-detection, synthwave, glow",
+  "tags": [
+    "neon",
+    "edge-detection",
+    "synthwave",
+    "glow",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "edgeThresholdLow": {
+      "type": "float",
+      "default": 0.08,
+      "label": "edgeThresholdLow",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Edge strength below this is suppressed"
+    },
+    "edgeThresholdHigh": {
+      "type": "float",
+      "default": 0.4,
+      "label": "edgeThresholdHigh",
+      "min": 0,
+      "max": 2,
+      "step": 0.01,
+      "description": "Edge strength above this is fully lit"
+    },
+    "neonIntensity": {
+      "type": "float",
+      "default": 2.5,
+      "label": "neonIntensity",
+      "min": 0,
+      "max": 8,
+      "step": 0.05,
+      "description": "Neon outline brightness"
+    },
+    "glowLayerCount": {
+      "type": "float",
+      "default": 3,
+      "label": "glowLayerCount",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "description": "Number of glow halo layers (perf: each layer is 25 taps)"
+    },
+    "glowRadius": {
+      "type": "float",
+      "default": 1.5,
+      "label": "glowRadius",
+      "min": 0,
+      "max": 6,
+      "step": 0.1,
+      "description": "Per-layer glow radius (in pixels)"
+    },
+    "videoDarken": {
+      "type": "float",
+      "default": 0.3,
+      "label": "videoDarken",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "How much to darken the underlying video before adding neon"
+    },
+    "bassNeonR": {
+      "type": "float",
+      "default": 2,
+      "label": "bassNeonR",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Bass → red neon multiplier"
+    },
+    "midNeonG": {
+      "type": "float",
+      "default": 1.5,
+      "label": "midNeonG",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Mid → green neon multiplier"
+    },
+    "highNeonB": {
+      "type": "float",
+      "default": 2,
+      "label": "highNeonB",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "High → blue neon multiplier"
+    },
+    "neonBase": {
+      "type": "color",
+      "default": [
+        0.2,
+        0.1,
+        0.3
+      ],
+      "label": "neonBase",
+      "description": "Base neon tint added before audio modulation"
+    }
+  }
+}

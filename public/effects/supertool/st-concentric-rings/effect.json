@@ -1,0 +1,90 @@
+{
+  "id": "st-concentric-rings",
+  "name": "Concentric Rings",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: rings, overlay, pulse, audio",
+  "tags": [
+    "rings",
+    "overlay",
+    "pulse",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "ringFrequency": {
+      "type": "float",
+      "default": 20,
+      "label": "ringFrequency",
+      "min": 5,
+      "max": 50,
+      "step": 1,
+      "description": "Number of rings"
+    },
+    "ringSpeed": {
+      "type": "float",
+      "default": 3,
+      "label": "ringSpeed",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "description": "Animation speed"
+    },
+    "bassModulation": {
+      "type": "float",
+      "default": 10,
+      "label": "bassModulation",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "description": "Bass effect on ring movement"
+    },
+    "ringSharpness": {
+      "type": "float",
+      "default": 2,
+      "label": "ringSharpness",
+      "min": 1,
+      "max": 5,
+      "step": 0.1,
+      "description": "Edge sharpness of rings"
+    },
+    "ringIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "ringIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Brightness of rings"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 2,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "Audio reactivity multiplier"
+    },
+    "ringColor": {
+      "type": "color",
+      "default": [
+        0.5,
+        0.7,
+        1
+      ],
+      "label": "ringColor",
+      "description": "RGB color of rings"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "st-liquid-paint-v2",
+  "name": "Liquid Paint V2",
+  "category": "Feedback",
+  "kind": "filter",
+  "description": "SuperTool · Effect by SuperTool (Don). Fluid: Florian Berger (flockaroo), 'single pass CFD', 2016, CC BY-NC-SA 3.0 — https://www.shadertoy.com/view/MsGSRd",
+  "tags": [
+    "paint",
+    "fluid",
+    "cfd",
+    "advection",
+    "flockaroo",
+    "feedback",
+    "effect",
+    "supertool",
+    "multipass"
+  ],
+  "audio": false,
+  "passes": [
+    {
+      "name": "BufferA",
+      "file": "buffer_a.glsl",
+      "channels": {
+        "iChannel0": "BufferA",
+        "iChannel1": {
+          "texture": "assets/rgba-noise-medium-256.png",
+          "wrap": "repeat",
+          "filter": "linear"
+        },
+        "iChannel2": "input"
+      }
+    },
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "BufferA",
+        "iChannel1": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "injectAmount": {
+      "type": "float",
+      "default": 0.06,
+      "label": "injectAmount",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.01,
+      "description": "How strongly the live clip melts into the fluid (low = more abstract paint, high = closer to the footage)"
+    },
+    "saturation": {
+      "type": "float",
+      "default": 1.5,
+      "label": "saturation",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Paint colour saturation lift (1 = plain flockaroo, higher = richer paint)"
+    },
+    "iridescence": {
+      "type": "float",
+      "default": 0.4,
+      "label": "iridescence",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Oil-slick sheen whose hue follows the fluid flow (0 = off / pure flockaroo)"
+    },
+    "videoMix": {
+      "type": "float",
+      "default": 0,
+      "label": "videoMix",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend the crisp clip back over the paint (0 = pure paint)"
+    }
+  }
+}

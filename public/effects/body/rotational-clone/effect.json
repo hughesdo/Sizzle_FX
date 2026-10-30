@@ -1,0 +1,21 @@
+{
+  "id": "rotational-clone",
+  "name": "Rotational Clone",
+  "category": "Body",
+  "description": "Several copies of the subject's matte, each rotated a few degrees around the subject and nudged sideways, blended additively behind the real subject. The TikTok/CapCut ghost-clone look.",
+  "tags": ["clone", "ghost", "echo", "rotate", "matte", "capcut"],
+  "audio": true,
+  "needsMask": true,
+  "uniforms": {
+    "copies":    { "type": "int", "default": 3, "min": 1, "max": 8, "step": 1, "label": "copies" },
+    "spread":    { "type": "float", "default": 7, "min": 0, "max": 45, "step": 0.1, "label": "rotation (deg)" },
+    "offset":    { "type": "float", "default": 0.025, "min": 0, "max": 0.2, "step": 0.001, "label": "offset" },
+    "opacity":   { "type": "float", "default": 0.5, "min": 0, "max": 1.5, "step": 0.01, "label": "clone opacity" },
+    "blend":     { "type": "enum", "options": ["add", "screen", "normal"], "default": 0, "label": "blend" },
+    "tint":      { "type": "enum", "options": ["none", "rgb", "rainbow", "single colour"], "default": 0, "label": "clone colour" },
+    "color":     { "type": "color", "default": "#5ad1ff", "label": "single colour" },
+    "front":     { "type": "float", "default": 1.0, "min": 0, "max": 1, "step": 0.01, "label": "real subject on top" },
+    "audioPush": { "type": "float", "default": 0.6, "min": 0, "max": 3, "step": 0.01, "label": "audio spread" },
+    "sway":      { "type": "float", "default": 0.3, "min": 0, "max": 2, "step": 0.01, "label": "sway" }
+  }
+}

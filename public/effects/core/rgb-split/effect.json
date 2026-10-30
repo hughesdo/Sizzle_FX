@@ -1,0 +1,14 @@
+{
+  "id": "rgb-split",
+  "name": "RGB Split",
+  "category": "Glitch",
+  "description": "Red and blue pulled apart from green. Radial mode pushes them outward from the centre; audio drive kicks the split wider.",
+  "tags": ["chromatic", "aberration", "rgb", "split", "timewarp"],
+  "audio": true,
+  "uniforms": {
+    "amount":    { "type": "float", "default": 0.006, "min": 0, "max": 0.05, "step": 0.0005, "label": "base split" },
+    "audioPush": { "type": "float", "default": 0.025, "min": 0, "max": 0.1, "step": 0.0005, "label": "audio push" },
+    "radial":    { "type": "bool", "default": 1, "label": "radial" },
+    "angle":     { "type": "float", "default": 0, "min": 0, "max": 6.2832, "step": 0.01, "label": "angle (linear)" }
+  }
+}

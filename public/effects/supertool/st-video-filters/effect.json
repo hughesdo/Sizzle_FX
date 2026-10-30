@@ -1,0 +1,90 @@
+{
+  "id": "st-video-filters",
+  "name": "Video Filters",
+  "category": "Glitch",
+  "kind": "filter",
+  "description": "SuperTool: filter, desaturate, invert, chromatic, channel-swap",
+  "tags": [
+    "filter",
+    "desaturate",
+    "invert",
+    "chromatic",
+    "channel-swap",
+    "supertool"
+  ],
+  "audio": false,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "filterMode": {
+      "type": "float",
+      "default": 0,
+      "label": "filterMode",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "description": "0=all (quadrants), 1=desaturate, 2=invert, 3=chromatic, 4=channel swap"
+    },
+    "chromaticAmount": {
+      "type": "float",
+      "default": 0.01,
+      "label": "chromaticAmount",
+      "min": 0,
+      "max": 0.05,
+      "step": 0.001,
+      "description": "RGB channel separation amount"
+    },
+    "showDividers": {
+      "type": "float",
+      "default": 1,
+      "label": "showDividers",
+      "min": 0,
+      "max": 1,
+      "step": 1,
+      "description": "Show quadrant divider lines (mode 0)"
+    },
+    "dividerWidth": {
+      "type": "float",
+      "default": 2,
+      "label": "dividerWidth",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "description": "Divider line width in pixels"
+    },
+    "saturationAmount": {
+      "type": "float",
+      "default": 1,
+      "label": "saturationAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Desaturation strength (0=color, 1=grayscale)"
+    },
+    "invertAmount": {
+      "type": "float",
+      "default": 1,
+      "label": "invertAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Color inversion strength"
+    },
+    "colorShiftMode": {
+      "type": "float",
+      "default": 0,
+      "label": "colorShiftMode",
+      "min": 0,
+      "max": 2,
+      "step": 1,
+      "description": "Channel swap order (0=BRG, 1=GBR, 2=RBG)"
+    }
+  }
+}

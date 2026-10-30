@@ -1,0 +1,99 @@
+{
+  "id": "st-particle-burst",
+  "name": "Particle Burst",
+  "category": "Light",
+  "kind": "filter",
+  "description": "SuperTool: particles, burst, fireworks, beat, audio",
+  "tags": [
+    "particles",
+    "burst",
+    "fireworks",
+    "beat",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "burstFrequency": {
+      "type": "float",
+      "default": 2,
+      "label": "burstFrequency",
+      "min": 0.5,
+      "max": 10,
+      "step": 0.5,
+      "description": "How often bursts spawn"
+    },
+    "numBursts": {
+      "type": "float",
+      "default": 8,
+      "label": "numBursts",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "description": "Number of simultaneous bursts"
+    },
+    "numParticles": {
+      "type": "float",
+      "default": 30,
+      "label": "numParticles",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "description": "Particles per burst"
+    },
+    "particleSpeed": {
+      "type": "float",
+      "default": 0.3,
+      "label": "particleSpeed",
+      "min": 0.1,
+      "max": 1,
+      "step": 0.05,
+      "description": "Particle movement speed"
+    },
+    "particleSize": {
+      "type": "float",
+      "default": 0.005,
+      "label": "particleSize",
+      "min": 0.001,
+      "max": 0.02,
+      "step": 0.001,
+      "description": "Size of particles"
+    },
+    "beatThreshold": {
+      "type": "float",
+      "default": 0.4,
+      "label": "beatThreshold",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Bass level needed for beat detection"
+    },
+    "particleIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "particleIntensity",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Brightness of particles"
+    },
+    "blendAmount": {
+      "type": "float",
+      "default": 0.5,
+      "label": "blendAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend strength with video"
+    }
+  }
+}

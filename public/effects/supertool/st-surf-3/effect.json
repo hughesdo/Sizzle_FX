@@ -1,0 +1,26 @@
+{
+  "id": "st-surf-3",
+  "name": "Surf 3",
+  "category": "Scene",
+  "kind": "scene",
+  "description": "SuperTool: surf, waves, raymarch, keying, audio",
+  "tags": [
+    "surf",
+    "waves",
+    "raymarch",
+    "keying",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {}
+}

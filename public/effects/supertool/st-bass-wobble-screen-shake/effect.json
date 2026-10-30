@@ -1,0 +1,98 @@
+{
+  "id": "st-bass-wobble-screen-shake",
+  "name": "Bass Wobble Screen Shake",
+  "category": "Distort",
+  "kind": "filter",
+  "description": "SuperTool: bass, wobble, shake, distortion",
+  "tags": [
+    "bass",
+    "wobble",
+    "shake",
+    "distortion",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "shakeIntensity": {
+      "type": "float",
+      "default": 0.012,
+      "label": "shakeIntensity",
+      "min": 0,
+      "max": 0.1,
+      "step": 0.001,
+      "description": "Random screen-shake amplitude on bass hits"
+    },
+    "wobbleIntensity": {
+      "type": "float",
+      "default": 0.01,
+      "label": "wobbleIntensity",
+      "min": 0,
+      "max": 0.1,
+      "step": 0.001,
+      "description": "Radial wobble distortion amplitude"
+    },
+    "wobbleFrequency": {
+      "type": "float",
+      "default": 8,
+      "label": "wobbleFrequency",
+      "min": 0,
+      "max": 60,
+      "step": 0.5,
+      "description": "Spatial frequency of the wobble waves"
+    },
+    "wobbleSpeed": {
+      "type": "float",
+      "default": 4,
+      "label": "wobbleSpeed",
+      "min": 0,
+      "max": 20,
+      "step": 0.1,
+      "description": "How fast the wobble waves move"
+    },
+    "chromaticAberration": {
+      "type": "float",
+      "default": 0.018,
+      "label": "chromaticAberration",
+      "min": 0,
+      "max": 0.1,
+      "step": 0.001,
+      "description": "RGB-split amount on heavy kick hits"
+    },
+    "bassThreshold": {
+      "type": "float",
+      "default": 0.18,
+      "label": "bassThreshold",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Bass level required before any wobble kicks in"
+    },
+    "kickThreshold": {
+      "type": "float",
+      "default": 0.35,
+      "label": "kickThreshold",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Kick level required for the chromatic aberration"
+    },
+    "shakeUpdateRate": {
+      "type": "float",
+      "default": 30,
+      "label": "shakeUpdateRate",
+      "min": 1,
+      "max": 120,
+      "step": 1,
+      "description": "How often the shake direction re-randomizes (Hz)"
+    }
+  }
+}

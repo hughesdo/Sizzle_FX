@@ -1,0 +1,82 @@
+{
+  "id": "st-checkerboard-overlay",
+  "name": "Checkerboard Overlay",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: checkerboard, overlay, rotation, audio",
+  "tags": [
+    "checkerboard",
+    "overlay",
+    "rotation",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "checkerSize": {
+      "type": "float",
+      "default": 10,
+      "label": "checkerSize",
+      "min": 2,
+      "max": 30,
+      "step": 1,
+      "description": "Size of checkerboard squares"
+    },
+    "rotationSpeed": {
+      "type": "float",
+      "default": 0.5,
+      "label": "rotationSpeed",
+      "min": -2,
+      "max": 2,
+      "step": 0.1,
+      "description": "Base rotation speed"
+    },
+    "bassRotation": {
+      "type": "float",
+      "default": 3,
+      "label": "bassRotation",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "description": "Additional rotation from bass"
+    },
+    "blendAmount": {
+      "type": "float",
+      "default": 0.5,
+      "label": "blendAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend with video (audio-reactive)"
+    },
+    "color1": {
+      "type": "color",
+      "default": [
+        0.1,
+        0.2,
+        0.5
+      ],
+      "label": "color1",
+      "description": "First checker color (RGB)"
+    },
+    "color2": {
+      "type": "color",
+      "default": [
+        0.9,
+        0.5,
+        0.3
+      ],
+      "label": "color2",
+      "description": "Second checker color (RGB)"
+    }
+  }
+}

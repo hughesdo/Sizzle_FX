@@ -1,0 +1,126 @@
+{
+  "id": "st-crt-tv",
+  "name": "CRT TV",
+  "category": "Glitch",
+  "kind": "filter",
+  "description": "SuperTool: crt, retro, scanlines, aberration, audio",
+  "tags": [
+    "crt",
+    "retro",
+    "scanlines",
+    "aberration",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "curvatureAmount": {
+      "type": "float",
+      "default": 0.15,
+      "label": "curvatureAmount",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.01,
+      "description": "Screen curvature (CRT bulge)"
+    },
+    "chromaticAberration": {
+      "type": "float",
+      "default": 0.003,
+      "label": "chromaticAberration",
+      "min": 0,
+      "max": 0.02,
+      "step": 0.0005,
+      "description": "Base RGB separation"
+    },
+    "audioAberration": {
+      "type": "float",
+      "default": 0.005,
+      "label": "audioAberration",
+      "min": 0,
+      "max": 0.02,
+      "step": 0.001,
+      "description": "Additional aberration from audio"
+    },
+    "scanlineIntensity": {
+      "type": "float",
+      "default": 0.5,
+      "label": "scanlineIntensity",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Darkness of scanlines (0=none, 1=very dark)"
+    },
+    "scanlineCount": {
+      "type": "float",
+      "default": 2,
+      "label": "scanlineCount",
+      "min": 0.5,
+      "max": 4,
+      "step": 0.1,
+      "description": "Scanline density multiplier"
+    },
+    "flickerSpeed": {
+      "type": "float",
+      "default": 60,
+      "label": "flickerSpeed",
+      "min": 10,
+      "max": 200,
+      "step": 10,
+      "description": "Speed of scanline flicker"
+    },
+    "flickerIntensity": {
+      "type": "float",
+      "default": 0.02,
+      "label": "flickerIntensity",
+      "min": 0,
+      "max": 0.2,
+      "step": 0.01,
+      "description": "Amount of flicker"
+    },
+    "vignetteStrength": {
+      "type": "float",
+      "default": 1,
+      "label": "vignetteStrength",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Edge darkening strength"
+    },
+    "staticThreshold": {
+      "type": "float",
+      "default": 0.5,
+      "label": "staticThreshold",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Bass level needed for static"
+    },
+    "staticIntensity": {
+      "type": "float",
+      "default": 0.3,
+      "label": "staticIntensity",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Strength of audio-reactive static"
+    },
+    "ghostingAmount": {
+      "type": "float",
+      "default": 0.01,
+      "label": "ghostingAmount",
+      "min": 0,
+      "max": 0.05,
+      "step": 0.001,
+      "description": "Color ghosting/trailing"
+    }
+  }
+}

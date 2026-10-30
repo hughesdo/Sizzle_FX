@@ -1,0 +1,33 @@
+{
+  "id": "st-shaderwave-vid",
+  "name": "Shaderwave (Video)",
+  "category": "Scene",
+  "kind": "scene",
+  "description": "SuperTool · OneOffRender intake (port by SuperTool)",
+  "tags": [
+    "shaderwave",
+    "video",
+    "audio-reactive",
+    "font",
+    "demoscene",
+    "oneoffrender",
+    "supertool",
+    "multipass"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input",
+        "iChannel1": {
+          "texture": "assets/otaviogood_shader_fontgen.png",
+          "wrap": "clamp",
+          "filter": "linear"
+        }
+      }
+    }
+  ],
+  "uniforms": {}
+}

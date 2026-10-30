@@ -1,0 +1,17 @@
+{
+  "id": "rgb-split-clone",
+  "name": "RGB Split Clone",
+  "category": "Body",
+  "description": "Red, green and blue copies of the subject pulled apart and added back over the frame. The music pushes them further apart.",
+  "tags": ["rgb", "split", "clone", "chromatic", "matte"],
+  "audio": true,
+  "needsMask": true,
+  "uniforms": {
+    "amount":    { "type": "float", "default": 0.02, "min": 0, "max": 0.15, "step": 0.001, "label": "split" },
+    "audioPush": { "type": "float", "default": 0.05, "min": 0, "max": 0.3, "step": 0.001, "label": "audio split" },
+    "angle":     { "type": "float", "default": 0, "min": 0, "max": 6.2832, "step": 0.01, "label": "direction" },
+    "spin":      { "type": "float", "default": 0.0, "min": -3, "max": 3, "step": 0.01, "label": "direction spin" },
+    "opacity":   { "type": "float", "default": 0.8, "min": 0, "max": 1.5, "step": 0.01, "label": "clone opacity" },
+    "front":     { "type": "float", "default": 0.0, "min": 0, "max": 1, "step": 0.01, "label": "real subject on top" }
+  }
+}

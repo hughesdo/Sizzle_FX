@@ -1,0 +1,72 @@
+{
+  "id": "st-triangles-overlay",
+  "name": "Triangles Overlay",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: triangles, geometric, overlay, audio",
+  "tags": [
+    "triangles",
+    "geometric",
+    "overlay",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "triangleSize": {
+      "type": "float",
+      "default": 10,
+      "label": "triangleSize",
+      "min": 2,
+      "max": 30,
+      "step": 1,
+      "description": "Size of triangle grid"
+    },
+    "triangleIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "triangleIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Brightness of triangles"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 1,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Audio reactivity multiplier"
+    },
+    "blendAmount": {
+      "type": "float",
+      "default": 0.5,
+      "label": "blendAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend strength with video"
+    },
+    "triangleColor": {
+      "type": "color",
+      "default": [
+        1,
+        0.6,
+        0.3
+      ],
+      "label": "triangleColor",
+      "description": "RGB color of triangles"
+    }
+  }
+}

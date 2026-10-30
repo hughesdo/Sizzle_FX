@@ -1,0 +1,154 @@
+{
+  "id": "st-twist-cube",
+  "name": "Twist Cube (Analys)",
+  "category": "Scene",
+  "kind": "scene",
+  "description": "SuperTool: 3d, raymarch, cube, twist, fractal, audio",
+  "tags": [
+    "3d",
+    "raymarch",
+    "cube",
+    "twist",
+    "fractal",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "cubeSize": {
+      "type": "float",
+      "default": 0.9,
+      "label": "cubeSize",
+      "min": 0.3,
+      "max": 1.5,
+      "step": 0.05,
+      "description": "Size of the cube (0.3-1.5)"
+    },
+    "rotationSpeed": {
+      "type": "float",
+      "default": 1.2,
+      "label": "rotationSpeed",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Main rotation speed (0-3)"
+    },
+    "twistAmount": {
+      "type": "float",
+      "default": 0.7,
+      "label": "twistAmount",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Base twist intensity (0-2)"
+    },
+    "twistSpeed": {
+      "type": "float",
+      "default": 0.5,
+      "label": "twistSpeed",
+      "min": 0.1,
+      "max": 2,
+      "step": 0.1,
+      "description": "How fast twist oscillates (0.1-2)"
+    },
+    "audioTwistStrength": {
+      "type": "float",
+      "default": 2,
+      "label": "audioTwistStrength",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "How much mids affect twist (0-5)"
+    },
+    "kickEnabled": {
+      "type": "float",
+      "default": 0,
+      "label": "kickEnabled",
+      "min": 0,
+      "max": 1,
+      "step": 1,
+      "description": "Enable kick pulse effect (0=off, 1=on)"
+    },
+    "kickStrength": {
+      "type": "float",
+      "default": 0.1,
+      "label": "kickStrength",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.05,
+      "description": "Kick pulse intensity (0-0.5)"
+    },
+    "deformAmount": {
+      "type": "float",
+      "default": 0.01,
+      "label": "deformAmount",
+      "min": 0,
+      "max": 0.1,
+      "step": 0.005,
+      "description": "Noise deformation amount (0-0.1)"
+    },
+    "fractalEnabled": {
+      "type": "float",
+      "default": 1,
+      "label": "fractalEnabled",
+      "min": 0,
+      "max": 1,
+      "step": 1,
+      "description": "Enable fractal cubes (0=off, 1=on)"
+    },
+    "fractalIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "fractalIntensity",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Fractal effect intensity (0-1)"
+    },
+    "edgeGlow": {
+      "type": "float",
+      "default": 1,
+      "label": "edgeGlow",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Edge glow brightness (0-3)"
+    },
+    "fovPulse": {
+      "type": "float",
+      "default": 0.9,
+      "label": "fovPulse",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "FOV pulse with beat (0-2)"
+    },
+    "fogDensity": {
+      "type": "float",
+      "default": 0.2,
+      "label": "fogDensity",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Fog thickness (0-1)"
+    },
+    "bpm": {
+      "type": "float",
+      "default": 170,
+      "label": "bpm",
+      "min": 60,
+      "max": 200,
+      "step": 1,
+      "description": "Beats per minute for timing (60-200)"
+    }
+  }
+}

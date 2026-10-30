@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sizzle FX Help</title>
+<style>
+:root{--bg:#0a0b0f;--panel:#12141c;--panel-2:#171a24;--ink:#d7dbe6;--dim:#7d8394;--line:#242835;--hot:#ff5d3b;--hot-2:#ffb03a;--live:#3bffd0;--grid:#1b1e28;
+  --mono:"DejaVu Sans Mono","SFMono-Regular",Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--mono);line-height:1.65}
+body{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px}
+header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 20px;background:rgba(10,11,15,.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.logo{font-weight:700;letter-spacing:.32em;font-size:18px;color:var(--hot);text-shadow:0 0 14px rgba(255,93,59,.5);text-decoration:none}
+.logo span{color:var(--ink);letter-spacing:.14em;font-size:11px;margin-left:12px;text-shadow:none;font-weight:400}
+.back{color:var(--live);font-size:12px;text-decoration:none;border:1px solid color-mix(in srgb,var(--live) 45%,var(--line));padding:6px 12px;border-radius:2px}
+main{max-width:1080px;margin:0 auto;padding:24px 16px 80px}
+h1{font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--hot);margin:34px 0 10px}
+h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--live);margin:26px 0 6px}
+p,li{font-size:13px;color:var(--ink)}
+.dim{color:var(--dim)}
+.video{background:#000;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+video{display:block;width:100%;height:auto}
+.chapters{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.chapters button{background:var(--panel-2);border:1px solid var(--line);color:var(--ink);font-family:var(--mono);font-size:11px;padding:5px 9px;border-radius:2px;cursor:pointer}
+.chapters button:hover{border-color:var(--hot)}
+.chapters b{color:var(--hot-2);font-weight:400;margin-right:6px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:6px 20px 14px;margin:14px 0}
+code,kbd{font-family:var(--mono);background:#08090d;border:1px solid var(--line);border-radius:2px;padding:1px 5px;font-size:12px;color:var(--live)}
+kbd{color:var(--hot-2)}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin:6px 0}
+td,th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{color:var(--dim);font-weight:400;letter-spacing:.08em;text-transform:uppercase;font-size:10.5px}
+.tip{border-left:3px solid var(--hot-2);padding:4px 12px;margin:10px 0;background:rgba(255,176,58,.06)}
+.toc{columns:2;column-gap:28px;font-size:12.5px}
+.toc a{color:var(--ink);text-decoration:none}
+.toc a:hover{color:var(--hot)}
+a{color:var(--live)}
+@media (max-width:640px){.toc{columns:1}.logo span{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/">SIZZLE FX <span>help</span></a>
+  <a class="back" href="/">← back to the editor</a>
+</header>
+<main>
+
+<div class="video">
+  <video id="walk" src="/help/sizzle_fx_walkthrough.mp4" poster="/help/poster.jpg" controls preload="metadata" playsinline></video>
+</div>
+<div class="chapters" id="chapters">
+  <button data-t="0"><b>0:00</b>intro</button>
+  <button data-t="10.7"><b>0:10</b>open a video</button>
+  <button data-t="29.1"><b>0:29</b>drag &amp; tune an effect</button>
+  <button data-t="45.7"><b>0:45</b>stacking lanes</button>
+  <button data-t="60.5"><b>1:00</b>masks: auto person</button>
+  <button data-t="76.7"><b>1:16</b>scope</button>
+  <button data-t="90.9"><b>1:30</b>body effects</button>
+  <button data-t="109.9"><b>1:49</b>click to select (SAM 2)</button>
+  <button data-t="136.9"><b>2:16</b>export: browser or server</button>
+  <button data-t="158.5"><b>2:38</b>the result</button>
+</div>
+
+<h1>Contents</h1>
+<div class="toc">
+  <a href="#start">1. Quick start</a><br><a href="#timeline">2. The timeline</a><br><a href="#settings">3. Segment settings</a><br>
+  <a href="#audio">4. Audio reactivity</a><br><a href="#lanes">5. Lanes &amp; stacking</a><br><a href="#masks">6. Masks</a><br>
+  <a href="#scope">7. Scope</a><br><a href="#body">8. Body effects</a><br><a href="#sam">9. Click to select (SAM 2)</a><br>
+  <a href="#export">10. Export</a><br><a href="#server">11. Server rendering</a><br><a href="#keys">12. Keyboard</a><br>
+  <a href="#effects">13. Adding your own effects</a><br><a href="#trouble">14. Troubleshooting</a>
+</div>
+
+<div class="card" id="start">
+<h1>1. Quick start</h1>
+<ol>
+  <li>Double-click <code>start.bat</code> (or <code>npm run dev</code>) and open <code>http://localhost:5180</code> in Chrome or Edge.</li>
+  <li>Drop a video on the preview, or click <b>open video</b>. MP4, MOV, MKV and WebM work.</li>
+  <li>Drag an effect from the library on the left onto a lane. Click it to tune it.</li>
+  <li>Press <kbd>Space</kbd> to preview, then <b>EXPORT MP4</b>.</li>
+</ol>
+<p class="dim">Everything runs on your own graphics card. Nothing is uploaded anywhere unless you pick the server render, which runs on your own machine too.</p>
+</div>
+
+<div class="card" id="timeline">
+<h1>2. The timeline</h1>
+<p>Along the top: the time ruler, thumbnails, and the soundtrack waveform with faint beat ticks (bright ticks are bar downbeats). Click any of them to jump there. Drag the orange grip on the playhead to scrub.</p>
+<ul>
+  <li><b>Place:</b> drag a library card onto a lane, or double-click a card to drop it at the playhead.</li>
+  <li><b>Move:</b> drag the segment. Drag it up or down to change lane.</li>
+  <li><b>Trim:</b> drag its left or right edge. Edges snap to beats, the playhead and neighbouring segments.</li>
+  <li><b>Zoom:</b> the zoom slider, or <kbd>Ctrl</kbd> + mouse wheel over the timeline. <b>fit</b> shows the whole video.</li>
+  <li><b>+ lane</b> adds a lane. An empty lane can be removed with its ✕.</li>
+</ul>
+<p class="dim">Your timeline autosaves per video in this browser. <b>save project</b> / <b>load project</b> write and read a <code>.sfx.json</code> file.</p>
+</div>
+
+<div class="card" id="settings">
+<h1>3. Segment settings</h1>
+<p>Click a segment to open its panel on the right. The preview updates live as you move sliders. Double-click a slider to reset it.</p>
+<table>
+  <tr><th>effect</th><td>The effect's own controls (strength, colours, counts, angles...). Hover a row for a description.</td></tr>
+  <tr><th>mix</th><td>How much of the effect shows, 0 to 1.</td></tr>
+  <tr><th>fade in / out</th><td>Seconds to ramp the effect in and out at the segment's edges (drawn as dark ramps on the segment).</td></tr>
+  <tr><th>audio reactivity</th><td>Scales everything the effect hears. 0 ignores the music, 3 is very twitchy.</td></tr>
+  <tr><th>audio drive</th><td>What the effect follows: overall level, bass, mid, highs, or the kick / snare / hi-hat hits.</td></tr>
+  <tr><th>scope, mask</th><td>Whole frame, subject only or background only (needs a mask, see below).</td></tr>
+  <tr><th>seed</th><td>Changes the random pattern of glitchy effects without changing their look.</td></tr>
+</table>
+<p><b>duplicate</b> copies the segment (with its settings) right after itself. <b>remove</b> deletes it (or press <kbd>Delete</kbd>).</p>
+</div>
+
+<div class="card" id="audio">
+<h1>4. Audio reactivity</h1>
+<p>When you open a video its soundtrack is analysed once: five frequency bands, kick, snare and hi-hat hits, the beat grid and bars. Preview and export use exactly the same numbers, so what you see is what you export.</p>
+<div class="tip">For punchy effects (zoom, flash, lightning, clone bursts) set <b>audio drive</b> to <b>kick hits</b> or <b>snare hits</b>. For smooth, breathing effects use <b>overall level</b> or <b>bass</b>.</div>
+</div>
+
+<div class="card" id="lanes">
+<h1>5. Lanes &amp; stacking</h1>
+<p>The bottom lane renders first. Every lane above works on the result of the lanes below it, so put colour grades and film looks on a top lane to tie everything together, and geometry (zoom, kaleidoscope, glitches) lower down.</p>
+</div>
+
+<div class="card" id="masks">
+<h1>6. Masks</h1>
+<p>A mask marks the subject in every frame. Open <b>◐ masks</b> under the preview and pick one of three ways to make one:</p>
+<table>
+  <tr><th>auto person</th><td>A matting model (Robust Video Matting) finds people automatically. Best for people, on any background. About 25 frames a second on a GTX 1080 Ti.</td></tr>
+  <tr><th>green screen</th><td>Classic chroma key, nearly instant. Only for green or blue screen footage.</td></tr>
+  <tr><th>click to select</th><td>SAM 2: click any object. See section 9.</td></tr>
+</table>
+<p>A mask is made ("baked") once, then saved in this browser with the video, so it is there next time you open the same file. <b>view</b> tints the subject so you can check it. You can keep several masks and pick which one each segment uses.</p>
+<div class="tip">The first auto-person or SAM 2 bake loads its model, which takes a few seconds. If a mask ever disappears (browsers may clear site storage), just bake it again.</div>
+</div>
+
+<div class="card" id="scope">
+<h1>7. Scope</h1>
+<p>With a mask, any of the 129 effects can be limited without code: open the segment, set <b>scope</b> to <b>subject only</b> or <b>background only</b>. <b>mask feather</b> softens the edge, <b>mask choke</b> grows or shrinks it.</p>
+<p class="dim">Examples: RGB split on the person only; a kaleidoscope, blur or thermal look on the room only.</p>
+</div>
+
+<div class="card" id="body">
+<h1>8. Body effects</h1>
+<p>The <b>Body</b> category is built around the mask (◐ badge in the library):</p>
+<table>
+  <tr><th>Rotational Clone</th><td>Rotated, offset ghost copies of the subject behind them, pushed by the music.</td></tr>
+  <tr><th>RGB Split Clone</th><td>Red, green and blue copies of the subject pulled apart.</td></tr>
+  <tr><th>Silhouette Echo</th><td>Coloured silhouettes of where the subject was over the last frames.</td></tr>
+  <tr><th>Subject Afterimage</th><td>Fading copies of only the subject trailing behind them.</td></tr>
+  <tr><th>Pulse Clone</th><td>Scaled-up echoes bursting out from the subject on the beat.</td></tr>
+  <tr><th>Neon Outline / Subject Aura</th><td>A neon line or a soft halo around the silhouette.</td></tr>
+  <tr><th>Background Swap / Spotlight</th><td>Replace, blur or drain the background so the subject pops.</td></tr>
+</table>
+<p class="dim">Thermal Camera and Lens Flare also use the mask when there is one (hot subject; flare that follows the head).</p>
+</div>
+
+<div class="card" id="sam">
+<h1>9. Click to select (SAM 2)</h1>
+<ol>
+  <li>Move the playhead to a frame where the object is clear, open <b>◐ masks</b>, choose <b>+ click to select</b>.</li>
+  <li>Click the object on the preview. Right-click anything that should be left out.</li>
+  <li>Pick <b>whole</b>, <b>part</b> or <b>detail</b>: the model offers three readings of each click (for example: the whole person, just the head, just the face).</li>
+  <li><b>track it</b> follows the selection through the video (a few frames a second).</li>
+</ol>
+<div class="tip">Tracking works best inside one shot. Across hard cuts, or with very fast motion at the frame edge, it can lose the object. For people, <b>auto person</b> is faster and steadier.</div>
+</div>
+
+<div class="card" id="export">
+<h1>10. Export</h1>
+<p>Pick a preset next to <b>EXPORT MP4</b>: <b>X / YouTube</b> (balanced) or <b>Max quality</b> (bigger file). The export renders every frame exactly, encodes H.264 High profile with BT.709 colour and fast start, and keeps your original audio untouched when it is AAC (anything else is converted to AAC, which X, YouTube and Instagram all accept). Then click <b>DOWNLOAD MP4</b>.</p>
+<p class="dim">The timeline is locked while rendering. <b>cancel</b> stops it.</p>
+</div>
+
+<div class="card" id="server">
+<h1>11. Server rendering</h1>
+<p>The <b>render</b> menu in the header switches between <b>browser gpu</b> and <b>server gpu (python)</b>. The server is a small Python program that renders the same effect files through ModernGL and encodes with ffmpeg (NVENC when available, otherwise x264). It shows the same picture as the browser.</p>
+<ol>
+  <li>Install Python 3.11 and ffmpeg (on the PATH).</li>
+  <li>Run <code>server\start.bat</code>. The first run creates its own environment and installs what it needs.</li>
+  <li>Reload the editor: the server option appears in the render menu.</li>
+</ol>
+<p class="dim">Use it for x264 quality, very long videos, or a browser without WebCodecs. On a modern GPU the browser path is usually faster.</p>
+</div>
+
+<div class="card" id="keys">
+<h1>12. Keyboard</h1>
+<table>
+  <tr><td><kbd>Space</kbd></td><td>play / pause</td></tr>
+  <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>step one frame (<kbd>Shift</kbd>: one second)</td></tr>
+  <tr><td><kbd>Delete</kbd></td><td>remove the selected segment</td></tr>
+  <tr><td><kbd>Ctrl</kbd>+<kbd>D</kbd></td><td>duplicate the selected segment</td></tr>
+  <tr><td><kbd>Ctrl</kbd>+wheel</td><td>zoom the timeline</td></tr>
+  <tr><td><kbd>Esc</kbd></td><td>close the segment panel</td></tr>
+</table>
+</div>
+
+<div class="card" id="effects">
+<h1>13. Adding your own effects</h1>
+<p>An effect is a folder with an <code>effect.json</code> (name, category, sliders) and a Shadertoy-style <code>main.glsl</code>. Drop it anywhere under <code>public/effects/</code> and it appears in the library while the editor is running. The full guide is <code>docs/EFFECTS.md</code> in the project.</p>
+</div>
+
+<div class="card" id="trouble">
+<h1>14. Troubleshooting</h1>
+<table>
+  <tr><th>Header says "h.264 high: missing"</th><td>Use a current Chrome or Edge, or switch the render menu to the server.</td></tr>
+  <tr><th>Mask buttons fail</th><td>The models live in <code>public/models</code>: run <code>npm run fetch-models</code> once. Auto person and SAM 2 need WebGPU (Chrome/Edge).</td></tr>
+  <tr><th>Server option is greyed out</th><td>Start <code>server\start.bat</code>, then reload the page.</td></tr>
+  <tr><th>A history effect (echo, trails) looks empty after a jump</th><td>Effects that use earlier frames need a moment of playback to fill up. Export always renders from the start, so the file is correct.</td></tr>
+</table>
+</div>
+
+<p class="dim" style="text-align:center;margin-top:30px">Sizzle FX by @OneHung</p>
+</main>
+<script>
+// chapter buttons seek the walkthrough; #t=SECONDS in the URL does the same
+const v = document.getElementById("walk");
+document.getElementById("chapters").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  v.currentTime = parseFloat(b.dataset.t); v.play(); v.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+const m = location.hash.match(/^#t=([\d.]+)/);
+if (m) v.addEventListener("loadedmetadata", () => { v.currentTime = parseFloat(m[1]); }, { once: true });
+</script>
+</body>
+</html>

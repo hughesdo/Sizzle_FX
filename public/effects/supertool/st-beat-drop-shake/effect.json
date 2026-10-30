@@ -1,0 +1,81 @@
+{
+  "id": "st-beat-drop-shake",
+  "name": "Beat Drop Shake",
+  "category": "Distort",
+  "kind": "filter",
+  "description": "SuperTool: shake, beat, bass, impact, audio",
+  "tags": [
+    "shake",
+    "beat",
+    "bass",
+    "impact",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "beatThreshold": {
+      "type": "float",
+      "default": 0.6,
+      "label": "beatThreshold",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Minimum beat to trigger shake (0.0-1.0)"
+    },
+    "explosionStrength": {
+      "type": "float",
+      "default": 2,
+      "label": "explosionStrength",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "Shake magnitude - higher = more violent (0.0-5.0)"
+    },
+    "dampenRate": {
+      "type": "float",
+      "default": 8,
+      "label": "dampenRate",
+      "min": 1,
+      "max": 15,
+      "step": 0.5,
+      "description": "Shake settle speed (1.0=slow, 10.0=fast)"
+    },
+    "randomSeed": {
+      "type": "float",
+      "default": 1,
+      "label": "randomSeed",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "description": "Shake randomization seed (0.0-10.0)"
+    },
+    "shakeDecay": {
+      "type": "float",
+      "default": 5,
+      "label": "shakeDecay",
+      "min": 1,
+      "max": 15,
+      "step": 0.5,
+      "description": "Beat impulse decay rate (1.0-10.0)"
+    },
+    "timeSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "timeSpeed",
+      "min": 0.1,
+      "max": 3,
+      "step": 0.1,
+      "description": "Animation speed multiplier (0.1-3.0)"
+    }
+  }
+}

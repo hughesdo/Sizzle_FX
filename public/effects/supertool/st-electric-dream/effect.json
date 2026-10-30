@@ -1,0 +1,26 @@
+{
+  "id": "st-electric-dream",
+  "name": "Electric Dream",
+  "category": "Scene",
+  "kind": "scene",
+  "description": "SuperTool: oscilloscope, video, audio-reactive, electric, oneoffrender",
+  "tags": [
+    "oscilloscope",
+    "video",
+    "audio-reactive",
+    "electric",
+    "oneoffrender",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {}
+}

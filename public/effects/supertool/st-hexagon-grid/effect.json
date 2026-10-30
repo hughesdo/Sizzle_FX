@@ -1,0 +1,90 @@
+{
+  "id": "st-hexagon-grid",
+  "name": "Hexagon Grid",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: hexagon, grid, overlay, audio",
+  "tags": [
+    "hexagon",
+    "grid",
+    "overlay",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "hexSize": {
+      "type": "float",
+      "default": 10,
+      "label": "hexSize",
+      "min": 2,
+      "max": 30,
+      "step": 1,
+      "description": "Size of hexagon cells"
+    },
+    "hexThickness": {
+      "type": "float",
+      "default": 0.4,
+      "label": "hexThickness",
+      "min": 0.1,
+      "max": 0.8,
+      "step": 0.05,
+      "description": "Thickness of hexagon edges"
+    },
+    "hexSmoothness": {
+      "type": "float",
+      "default": 0.05,
+      "label": "hexSmoothness",
+      "min": 0.01,
+      "max": 0.2,
+      "step": 0.01,
+      "description": "Edge smoothness"
+    },
+    "hexIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "hexIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Brightness of pattern"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 1,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Audio reactivity multiplier"
+    },
+    "blendAmount": {
+      "type": "float",
+      "default": 0.3,
+      "label": "blendAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend with video"
+    },
+    "hexColor": {
+      "type": "color",
+      "default": [
+        0.3,
+        0.7,
+        1
+      ],
+      "label": "hexColor",
+      "description": "RGB color of hexagons"
+    }
+  }
+}

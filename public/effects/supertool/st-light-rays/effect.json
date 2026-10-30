@@ -1,0 +1,126 @@
+{
+  "id": "st-light-rays",
+  "name": "Light Rays",
+  "category": "Blur",
+  "kind": "filter",
+  "description": "SuperTool: god-rays, light, radial-blur, volumetric",
+  "tags": [
+    "god-rays",
+    "light",
+    "radial-blur",
+    "volumetric",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "lightPosX": {
+      "type": "float",
+      "default": 0.5,
+      "label": "lightPosX",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Horizontal light position (0=left, 1=right)"
+    },
+    "lightPosY": {
+      "type": "float",
+      "default": 0.75,
+      "label": "lightPosY",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Vertical light position (0=bottom, 1=top)"
+    },
+    "lightMovement": {
+      "type": "float",
+      "default": 0.08,
+      "label": "lightMovement",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.01,
+      "description": "How much the light wanders over time"
+    },
+    "rayLength": {
+      "type": "float",
+      "default": 0.18,
+      "label": "rayLength",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Base ray length in UV units"
+    },
+    "audioRayLength": {
+      "type": "float",
+      "default": 0.22,
+      "label": "audioRayLength",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Extra ray length added at peak audio"
+    },
+    "numSamples": {
+      "type": "float",
+      "default": 48,
+      "label": "numSamples",
+      "min": 8,
+      "max": 96,
+      "step": 1,
+      "description": "Radial-blur sample count (higher = smoother but slower)"
+    },
+    "rayDecay": {
+      "type": "float",
+      "default": 0.96,
+      "label": "rayDecay",
+      "min": 0.5,
+      "max": 1,
+      "step": 0.01,
+      "description": "Per-step weight falloff (closer to 1 = longer rays)"
+    },
+    "brightnessThreshold": {
+      "type": "float",
+      "default": 0.45,
+      "label": "brightnessThreshold",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Luma below this isn't treated as a light source"
+    },
+    "rayIntensity": {
+      "type": "float",
+      "default": 0.2,
+      "label": "rayIntensity",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Base ray brightness multiplier"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 0.45,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Extra ray brightness at peak audio"
+    },
+    "rayColor": {
+      "type": "color",
+      "default": [
+        0.75,
+        0.4,
+        1
+      ],
+      "label": "rayColor",
+      "description": "Ray tint color"
+    }
+  }
+}

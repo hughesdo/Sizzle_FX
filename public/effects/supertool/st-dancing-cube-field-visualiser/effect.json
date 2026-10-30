@@ -1,0 +1,26 @@
+{
+  "id": "st-dancing-cube-field-visualiser",
+  "name": "Dancing Cube Field Visualiser",
+  "category": "Scene",
+  "kind": "scene",
+  "description": "SuperTool: cubes, visualiser, video, audio-reactive, oneoffrender",
+  "tags": [
+    "cubes",
+    "visualiser",
+    "video",
+    "audio-reactive",
+    "oneoffrender",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {}
+}

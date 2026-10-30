@@ -1,0 +1,108 @@
+{
+  "id": "st-vhs-tape",
+  "name": "VHS Tape",
+  "category": "Glitch",
+  "kind": "filter",
+  "description": "SuperTool: vhs, glitch, retro, analog, tape",
+  "tags": [
+    "vhs",
+    "glitch",
+    "retro",
+    "analog",
+    "tape",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "trackingErrorIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "trackingErrorIntensity",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Strength of horizontal tracking-error jitter"
+    },
+    "colorBleedAmount": {
+      "type": "float",
+      "default": 0.003,
+      "label": "colorBleedAmount",
+      "min": 0,
+      "max": 0.02,
+      "step": 0.0005,
+      "description": "Horizontal RGB color-bleed offset"
+    },
+    "noiseIntensity": {
+      "type": "float",
+      "default": 0.05,
+      "label": "noiseIntensity",
+      "min": 0,
+      "max": 0.2,
+      "step": 0.01,
+      "description": "Static tape-grain amount"
+    },
+    "desaturation": {
+      "type": "float",
+      "default": 0.2,
+      "label": "desaturation",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "How much color is washed out"
+    },
+    "bandIntensity": {
+      "type": "float",
+      "default": 0.05,
+      "label": "bandIntensity",
+      "min": 0,
+      "max": 0.2,
+      "step": 0.01,
+      "description": "Brightness of the rolling horizontal bands"
+    },
+    "dropoutThreshold": {
+      "type": "float",
+      "default": 0.98,
+      "label": "dropoutThreshold",
+      "min": 0.9,
+      "max": 1,
+      "step": 0.01,
+      "description": "Higher = fewer random dropout lines"
+    },
+    "chromaNoiseIntensity": {
+      "type": "float",
+      "default": 0.1,
+      "label": "chromaNoiseIntensity",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.01,
+      "description": "Color-channel chroma noise amount"
+    },
+    "bassGlitchThreshold": {
+      "type": "float",
+      "default": 0.6,
+      "label": "bassGlitchThreshold",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Bass level needed to trigger glitch tearing"
+    },
+    "glitchIntensity": {
+      "type": "float",
+      "default": 0.1,
+      "label": "glitchIntensity",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.01,
+      "description": "Displacement amount of bass-triggered glitches"
+    }
+  }
+}

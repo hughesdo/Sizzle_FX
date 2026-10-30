@@ -1,0 +1,16 @@
+{
+  "id": "pulse-clone",
+  "name": "Pulse Clone",
+  "category": "Body",
+  "description": "Scaled-up echoes of the subject burst outward from their centre on the beat and fade.",
+  "tags": ["pulse", "zoom", "echo", "clone", "beat", "matte"],
+  "audio": true,
+  "needsMask": true,
+  "uniforms": {
+    "copies":    { "type": "int", "default": 4, "min": 1, "max": 8, "step": 1, "label": "copies" },
+    "scale":     { "type": "float", "default": 0.08, "min": 0, "max": 0.5, "step": 0.005, "label": "scale step" },
+    "audioPush": { "type": "float", "default": 0.12, "min": 0, "max": 0.6, "step": 0.005, "label": "audio burst" },
+    "opacity":   { "type": "float", "default": 0.5, "min": 0, "max": 1.5, "step": 0.01, "label": "opacity" },
+    "tint":      { "type": "color", "default": "#ffffff", "label": "tint" }
+  }
+}

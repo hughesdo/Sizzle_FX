@@ -1,0 +1,63 @@
+{
+  "id": "st-bit-blurry-effect-3",
+  "name": "Bit Blurry Effect 3",
+  "category": "Blur",
+  "kind": "filter",
+  "description": "Strong, fast wobble with heavy blur for a dramatic effect.",
+  "tags": [
+    "blur",
+    "wobble",
+    "distort",
+    "a-bit-blurry",
+    "mrange",
+    "supertool"
+  ],
+  "audio": false,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "wobbleAmplitude": {
+      "type": "float",
+      "default": 1.3,
+      "label": "wobbleAmplitude",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "description": "Amplitude of the radial wobble wave"
+    },
+    "animSpeed": {
+      "type": "float",
+      "default": 2.2,
+      "label": "animSpeed",
+      "min": 0,
+      "max": 4,
+      "step": 0.1,
+      "description": "Animation speed of the wobble"
+    },
+    "blurRadius": {
+      "type": "float",
+      "default": 5,
+      "label": "blurRadius",
+      "min": 0,
+      "max": 8,
+      "step": 0.25,
+      "description": "Blur spread in pixels"
+    },
+    "distortStrength": {
+      "type": "float",
+      "default": 1.3,
+      "label": "distortStrength",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "description": "How strongly the wobble displaces the video"
+    }
+  }
+}

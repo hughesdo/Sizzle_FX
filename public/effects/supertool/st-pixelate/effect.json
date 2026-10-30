@@ -1,0 +1,53 @@
+{
+  "id": "st-pixelate",
+  "name": "Pixelate",
+  "category": "Stylize",
+  "kind": "filter",
+  "description": "SuperTool: pixelate, mosaic, blocky, retro",
+  "tags": [
+    "pixelate",
+    "mosaic",
+    "blocky",
+    "retro",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "basePixelSize": {
+      "type": "float",
+      "default": 2,
+      "label": "basePixelSize",
+      "min": 1,
+      "max": 50,
+      "step": 1,
+      "description": "Pixel block size at silence"
+    },
+    "audioPixelSize": {
+      "type": "float",
+      "default": 20,
+      "label": "audioPixelSize",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "description": "Extra block size added by the bass band"
+    },
+    "aspectRatio": {
+      "type": "float",
+      "default": 0,
+      "label": "aspectRatio",
+      "min": 0,
+      "max": 1,
+      "step": 1,
+      "description": "0=square pixels, 1=preserve image aspect"
+    }
+  }
+}

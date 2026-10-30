@@ -1,0 +1,71 @@
+{
+  "id": "st-strobe-flash",
+  "name": "Strobe Flash",
+  "category": "Light",
+  "kind": "filter",
+  "description": "SuperTool: strobe, flash, beat, audio",
+  "tags": [
+    "strobe",
+    "flash",
+    "beat",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "strobeThreshold": {
+      "type": "float",
+      "default": 0.5,
+      "label": "strobeThreshold",
+      "min": 0.2,
+      "max": 0.9,
+      "step": 0.05,
+      "description": "Kick level needed to trigger strobe"
+    },
+    "flashSpeed": {
+      "type": "float",
+      "default": 30,
+      "label": "flashSpeed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "description": "Strobe flash rate in Hz"
+    },
+    "flashIntensity": {
+      "type": "float",
+      "default": 0.7,
+      "label": "flashIntensity",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Strength of white flash overlay"
+    },
+    "colorInvert": {
+      "type": "float",
+      "default": 1,
+      "label": "colorInvert",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "description": "Amount of color inversion during flash (0=none, 1=full)"
+    },
+    "brightnessPulse": {
+      "type": "float",
+      "default": 0.3,
+      "label": "brightnessPulse",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Subtle brightness pulse on bass"
+    }
+  }
+}

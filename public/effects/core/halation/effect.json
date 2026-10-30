@@ -1,0 +1,15 @@
+{
+  "id": "halation",
+  "name": "Halation",
+  "category": "Look",
+  "description": "Film halation: a thin red-orange glow bleeds out of bright edges, like light bouncing off the film base.",
+  "tags": ["halation", "film", "glow", "red", "look"],
+  "audio": true,
+  "uniforms": {
+    "threshold": { "type": "float", "default": 0.7, "min": 0, "max": 1, "step": 0.01, "label": "threshold" },
+    "radius":    { "type": "float", "default": 10, "min": 1, "max": 40, "step": 0.5, "label": "radius (px @1080)" },
+    "strength":  { "type": "float", "default": 0.6, "min": 0, "max": 2, "step": 0.01, "label": "strength" },
+    "tint":      { "type": "color", "default": "#ff4a1a", "label": "tint" },
+    "audioPush": { "type": "float", "default": 0.0, "min": 0, "max": 2, "step": 0.01, "label": "audio" }
+  }
+}

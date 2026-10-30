@@ -1,0 +1,98 @@
+{
+  "id": "st-color-cycle",
+  "name": "Color Cycle",
+  "category": "Color",
+  "kind": "filter",
+  "description": "SuperTool: color, hue, cycle, rainbow",
+  "tags": [
+    "color",
+    "hue",
+    "cycle",
+    "rainbow",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "cycleSpeed": {
+      "type": "float",
+      "default": 0.2,
+      "label": "cycleSpeed",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Hue cycling speed"
+    },
+    "audioReactivity": {
+      "type": "float",
+      "default": 1,
+      "label": "audioReactivity",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "How strongly audio mixes the cycle color in"
+    },
+    "spatialFrequency": {
+      "type": "float",
+      "default": 10,
+      "label": "spatialFrequency",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "description": "Horizontal hue variation across the frame"
+    },
+    "hueRange": {
+      "type": "float",
+      "default": 1,
+      "label": "hueRange",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "description": "Span of the hue sweep"
+    },
+    "bassHueShift": {
+      "type": "float",
+      "default": 0.8,
+      "label": "bassHueShift",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "description": "How much bass shifts the hue"
+    },
+    "midSaturation": {
+      "type": "float",
+      "default": 0.5,
+      "label": "midSaturation",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "How much mids raise saturation"
+    },
+    "trebleBrightness": {
+      "type": "float",
+      "default": 0.3,
+      "label": "trebleBrightness",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "How much treble raises brightness"
+    },
+    "timeSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "timeSpeed",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Global animation speed"
+    }
+  }
+}

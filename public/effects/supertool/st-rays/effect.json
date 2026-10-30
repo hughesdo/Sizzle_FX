@@ -1,0 +1,35 @@
+{
+  "id": "st-rays",
+  "name": "Rays",
+  "category": "Blur",
+  "kind": "filter",
+  "description": "SuperTool: rays, zoom-blur, light, streak",
+  "tags": [
+    "rays",
+    "zoom-blur",
+    "light",
+    "streak",
+    "supertool"
+  ],
+  "audio": false,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "raySamples": {
+      "type": "float",
+      "default": 25,
+      "label": "raySamples",
+      "min": 1,
+      "max": 60,
+      "step": 1,
+      "description": "Number of accumulated ray samples (higher = longer streaks, heavier)"
+    }
+  }
+}

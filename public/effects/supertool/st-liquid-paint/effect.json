@@ -1,0 +1,136 @@
+{
+  "id": "st-liquid-paint",
+  "name": "Liquid Paint",
+  "category": "Feedback",
+  "kind": "filter",
+  "description": "SuperTool · SuperTool (Don) — concept inspired by Shadertoy MsGSRd (https://www.shadertoy.com/view/MsGSRd), original implementation",
+  "tags": [
+    "paint",
+    "fluid",
+    "advection",
+    "marble",
+    "feedback",
+    "audio-reactive",
+    "multi-buffer",
+    "supertool",
+    "multipass"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "BufferA",
+      "file": "buffer_a.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    },
+    {
+      "name": "BufferB",
+      "file": "buffer_b.glsl",
+      "channels": {
+        "iChannel0": "BufferB",
+        "iChannel1": "BufferA"
+      }
+    },
+    {
+      "name": "Image",
+      "file": "image.glsl",
+      "channels": {
+        "iChannel0": "BufferA",
+        "iChannel1": "BufferB"
+      }
+    }
+  ],
+  "uniforms": {
+    "flowScale": {
+      "type": "float",
+      "default": 3,
+      "label": "flowScale",
+      "min": 0.5,
+      "max": 12,
+      "step": 0.5,
+      "description": "Swirl size (higher = smaller, busier swirls)"
+    },
+    "flowSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "flowSpeed",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Base advection speed"
+    },
+    "turbulence": {
+      "type": "float",
+      "default": 0.4,
+      "label": "turbulence",
+      "min": 0,
+      "max": 1.5,
+      "step": 0.05,
+      "description": "Marbled domain-warp chaos in the flow"
+    },
+    "paintPersistence": {
+      "type": "float",
+      "default": 0.985,
+      "label": "paintPersistence",
+      "min": 0.5,
+      "max": 0.997,
+      "step": 0.001,
+      "description": "Paint memory / breath — how long smears live and flow (push toward 0.995+ for very long liquid trails)"
+    },
+    "injectAmount": {
+      "type": "float",
+      "default": 0.013,
+      "label": "injectAmount",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.002,
+      "description": "Additive re-seed from the live clip (keep small; ~ (1-persistence) preserves clip brightness, lower = more abstract / richer paint)"
+    },
+    "audioFlow": {
+      "type": "float",
+      "default": 0.6,
+      "label": "audioFlow",
+      "min": 0,
+      "max": 3,
+      "step": 0.05,
+      "description": "How much bass/RMS pumps the churn"
+    },
+    "colorBleed": {
+      "type": "float",
+      "default": 0.25,
+      "label": "colorBleed",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Hue drift / saturation lift as paint ages"
+    },
+    "saturation": {
+      "type": "float",
+      "default": 1.3,
+      "label": "saturation",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Output saturation"
+    },
+    "contrast": {
+      "type": "float",
+      "default": 1.1,
+      "label": "contrast",
+      "min": 0.5,
+      "max": 2,
+      "step": 0.05,
+      "description": "Output contrast"
+    },
+    "videoMix": {
+      "type": "float",
+      "default": 0,
+      "label": "videoMix",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend the crisp clip back over the paint"
+    }
+  }
+}

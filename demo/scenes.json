@@ -1,0 +1,91 @@
+[
+ {
+  "id": "s01_title",
+  "lines": [
+   "This is Sizzle FX.",
+   "Drop in a video, drag shader effects onto a timeline, and export a finished MP4, all on your own graphics card."
+  ]
+ },
+ {
+  "id": "s02_open",
+  "lines": [
+   "Open a video.",
+   "Sizzle FX reads it, analyses the soundtrack for beats, bass and hits, and lays out a timeline with thumbnails and the waveform.",
+   "Every card in the effects library is previewed on your own footage, so you can see what an effect does before you use it."
+  ]
+ },
+ {
+  "id": "s03_drag",
+  "lines": [
+   "Drag an effect onto a lane, then drag its edges to set when it starts and stops.",
+   "Click it to open its settings. Every slider updates the preview live.",
+   "Audio drive picks what the effect listens to. Here, it punches on the kick drum."
+  ]
+ },
+ {
+  "id": "s04_lanes",
+  "lines": [
+   "Effects stack in lanes.",
+   "The bottom lane runs first, and every lane above works on that result, so a film grade on top colours everything underneath it."
+  ]
+ },
+ {
+  "id": "s05_masks",
+  "lines": [
+   "Now the harder trick: isolating the person.",
+   "Open masks, and pick auto person.",
+   "A matting model runs on your graphics card, once, and the result is saved with the video.",
+   "View shows exactly what it found, even on a busy background."
+  ]
+ },
+ {
+  "id": "s06_scope",
+  "lines": [
+   "With a mask, any effect can hit only the subject, or only the background.",
+   "That's the Scope setting. Here the kaleidoscope folds the room around her, and she stays untouched."
+  ]
+ },
+ {
+  "id": "s07_body",
+  "lines": [
+   "The Body effects are built around the mask.",
+   "Rotational Clone makes rotated ghost copies of the person, pushed by the music.",
+   "Silhouette Echo leaves coloured shadows of where she just was."
+  ]
+ },
+ {
+  "id": "s08_sam",
+  "lines": [
+   "For things that aren't people, click to select.",
+   "Click an object, right click anything to exclude, then choose whole, part, or detail.",
+   {
+    "say": "Track it, and Sam two follows it from shot to shot. It works best inside a single shot.",
+    "cap": "Track it, and SAM 2 follows it. It works best inside a single shot."
+   }
+  ]
+ },
+ {
+  "id": "s09_export",
+  "lines": [
+   "When it looks right, export.",
+   "The browser renders every frame on the GPU, encodes H.264 high profile, and keeps the original audio, ready for X or YouTube.",
+   {
+    "say": "Prefer a server? Switch the render menu. A small Python server runs the exact same effects through Modern G L and F F mpeg.",
+    "cap": "Prefer a server? Switch the render menu. A small Python server runs the exact same effects through ModernGL and ffmpeg."
+   }
+  ]
+ },
+ {
+  "id": "s10_result",
+  "lines": [
+   "And here's the result."
+  ]
+ },
+ {
+  "id": "s11_outro",
+  "lines": [
+   "Sizzle FX. A hundred and twenty nine effects, and growing.",
+   "This walkthrough lives in the help page inside the app. Happy vibe coding."
+  ]
+ }
+]

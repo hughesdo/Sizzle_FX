@@ -1,0 +1,80 @@
+{
+  "id": "st-trippy",
+  "name": "Trippy",
+  "category": "Color",
+  "kind": "filter",
+  "description": "SuperTool: psychedelic, swirl, distortion, color",
+  "tags": [
+    "psychedelic",
+    "swirl",
+    "distortion",
+    "color",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "distortionAmount": {
+      "type": "float",
+      "default": 1.5,
+      "label": "distortionAmount",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "Bass-driven swirl distortion amount"
+    },
+    "swirlSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "swirlSpeed",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "Continuous swirl speed"
+    },
+    "waveFrequency": {
+      "type": "float",
+      "default": 15,
+      "label": "waveFrequency",
+      "min": 1,
+      "max": 50,
+      "step": 1,
+      "description": "Radial wave frequency (mid-driven)"
+    },
+    "colorIntensity": {
+      "type": "float",
+      "default": 0.8,
+      "label": "colorIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "description": "Strength of the per-channel color shift"
+    },
+    "timeSpeed": {
+      "type": "float",
+      "default": 1.2,
+      "label": "timeSpeed",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Global animation speed"
+    },
+    "trippyMix": {
+      "type": "float",
+      "default": 0.9,
+      "label": "trippyMix",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend between original (0) and full trippy (1)"
+    }
+  }
+}

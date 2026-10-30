@@ -1,0 +1,18 @@
+{
+  "id": "chroma-key",
+  "name": "Chroma Key",
+  "category": "Keying",
+  "description": "Live green/blue-screen key with spill suppression. Replaces the backdrop with a colour, gradient, blur or black, or just removes the green spill. (For Body effects on a green-screen clip, bake a 'green screen' mask instead.)",
+  "tags": ["chroma", "key", "green screen", "blue screen", "despill", "keying"],
+  "audio": true,
+  "uniforms": {
+    "keyColor":  { "type": "color", "default": "#22c81e", "label": "key colour" },
+    "tolerance": { "type": "float", "default": 0.12, "min": 0, "max": 0.6, "step": 0.005, "label": "tolerance" },
+    "softness":  { "type": "float", "default": 0.1, "min": 0.005, "max": 0.5, "step": 0.005, "label": "softness" },
+    "spill":     { "type": "float", "default": 0.8, "min": 0, "max": 1, "step": 0.01, "label": "spill suppression" },
+    "background":{ "type": "enum", "options": ["solid", "gradient", "blurred plate", "black", "despill only"], "default": 1, "label": "background" },
+    "colorA":    { "type": "color", "default": "#140b26", "label": "colour A" },
+    "colorB":    { "type": "color", "default": "#ff5d3b", "label": "colour B" },
+    "audioPush": { "type": "float", "default": 0.0, "min": 0, "max": 2, "step": 0.01, "label": "audio pulse (bg)" }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "st-starfield-overlay",
+  "name": "Starfield Overlay",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: stars, space, overlay, audio",
+  "tags": [
+    "stars",
+    "space",
+    "overlay",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "starDensity": {
+      "type": "float",
+      "default": 100,
+      "label": "starDensity",
+      "min": 20,
+      "max": 300,
+      "step": 10,
+      "description": "Number of stars"
+    },
+    "starSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "starSpeed",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "Star movement speed"
+    },
+    "starSize": {
+      "type": "float",
+      "default": 0.05,
+      "label": "starSize",
+      "min": 0.01,
+      "max": 0.2,
+      "step": 0.01,
+      "description": "Base star size"
+    },
+    "audioStarSize": {
+      "type": "float",
+      "default": 1,
+      "label": "audioStarSize",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Audio effect on star size"
+    },
+    "starIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "starIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Brightness of stars"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 1,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Audio reactivity multiplier"
+    },
+    "blendAmount": {
+      "type": "float",
+      "default": 0.5,
+      "label": "blendAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend strength with video"
+    }
+  }
+}

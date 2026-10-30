@@ -1,0 +1,118 @@
+{
+  "id": "st-after-effects-tiktok-edit",
+  "name": "After Effects TikTok Edit",
+  "category": "Glitch",
+  "kind": "filter",
+  "description": "SuperTool: tiktok, shake, ray-zoom, vignette, flicker, psychedelic",
+  "tags": [
+    "tiktok",
+    "shake",
+    "ray-zoom",
+    "vignette",
+    "flicker",
+    "psychedelic",
+    "supertool"
+  ],
+  "audio": false,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "intensity": {
+      "type": "float",
+      "default": 1,
+      "label": "intensity",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Overall blend with source video (0 = passthrough)"
+    },
+    "shakeAmount": {
+      "type": "float",
+      "default": 1,
+      "label": "shakeAmount",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Multiplier on the chaotic UV warp"
+    },
+    "audioShakeBoost": {
+      "type": "float",
+      "default": 0,
+      "label": "audioShakeBoost",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Extra shake at peak audio (bass/RMS). DISCO default = 0 (no audio reactivity)"
+    },
+    "flickerAmount": {
+      "type": "float",
+      "default": 0.1,
+      "label": "flickerAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Brightness flicker amplitude"
+    },
+    "flickerSpeed": {
+      "type": "float",
+      "default": 110,
+      "label": "flickerSpeed",
+      "min": 0,
+      "max": 240,
+      "step": 1,
+      "description": "Flicker rate in radians/sec"
+    },
+    "vignetteAmount": {
+      "type": "float",
+      "default": 1,
+      "label": "vignetteAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "description": "Corner darkening strength"
+    },
+    "rayDecay": {
+      "type": "float",
+      "default": 0.0002,
+      "label": "rayDecay",
+      "min": 0,
+      "max": 0.005,
+      "step": 0.0001,
+      "description": "UV scale step per ray-zoom iteration"
+    },
+    "maxRaySamples": {
+      "type": "float",
+      "default": 140,
+      "label": "maxRaySamples",
+      "min": 0,
+      "max": 200,
+      "step": 1,
+      "description": "Hard cap on ray-zoom iterations (perf)"
+    },
+    "audioRayBoost": {
+      "type": "float",
+      "default": 0,
+      "label": "audioRayBoost",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "description": "Extra ray count fraction at peak audio. DISCO default = 0 (no audio reactivity)"
+    },
+    "saturation": {
+      "type": "float",
+      "default": 0.3,
+      "label": "saturation",
+      "min": 0,
+      "max": 1.5,
+      "step": 0.01,
+      "description": "Desat-matrix parameter (DISCO original = 0.3). Note: at 0.3 the matrix mostly darkens the image ~3.4×; it is not a true saturation control"
+    }
+  }
+}

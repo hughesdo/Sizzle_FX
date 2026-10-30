@@ -1,0 +1,14 @@
+{
+  "id": "zoom-blur",
+  "name": "Zoom Blur Punch",
+  "category": "Blur",
+  "description": "Radial speed blur toward a centre point that punches in on kicks.",
+  "tags": ["zoom", "blur", "radial", "punch", "timewarp"],
+  "audio": true,
+  "uniforms": {
+    "amount":    { "type": "float", "default": 0.08, "min": 0, "max": 1, "step": 0.005, "label": "base blur" },
+    "audioPush": { "type": "float", "default": 0.6, "min": 0, "max": 2, "step": 0.01, "label": "audio push" },
+    "center":    { "type": "vec2", "default": [0.5, 0.5], "min": 0, "max": 1, "step": 0.01, "label": "centre" },
+    "rgb":       { "type": "float", "default": 0.004, "min": 0, "max": 0.03, "step": 0.0005, "label": "colour fringe" }
+  }
+}

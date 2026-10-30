@@ -1,0 +1,61 @@
+{
+ "generatedFrom": "src/render/glslLoader.js",
+ "vertex": "#version 330 core\nvoid main(){\n  vec2 p = vec2((gl_VertexID << 1) & 2, gl_VertexID & 2);\n  gl_Position = vec4(p * 2.0 - 1.0, 0.0, 1.0);\n}",
+ "preamble": "#version 330 core\nprecision highp float;\nprecision highp int;\nprecision highp sampler2DArray;\nuniform vec3  iResolution;\nuniform float iTime;\nuniform float iTimeDelta;\nuniform int   iFrame;\nuniform vec4  iMouse;\nuniform vec4  iDate;\nuniform float iProgress;\nuniform float iSampleRate;\nuniform vec3  iChannelResolution[4];\nuniform sampler2D iChannel0;\nuniform sampler2D iChannel1;\nuniform sampler2D iChannel2;\nuniform sampler2D iChannel3;\nuniform sampler2D iAudioFFT;\nuniform sampler2D iMask;\nuniform sampler2DArray iHistory;\nuniform int   iHistoryHead;\nuniform int   iHistoryLen;\nuniform float uBass, uLowMid, uMid, uHigh, uTreble, uLevel;\nuniform float uKick, uSnare, uHat, uBeat, uBarPh, uFlow;\nuniform float uAudio;\nuniform float uReact;\nuniform float uSegT, uSegTime, uSegDur, uMix, uSeed;\nuniform float uHasMask;\nuniform vec2  uMaskCentroid;\nuniform vec4  uMaskBBox;\nuniform float uMaskArea;\nout vec4 fragColor;\n#define HISTORY_DEPTH 16\n",
+ "helpers": "\nfloat audioFreq(float hz){\n  float u = clamp(hz / (iSampleRate * 0.5), 0.0, 1.0);\n  return texture(iAudioFFT, vec2(u, 0.75)).x * uReact;\n}\nfloat audioWave(float u){ return texture(iAudioFFT, vec2(clamp(u, 0.0, 1.0), 0.25)).x; }\nfloat audioBand(float loHz, float hiHz){\n  float nyq = iSampleRate * 0.5;\n  float lo = clamp(loHz / nyq, 0.0, 1.0), hi = clamp(hiHz / nyq, 0.0, 1.0);\n  float s = 0.0;\n  for (int i = 0; i < 16; i++){ float t = (float(i) + 0.5) / 16.0; s += texture(iAudioFFT, vec2(mix(lo, hi, t), 0.75)).x; }\n  return s / 16.0 * uReact;\n}\nfloat audioRMS(){\n  float s = 0.0;\n  for (int i = 0; i < 32; i++){ float v = texture(iAudioFFT, vec2((float(i) + 0.5) / 32.0, 0.75)).x; s += v * v; }\n  return sqrt(s / 32.0) * uReact;\n}\nfloat audioSmooth(float prev, float curr, float alpha){ return mix(curr, prev, alpha); }\nfloat audioBeatEnergy(){ return smoothstep(0.55, 0.85, audioBand(20.0, 200.0)); }\n\n// Mask (1.0 everywhere when no mask track is bound).\nfloat maskAt(vec2 uv){ return uHasMask > 0.5 ? texture(iMask, uv).r : 1.0; }\n\n// History ring: previous source frames (rgb) with their mask in alpha.\n// framesAgo 0 = current frame. Clamped to what has actually been recorded.\nvec4 historyTap(vec2 uv, int framesAgo){\n  int n = max(iHistoryLen, 1);\n  int f = clamp(framesAgo, 0, n - 1);\n  int layer = (iHistoryHead - f + HISTORY_DEPTH * 4) % HISTORY_DEPTH;\n  return texture(iHistory, vec3(uv, float(layer)));\n}\n",
+ "texUnits": {
+  "iChannel0": 0,
+  "iChannel1": 1,
+  "iChannel2": 2,
+  "iChannel3": 3,
+  "iAudioFFT": 4,
+  "iMask": 5,
+  "iHistory": 6
+ },
+ "historyDepth": 16,
+ "stripRules": [
+  {
+   "pattern": "^[ \\t]*#version[^\\n]*",
+   "flags": "gm",
+   "replace": ""
+  },
+  {
+   "pattern": "uniform\\s+(?:(?:highp|mediump|lowp)\\s+)?\\w+\\s+(?:iResolution|iTime|iTimeDelta|iFrame|iMouse|iDate|iProgress|iSampleRate|iChannelResolution|iChannel[0-3]|iAudioFFT|iMask|iHistory|iHistoryHead|iHistoryLen|uBass|uLowMid|uMid|uHigh|uTreble|uLevel|uKick|uSnare|uHat|uBeat|uBarPh|uFlow|uAudio|uReact|uSegT|uSegTime|uSegDur|uMix|uSeed|uHasMask|uMaskCentroid|uMaskBBox|uMaskArea)\\s*(?:\\[\\s*\\d+\\s*\\])?\\s*;",
+   "flags": "g",
+   "replace": ""
+  },
+  {
+   "pattern": "uniform\\s+(?:highp\\s+)?float\\s+iAudio(?:Bass|Mid|High|RMS|Beat)\\s*;",
+   "flags": "g",
+   "replace": ""
+  },
+  {
+   "pattern": "^\\s*out\\s+vec4\\s+fragColor\\s*;",
+   "flags": "m",
+   "replace": ""
+  },
+  {
+   "id": "desktop",
+   "pattern": "^\\s*in\\s+vec2\\s+fragCoord\\s*;",
+   "flags": "m",
+   "replace": ""
+  },
+  {
+   "pattern": "^\\s*precision\\s+\\w+\\s+(?:float|int|sampler2D|sampler2DArray)\\s*;",
+   "flags": "gm",
+   "replace": ""
+  }
+ ],
+ "fragCoordRule": {
+  "pattern": "\\bfragCoord\\b",
+  "flags": "g",
+  "replace": "gl_FragCoord.xy"
+ },
+ "mainImageRe": "void\\s+mainImage\\s*\\(",
+ "mainRe": "void\\s+main\\s*\\(\\s*(?:void)?\\s*\\)",
+ "mainWrapper": "void main(){ mainImage(fragColor, gl_FragCoord.xy); }\n",
+ "sample": {
+  "source": "#version 300 es\nuniform vec3 iResolution;\nin vec2 fragCoord;\nout vec4 fragColor;\nvoid mainImage(out vec4 o, in vec2 c){ o = vec4(fragCoord, 0.0, 1.0); }\n",
+  "expected": "#version 330 core\nprecision highp float;\nprecision highp int;\nprecision highp sampler2DArray;\nuniform vec3  iResolution;\nuniform float iTime;\nuniform float iTimeDelta;\nuniform int   iFrame;\nuniform vec4  iMouse;\nuniform vec4  iDate;\nuniform float iProgress;\nuniform float iSampleRate;\nuniform vec3  iChannelResolution[4];\nuniform sampler2D iChannel0;\nuniform sampler2D iChannel1;\nuniform sampler2D iChannel2;\nuniform sampler2D iChannel3;\nuniform sampler2D iAudioFFT;\nuniform sampler2D iMask;\nuniform sampler2DArray iHistory;\nuniform int   iHistoryHead;\nuniform int   iHistoryLen;\nuniform float uBass, uLowMid, uMid, uHigh, uTreble, uLevel;\nuniform float uKick, uSnare, uHat, uBeat, uBarPh, uFlow;\nuniform float uAudio;\nuniform float uReact;\nuniform float uSegT, uSegTime, uSegDur, uMix, uSeed;\nuniform float uHasMask;\nuniform vec2  uMaskCentroid;\nuniform vec4  uMaskBBox;\nuniform float uMaskArea;\nout vec4 fragColor;\n#define HISTORY_DEPTH 16\n\nfloat audioFreq(float hz){\n  float u = clamp(hz / (iSampleRate * 0.5), 0.0, 1.0);\n  return texture(iAudioFFT, vec2(u, 0.75)).x * uReact;\n}\nfloat audioWave(float u){ return texture(iAudioFFT, vec2(clamp(u, 0.0, 1.0), 0.25)).x; }\nfloat audioBand(float loHz, float hiHz){\n  float nyq = iSampleRate * 0.5;\n  float lo = clamp(loHz / nyq, 0.0, 1.0), hi = clamp(hiHz / nyq, 0.0, 1.0);\n  float s = 0.0;\n  for (int i = 0; i < 16; i++){ float t = (float(i) + 0.5) / 16.0; s += texture(iAudioFFT, vec2(mix(lo, hi, t), 0.75)).x; }\n  return s / 16.0 * uReact;\n}\nfloat audioRMS(){\n  float s = 0.0;\n  for (int i = 0; i < 32; i++){ float v = texture(iAudioFFT, vec2((float(i) + 0.5) / 32.0, 0.75)).x; s += v * v; }\n  return sqrt(s / 32.0) * uReact;\n}\nfloat audioSmooth(float prev, float curr, float alpha){ return mix(curr, prev, alpha); }\nfloat audioBeatEnergy(){ return smoothstep(0.55, 0.85, audioBand(20.0, 200.0)); }\n\n// Mask (1.0 everywhere when no mask track is bound).\nfloat maskAt(vec2 uv){ return uHasMask > 0.5 ? texture(iMask, uv).r : 1.0; }\n\n// History ring: previous source frames (rgb) with their mask in alpha.\n// framesAgo 0 = current frame. Clamped to what has actually been recorded.\nvec4 historyTap(vec2 uv, int framesAgo){\n  int n = max(iHistoryLen, 1);\n  int f = clamp(framesAgo, 0, n - 1);\n  int layer = (iHistoryHead - f + HISTORY_DEPTH * 4) % HISTORY_DEPTH;\n  return texture(iHistory, vec3(uv, float(layer)));\n}\n\n#line 1\n\n\nvoid mainImage(out vec4 o, in vec2 c){ o = vec4(gl_FragCoord.xy, 0.0, 1.0); }\n\nvoid main(){ mainImage(fragColor, gl_FragCoord.xy); }\n"
+ }
+}

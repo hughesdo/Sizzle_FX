@@ -1,0 +1,17 @@
+{
+  "id": "background-swap",
+  "name": "Background Swap",
+  "category": "Body",
+  "description": "Replaces everything behind the subject: blur, solid colour, gradient, darkness or a hue shift. For any other effect on the background only, use Scope: background on that effect instead.",
+  "tags": ["background", "replace", "blur", "matte", "green screen"],
+  "audio": true,
+  "needsMask": true,
+  "uniforms": {
+    "mode":      { "type": "enum", "options": ["blur", "solid", "gradient", "black", "hue shift"], "default": 0, "label": "background" },
+    "blur":      { "type": "float", "default": 24, "min": 2, "max": 80, "step": 0.5, "label": "blur (px @1080)" },
+    "colorA":    { "type": "color", "default": "#120a24", "label": "colour A" },
+    "colorB":    { "type": "color", "default": "#ff5d3b", "label": "colour B" },
+    "hueShift":  { "type": "float", "default": 0.5, "min": 0, "max": 1, "step": 0.01, "label": "hue shift" },
+    "audioPush": { "type": "float", "default": 0.0, "min": 0, "max": 2, "step": 0.01, "label": "audio pulse" }
+  }
+}

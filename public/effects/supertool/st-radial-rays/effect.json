@@ -1,0 +1,90 @@
+{
+  "id": "st-radial-rays",
+  "name": "Radial Rays",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: rays, sunburst, overlay, audio",
+  "tags": [
+    "rays",
+    "sunburst",
+    "overlay",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "rayCount": {
+      "type": "float",
+      "default": 12,
+      "label": "rayCount",
+      "min": 3,
+      "max": 30,
+      "step": 1,
+      "description": "Number of radial rays"
+    },
+    "raySpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "raySpeed",
+      "min": -5,
+      "max": 5,
+      "step": 0.1,
+      "description": "Rotation speed"
+    },
+    "bassModulation": {
+      "type": "float",
+      "default": 5,
+      "label": "bassModulation",
+      "min": 0,
+      "max": 20,
+      "step": 0.5,
+      "description": "Bass effect on rotation"
+    },
+    "rayIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "rayIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Brightness of rays"
+    },
+    "centerFade": {
+      "type": "float",
+      "default": 1,
+      "label": "centerFade",
+      "min": 0.1,
+      "max": 5,
+      "step": 0.1,
+      "description": "Fade strength from center"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 1,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "Audio reactivity multiplier"
+    },
+    "rayColor": {
+      "type": "color",
+      "default": [
+        1,
+        0.8,
+        0.3
+      ],
+      "label": "rayColor",
+      "description": "RGB color of rays"
+    }
+  }
+}

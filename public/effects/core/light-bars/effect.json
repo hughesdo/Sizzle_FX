@@ -1,0 +1,16 @@
+{
+  "id": "light-bars",
+  "name": "Light Bars",
+  "category": "Light",
+  "description": "Cream-white light bars with cyan and magenta chromatic edges sweep across the frame; they flare on the drive.",
+  "tags": ["light", "bars", "sweep", "flash", "timewarp"],
+  "audio": true,
+  "uniforms": {
+    "count":     { "type": "int", "default": 2, "min": 1, "max": 4, "step": 1, "label": "bars" },
+    "width":     { "type": "float", "default": 0.04, "min": 0.005, "max": 0.3, "step": 0.001, "label": "width" },
+    "angle":     { "type": "float", "default": 0.35, "min": -1.6, "max": 1.6, "step": 0.01, "label": "angle" },
+    "speed":     { "type": "float", "default": 0.35, "min": 0, "max": 3, "step": 0.01, "label": "sweep speed" },
+    "strength":  { "type": "float", "default": 0.6, "min": 0, "max": 1, "step": 0.01, "label": "base strength" },
+    "audioPush": { "type": "float", "default": 0.6, "min": 0, "max": 1, "step": 0.01, "label": "audio strength" }
+  }
+}

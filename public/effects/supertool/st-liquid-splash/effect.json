@@ -1,0 +1,108 @@
+{
+  "id": "st-liquid-splash",
+  "name": "Liquid Splash",
+  "category": "Distort",
+  "kind": "filter",
+  "description": "SuperTool: liquid, splash, fbm, ripple, audio",
+  "tags": [
+    "liquid",
+    "splash",
+    "fbm",
+    "ripple",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "splashScale": {
+      "type": "float",
+      "default": 3,
+      "label": "splashScale",
+      "min": 1,
+      "max": 10,
+      "step": 0.5,
+      "description": "Size of splash pattern"
+    },
+    "splashSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "splashSpeed",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "Animation speed"
+    },
+    "splashThreshold": {
+      "type": "float",
+      "default": 0.3,
+      "label": "splashThreshold",
+      "min": 0,
+      "max": 0.8,
+      "step": 0.05,
+      "description": "Splash shape threshold"
+    },
+    "bassThreshold": {
+      "type": "float",
+      "default": 0.2,
+      "label": "bassThreshold",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.05,
+      "description": "Bass effect on splash shape"
+    },
+    "rippleFrequency": {
+      "type": "float",
+      "default": 20,
+      "label": "rippleFrequency",
+      "min": 5,
+      "max": 50,
+      "step": 1,
+      "description": "Ripple wave frequency"
+    },
+    "rippleSpeed": {
+      "type": "float",
+      "default": 5,
+      "label": "rippleSpeed",
+      "min": 0,
+      "max": 20,
+      "step": 0.5,
+      "description": "Ripple animation speed"
+    },
+    "splashIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "splashIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Brightness of splash"
+    },
+    "edgeIntensity": {
+      "type": "float",
+      "default": 2,
+      "label": "edgeIntensity",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "Brightness of splash edges"
+    },
+    "blendAmount": {
+      "type": "float",
+      "default": 0.6,
+      "label": "blendAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend strength with video"
+    }
+  }
+}

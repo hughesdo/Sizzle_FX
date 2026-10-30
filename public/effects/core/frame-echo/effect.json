@@ -1,0 +1,16 @@
+{
+  "id": "frame-echo",
+  "name": "Frame Echo",
+  "category": "Temporal",
+  "description": "Blends the last few frames into decaying ghosts of the motion. Louder drive = longer echo.",
+  "tags": ["echo", "ghost", "trail", "motion", "temporal", "history"],
+  "audio": true,
+  "needsHistory": true,
+  "uniforms": {
+    "echoes":    { "type": "int", "default": 6, "min": 1, "max": 15, "step": 1, "label": "echo count" },
+    "spacing":   { "type": "int", "default": 2, "min": 1, "max": 5, "step": 1, "label": "frames apart" },
+    "decay":     { "type": "float", "default": 0.7, "min": 0.1, "max": 0.98, "step": 0.01, "label": "decay" },
+    "audioPush": { "type": "float", "default": 0.25, "min": 0, "max": 1, "step": 0.01, "label": "audio sustain" },
+    "mode":      { "type": "enum", "options": ["average", "lighten", "tinted"], "default": 1, "label": "blend" }
+  }
+}

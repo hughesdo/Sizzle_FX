@@ -1,0 +1,89 @@
+{
+  "id": "st-plasma-overlay",
+  "name": "Plasma Overlay",
+  "category": "Overlay",
+  "kind": "overlay",
+  "description": "SuperTool: plasma, overlay, psychedelic, audio",
+  "tags": [
+    "plasma",
+    "overlay",
+    "psychedelic",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "plasmaScale": {
+      "type": "float",
+      "default": 10,
+      "label": "plasmaScale",
+      "min": 2,
+      "max": 30,
+      "step": 1,
+      "description": "Plasma pattern scale"
+    },
+    "plasmaSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "plasmaSpeed",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "Animation speed"
+    },
+    "bassModulation": {
+      "type": "float",
+      "default": 5,
+      "label": "bassModulation",
+      "min": 0,
+      "max": 20,
+      "step": 0.5,
+      "description": "Bass effect on plasma"
+    },
+    "plasmaIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "plasmaIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "Overall brightness"
+    },
+    "colorShift": {
+      "type": "float",
+      "default": 0,
+      "label": "colorShift",
+      "min": 0,
+      "max": 6.28,
+      "step": 0.1,
+      "description": "Hue rotation of colors"
+    },
+    "blendAmount": {
+      "type": "float",
+      "default": 0.5,
+      "label": "blendAmount",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Base blend with video"
+    },
+    "audioBlend": {
+      "type": "float",
+      "default": 0.5,
+      "label": "audioBlend",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Audio-reactive blend amount"
+    }
+  }
+}

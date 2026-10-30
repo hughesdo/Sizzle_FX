@@ -1,0 +1,16 @@
+{
+  "id": "film-grade",
+  "name": "Film Grade",
+  "category": "Look",
+  "description": "Warm/cool split toning, filmic shoulder, vignette and grain that lives at 1080p scale.",
+  "tags": ["film", "grade", "grain", "vignette", "look", "timewarp"],
+  "audio": false,
+  "uniforms": {
+    "exposure":   { "type": "float", "default": 0.0, "min": -2, "max": 2, "step": 0.01, "label": "exposure (stops)" },
+    "saturation": { "type": "float", "default": 0.9, "min": 0, "max": 2, "step": 0.01, "label": "saturation" },
+    "warmth":     { "type": "float", "default": 0.25, "min": -1, "max": 1, "step": 0.01, "label": "split tone" },
+    "shoulder":   { "type": "float", "default": 0.6, "min": 0, "max": 1, "step": 0.01, "label": "highlight roll-off" },
+    "vignette":   { "type": "float", "default": 0.35, "min": 0, "max": 1.5, "step": 0.01, "label": "vignette" },
+    "grain":      { "type": "float", "default": 0.05, "min": 0, "max": 0.3, "step": 0.005, "label": "grain" }
+  }
+}

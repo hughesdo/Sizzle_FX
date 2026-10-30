@@ -1,0 +1,153 @@
+{
+  "id": "st-amiga-sinus-3-1",
+  "name": "Amiga Sinus 3.1",
+  "category": "Scene",
+  "kind": "scene",
+  "description": "SuperTool: amiga, demoscene, video-in-text, scroller, audio",
+  "tags": [
+    "amiga",
+    "demoscene",
+    "video-in-text",
+    "scroller",
+    "audio",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input",
+        "iChannel1": {
+          "texture": "assets/amiga_font.png",
+          "wrap": "clamp",
+          "filter": "linear"
+        }
+      }
+    }
+  ],
+  "uniforms": {
+    "scrollText1": {
+      "type": "text",
+      "default": "This is the MAIN scrolling text - edit it in the Shader properties tab",
+      "label": "scrollText1",
+      "description": "Main scroll message"
+    },
+    "scrollText2": {
+      "type": "text",
+      "default": "This is the lower scroller - type your own message here",
+      "label": "scrollText2",
+      "description": "Bottom scroll message"
+    },
+    "fontColor": {
+      "type": "color",
+      "default": [
+        1,
+        0.8,
+        0.25
+      ],
+      "label": "fontColor",
+      "description": "Main scroll text color (used when video fill is off)"
+    },
+    "useVideoFill": {
+      "type": "float",
+      "default": 0,
+      "label": "useVideoFill",
+      "min": 0,
+      "max": 1,
+      "step": 1,
+      "description": "0 = solid font color, 1 = fill the main text with the video on the track below"
+    },
+    "fontSize": {
+      "type": "float",
+      "default": 3.25,
+      "label": "fontSize",
+      "min": 1,
+      "max": 20,
+      "step": 0.25,
+      "description": "Font size multiplier for the video-inside-text effect"
+    },
+    "scrollSpeed1": {
+      "type": "float",
+      "default": 0.5,
+      "label": "scrollSpeed1",
+      "min": 0.1,
+      "max": 3,
+      "step": 0.1,
+      "description": "Main scroll text speed"
+    },
+    "scrollSpeed2": {
+      "type": "float",
+      "default": 0.65,
+      "label": "scrollSpeed2",
+      "min": 0.1,
+      "max": 3,
+      "step": 0.1,
+      "description": "Bottom text scroll speed"
+    },
+    "textLength1": {
+      "type": "float",
+      "default": 40,
+      "label": "textLength1",
+      "min": 10,
+      "max": 200,
+      "step": 1,
+      "description": "Main text scroll wrap length (DISCO auto-calculated this from typed text; baked default)"
+    },
+    "textLength2": {
+      "type": "float",
+      "default": 40,
+      "label": "textLength2",
+      "min": 10,
+      "max": 200,
+      "step": 1,
+      "description": "Bottom text scroll wrap length (baked default)"
+    },
+    "sinusAmplitude": {
+      "type": "float",
+      "default": 0.75,
+      "label": "sinusAmplitude",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "description": "Base sinus wave amplitude (audio adds to this)"
+    },
+    "use3DLighting": {
+      "type": "float",
+      "default": 1,
+      "label": "use3DLighting",
+      "min": 0,
+      "max": 1,
+      "step": 1,
+      "description": "3D lighting mode (0 = flat 2D, 1 = 3D shaded)"
+    },
+    "demoMode": {
+      "type": "float",
+      "default": 0,
+      "label": "demoMode",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "description": "Demo: 0=auto, 1=RGB bars, 2=copper, 3=plasma, 4=audio viz, 5=random/5s"
+    },
+    "backgroundMode": {
+      "type": "float",
+      "default": 0,
+      "label": "backgroundMode",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "description": "Background: 0=auto, 1=black, 2=stars, 3=plasma, 4=frame"
+    },
+    "autoSwitchSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "autoSwitchSpeed",
+      "min": 0.1,
+      "max": 2,
+      "step": 0.1,
+      "description": "Auto demo/background switch speed"
+    }
+  }
+}

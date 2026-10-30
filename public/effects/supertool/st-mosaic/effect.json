@@ -1,0 +1,80 @@
+{
+  "id": "st-mosaic",
+  "name": "Mosaic",
+  "category": "Color",
+  "kind": "filter",
+  "description": "SuperTool: mosaic, tiles, blocky, color",
+  "tags": [
+    "mosaic",
+    "tiles",
+    "blocky",
+    "color",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "baseTileSize": {
+      "type": "float",
+      "default": 10,
+      "label": "baseTileSize",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "description": "Tile grid density at silence"
+    },
+    "audioTileSize": {
+      "type": "float",
+      "default": 10,
+      "label": "audioTileSize",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "description": "Extra tile density added by the bass band"
+    },
+    "colorIntensity": {
+      "type": "float",
+      "default": 1,
+      "label": "colorIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "description": "Brightness of the random tile colors"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 0.5,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "description": "How much audio boosts tile color intensity"
+    },
+    "videoBlend": {
+      "type": "float",
+      "default": 0.5,
+      "label": "videoBlend",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Blend between pure mosaic (0) and video-tinted (1)"
+    },
+    "animationSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "animationSpeed",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "Speed of the tile color animation"
+    }
+  }
+}

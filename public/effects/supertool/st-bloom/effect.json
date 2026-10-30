@@ -1,0 +1,71 @@
+{
+  "id": "st-bloom",
+  "name": "Bloom",
+  "category": "Light",
+  "kind": "filter",
+  "description": "SuperTool: bloom, glow, soft, light",
+  "tags": [
+    "bloom",
+    "glow",
+    "soft",
+    "light",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "baseRadius": {
+      "type": "float",
+      "default": 0.005,
+      "label": "baseRadius",
+      "min": 0,
+      "max": 0.02,
+      "step": 0.0005,
+      "description": "Bloom spread radius at silence"
+    },
+    "audioRadius": {
+      "type": "float",
+      "default": 0.01,
+      "label": "audioRadius",
+      "min": 0,
+      "max": 0.05,
+      "step": 0.001,
+      "description": "Extra spread added by the bass band"
+    },
+    "bloomIntensity": {
+      "type": "float",
+      "default": 0.5,
+      "label": "bloomIntensity",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "description": "Overall bloom brightness"
+    },
+    "audioBoost": {
+      "type": "float",
+      "default": 1,
+      "label": "audioBoost",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "description": "How much audio boosts bloom brightness"
+    },
+    "threshold": {
+      "type": "float",
+      "default": 0.5,
+      "label": "threshold",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "description": "Luma threshold for what blooms (lower = more glow)"
+    }
+  }
+}

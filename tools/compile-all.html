@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Sizzle FX — compile every effect</title>
+<style>body{font:12px monospace;background:#0a0b0f;color:#d7dbe6;padding:16px} .bad{color:#ff5d3b} .ok{color:#3bffd0} pre{white-space:pre-wrap}</style>
+</head>
+<body>
+<h3>compile-all</h3>
+<div id="sum">running…</div>
+<pre id="out"></pre>
+<script type="module">
+// Compiles every effect in the registry and renders one frame of each on a test
+// pattern. Headless use: chrome --headless --dump-dom http://localhost:5180/tools/compile-all.html
+import { Renderer } from "/src/render/renderer.js";
+import { buildFrame, newProject, newSegment } from "/src/project.js";
+
+const idx = await (await fetch("/effects/index.json?v=" + Date.now())).json();
+const canvas = document.createElement("canvas");
+const R = new Renderer(canvas, { preserveDrawingBuffer: true });
+R.resize(320, 180);
+// test pattern source
+const pat = document.createElement("canvas"); pat.width = 320; pat.height = 180;
+const g = pat.getContext("2d");
+const grd = g.createLinearGradient(0, 0, 320, 180); grd.addColorStop(0, "#ff3b3b"); grd.addColorStop(0.5, "#3bff6a"); grd.addColorStop(1, "#3b6aff");
+g.fillStyle = grd; g.fillRect(0, 0, 320, 180); g.fillStyle = "#fff"; g.fillRect(140, 60, 40, 60);
+R.uploadSource(pat);
+
+const results = [];
+for (const fx of idx.effects) {
+  const src = { __version: 1, __textures: {} };
+  for (const p of fx.passes) {
+    src[p.name] = await (await fetch(`/${fx.path}/${p.file}`)).text();
+    for (const ch of Object.values(p.channels || {})) if (ch && ch.texture) {
+      try { src.__textures[ch.texture] = await createImageBitmap(await (await fetch(`/${fx.path}/${ch.texture}`)).blob(), { imageOrientation: "flipY" }); } catch (_) {}
+    }
+  }
+  const entry = R.ensureEffect(fx, src);
+  let rendered = null, glErr = 0;
+  if (!entry.error) {
+    const project = newProject({ name: "t", size: 1, duration: 10, fps: 30, width: 320, height: 180 });
+    project.segments.push({ ...newSegment(fx, "L1", 0, 10), id: "seg-" + fx.id });
+    const effects = new Map([[fx.id, fx]]), entries = new Map([[fx.id, entry]]);
+    for (let i = 0; i < 3; i++) R.render(buildFrame(project, { time: 1 + i / 30, index: 30 + i, dt: 1 / 30, analysis: null, effects, entries }));
+    glErr = R.gl.getError();
+    const px = R.readPixels();
+    let sum = 0, nonBlack = 0;
+    for (let i = 0; i < px.length; i += 4) { const s = px[i] + px[i + 1] + px[i + 2]; sum += s; if (s > 12) nonBlack++; }
+    rendered = { meanLuma: +(sum / (px.length / 4) / 3).toFixed(1), coverage: +(nonBlack / (px.length / 4)).toFixed(3) };
+    R.dropSegment("seg-" + fx.id);
+  }
+  results.push({ id: fx.id, ok: !entry.error && !glErr, error: entry.error ? entry.error.split("\n").slice(0, 3).join(" | ") : glErr ? `gl error ${glErr}` : null, rendered });
+}
+const bad = results.filter((r) => !r.ok);
+document.getElementById("sum").innerHTML = `<span class="${bad.length ? "bad" : "ok"}">${results.length - bad.length}/${results.length} compiled and rendered</span>`;
+document.getElementById("out").textContent = JSON.stringify({ total: results.length, failed: bad.length, results }, null, 1);
+document.title = `compile-all done ${results.length - bad.length}/${results.length}`;
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{
+  "id": "st-heat-distortion",
+  "name": "Heat Distortion",
+  "category": "Distort",
+  "kind": "filter",
+  "description": "SuperTool: heat, shimmer, distortion, haze",
+  "tags": [
+    "heat",
+    "shimmer",
+    "distortion",
+    "haze",
+    "supertool"
+  ],
+  "audio": true,
+  "passes": [
+    {
+      "name": "Image",
+      "file": "main.glsl",
+      "channels": {
+        "iChannel0": "input"
+      }
+    }
+  ],
+  "uniforms": {
+    "heatStrength": {
+      "type": "float",
+      "default": 0.03,
+      "label": "heatStrength",
+      "min": 0,
+      "max": 0.2,
+      "step": 0.005,
+      "description": "Base shimmer displacement"
+    },
+    "heatSpeed": {
+      "type": "float",
+      "default": 2,
+      "label": "heatSpeed",
+      "min": 0,
+      "max": 10,
+      "step": 0.1,
+      "description": "Speed of the heat shimmer"
+    },
+    "heatFrequency": {
+      "type": "float",
+      "default": 5,
+      "label": "heatFrequency",
+      "min": 1,
+      "max": 30,
+      "step": 0.5,
+      "description": "Spatial frequency of the shimmer"
+    },
+    "audioReactivity": {
+      "type": "float",
+      "default": 0.8,
+      "label": "audioReactivity",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "description": "How much audio amplifies the heat"
+    },
+    "timeSpeed": {
+      "type": "float",
+      "default": 1,
+      "label": "timeSpeed",
+      "min": 0,
+      "max": 4,
+      "step": 0.05,
+      "description": "Global animation speed"
+    },
+    "noiseComplexity": {
+      "type": "float",
+      "default": 1,
+      "label": "noiseComplexity",
+      "min": 0.1,
+      "max": 4,
+      "step": 0.1,
+      "description": "Detail of the shimmer noise"
+    }
+  }
+}
