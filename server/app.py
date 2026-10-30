@@ -19,10 +19,12 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 import jobs
+import projects
 from media import FFMPEG, FFPROBE
 
 ROOT = Path(__file__).resolve().parent.parent
 app = FastAPI(title="Sizzle FX render server")
+app.include_router(projects.router)  # project library in Documents/Sizzle FX
 
 _gpu = {"checked": False, "ok": False, "renderer": "", "error": ""}
 
@@ -52,14 +54,15 @@ def status():
 @app.post("/api/render")
 async def render(request: Request,
                  video: UploadFile = File(...), project: str = Form(...),
-                 analysis: str | None = Form(None), fft: UploadFile | None = File(None),
+                 analysis: UploadFile | None = File(None), fft: UploadFile | None = File(None),
                  masks: str | None = Form(None), preset: str = Form("social"), encoder: str = Form("auto")):
+    # analysis is a FILE part: Starlette caps plain form fields at 1 MB and long songs exceed it
     jid, d = jobs.new_job_dir()
     with open(d / "source", "wb") as f:
         shutil.copyfileobj(video.file, f, 4 << 20)
     (d / "project.json").write_text(project)
-    if analysis:
-        (d / "analysis.json").write_text(analysis)
+    if analysis is not None:
+        (d / "analysis.json").write_bytes(await analysis.read())
     if fft is not None:
         (d / "fft.bin").write_bytes(await fft.read())
     if masks:
@@ -93,6 +96,7 @@ def job_cancel(jid: str):
     return j.public()
 
 
+@app.head("/api/jobs/{jid}/file")
 @app.get("/api/jobs/{jid}/file")
 def job_file(jid: str, name: str = "sizzlefx.mp4"):
     j = jobs.JOBS.get(jid)

@@ -11,6 +11,7 @@ import { serverExport } from "./media/serverRender.js";
 import { newProject, buildFrame, autosave, loadAutosave, serialise, deserialise } from "./project.js";
 import { MaskManager } from "./mask/masks.js";
 import { MaskPanel } from "./ui/maskPanel.js";
+import { ProjectLibrary } from "./ui/projects.js";
 
 const $ = (s) => document.querySelector(s);
 
@@ -185,6 +186,7 @@ const panel = new SegmentModal({
 });
 
 document.addEventListener("keydown", (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") { e.preventDefault(); if (app.info) (e.shiftKey ? projects.dialog({ saveAs: true }) : projects.save()); return; }
   const t = e.target, typing = t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT");
   if (typing) return;
   if (e.code === "Space") { e.preventDefault(); togglePlay(); }
@@ -200,7 +202,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 let saveT = null;
-function save() { clearTimeout(saveT); saveT = setTimeout(() => autosave(app.project), 300); }
+function save() { projects.markDirty(); clearTimeout(saveT); saveT = setTimeout(() => autosave(app.project), 300); }
 
 // ------------------------------------------------------------------ library thumbnails (from your video)
 let thumbT = null, thumbMaker = null;
@@ -224,7 +226,7 @@ function refreshThumbs() {
 }
 
 // ------------------------------------------------------------------ open video
-async function openVideo(file) {
+async function openVideo(file, { project = null } = {}) {
   if (app.exporting) return;
   $("#drop-label").textContent = `probing ${file.name} …`;
   let info;
@@ -233,11 +235,12 @@ async function openVideo(file) {
   app.file = file; app.info = info; app.analysis = null; sourceReady = false;
   app.maskOverlay = null; app.selectPreview = null;
   await app.masks.setVideo(file, info);
-  const saved = loadAutosave(info);
+  const saved = project || loadAutosave(info);
   app.project = saved || newProject(info);
+  if (!project) projects.setCurrent(null);
   app.project.video = { ...app.project.video, ...{ name: info.name, size: info.size, lastModified: info.lastModified, duration: info.duration, fps: info.fps, width: info.width, height: info.height } };
   for (const s of app.project.segments) await ensureEntry(app.effects.get(s.effectId));
-  if (saved && saved.segments.length) toast(`restored ${saved.segments.length} effect(s) from your last session on this video`);
+  if (saved && saved.segments.length && !project) toast(`restored ${saved.segments.length} effect(s) from your last session on this video`);
 
   if (video.src) URL.revokeObjectURL(video.src);
   video.src = URL.createObjectURL(file);
@@ -296,24 +299,44 @@ wrap.addEventListener("drop", (e) => {
 });
 
 // ------------------------------------------------------------------ project save / load
-$("#btn-save").addEventListener("click", () => {
+// named projects live in Documents/Sizzle FX (server/projects.py); .json export/import stays as a fallback
+const projects = new ProjectLibrary({
+  app, toast,
+  openVideo: (file, opts) => openVideo(file, opts),
+  applyProject: (p) => applyProject(p),
+  onState: (busyMsg) => {
+    const n = projects.name;
+    $("#proj-label").textContent = busyMsg || (n ? `${n}${projects.dirty ? " •" : ""}` : (app.info ? "unsaved project" : ""));
+    $("#proj-label").title = n ? `project "${n}" in Documents\\Sizzle FX\\Projects${projects.dirty ? " (unsaved changes, ctrl+s)" : ""}` : "not saved yet: ctrl+s or projects → save";
+    document.title = (n ? `${n}${projects.dirty ? " •" : ""} · ` : "") + "SIZZLE FX";
+  },
+});
+app.projects = projects;
+$("#btn-projects").addEventListener("click", () => projects.dialog());
+$("#btn-save").addEventListener("click", () => projects.save());
+window.addEventListener("beforeunload", (e) => { if (projects.dirty && projects.name) { e.preventDefault(); e.returnValue = ""; } });
+
+async function applyProject(p) {
+  if (app.info && p.video && p.video.name !== app.info.name) toast(`project was made for ${p.video.name}; applying it to ${app.info.name}`, "warn");
+  p.video = app.project.video || p.video;
+  app.project = p;
+  for (const s of p.segments) await ensureEntry(app.effects.get(s.effectId));
+  timeline.render(); autosave(app.project); requestDraw();
+}
+
+$("#btn-export-json").addEventListener("click", () => {
   const blob = new Blob([serialise(app.project)], { type: "application/json" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
   a.download = (app.info?.name || "project").replace(/\.[^.]+$/, "") + ".sfx.json";
   a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
 });
-$("#btn-load").addEventListener("click", () => $("#project-input").click());
 $("#project-input").addEventListener("change", async (e) => {
   const f = e.target.files[0]; e.target.value = "";
   if (!f) return;
   try {
     const p = deserialise(await f.text());
-    if (app.info && p.video && (p.video.name !== app.info.name)) toast(`project was made for ${p.video.name}; applying it to ${app.info.name}`, "warn");
-    p.video = app.project.video || p.video;
-    app.project = p;
-    for (const s of p.segments) await ensureEntry(app.effects.get(s.effectId));
-    timeline.render(); save(); requestDraw();
+    await applyProject(p); projects.markDirty();
     toast(`loaded ${p.segments.length} effect(s)`);
   } catch (err) { toast("could not load project: " + err.message, "err"); }
 });
@@ -414,6 +437,10 @@ async function boot() {
   catch (_) { modeSel.value = chooseDefaultMode(c); }
   modeSel.addEventListener("change", () => { try { localStorage.setItem("sizzlefx:renderMode", modeSel.value); } catch (_) {} });
 }
-boot();
+// ?project=<name> opens a saved project straight away (a link to hand someone a ready project)
+boot().then(() => {
+  const name = new URLSearchParams(location.search).get("project");
+  if (name) projects.open(name);
+});
 
 if (import.meta.hot) import.meta.hot.on("effects-changed", (d) => { loadRegistry(); toast(`effects updated (${d.file})`, "", 2500); });

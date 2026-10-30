@@ -23,10 +23,13 @@ export async function probeVideo(file) {
   // fps from the span of the first ~120 presentation timestamps. Exact for MP4/MOV,
   // and robust to MKV/WebM millisecond rounding (41/42 ms frame durations).
   // (A whole-track packet average turns a short 24 fps clip into 23.976.)
-  const pts = [];
+  // Packets arrive in DECODE order: with B-frame pyramids the first 121 packets can hold
+  // timestamps from beyond the 121st frame, so read extra, sort, and keep the first 121.
+  let pts = [];
   const ps = new EncodedPacketSink(vt);
-  for await (const p of ps.packets(undefined, undefined, { metadataOnly: true })) { pts.push(p.timestamp); if (pts.length >= 121) break; }
+  for await (const p of ps.packets(undefined, undefined, { metadataOnly: true })) { pts.push(p.timestamp); if (pts.length >= 121 + 32) break; }
   pts.sort((a, b) => a - b);
+  pts = pts.slice(0, 121);
   let fps = pts.length > 2 ? (pts.length - 1) / (pts.at(-1) - pts[0]) : 0;
   if (!(fps > 1 && fps < 241)) fps = (await vt.computePacketStats(240)).averagePacketRate || 30;
   fps = snapFps(fps);

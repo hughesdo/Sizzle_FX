@@ -1,0 +1,17 @@
+{
+  "id": "star-glint",
+  "name": "Star Glint",
+  "category": "Light",
+  "description": "A star-filter: thin cross flares bloom out of the brightest points (candles, jewels, chandeliers, sparkles) and sparkle with the hi-hats.",
+  "tags": ["star filter", "glint", "sparkle", "flare", "highlights"],
+  "audio": true,
+  "uniforms": {
+    "threshold": { "type": "float", "default": 0.82, "min": 0.4, "max": 1, "step": 0.005, "label": "brightness threshold" },
+    "rayLen":    { "type": "float", "default": 60, "min": 5, "max": 240, "step": 1, "label": "ray length (px @1080)" },
+    "points":    { "type": "int", "default": 4, "min": 2, "max": 4, "label": "star points (2 = anamorphic line)" },
+    "rotation":  { "type": "float", "default": 0.785, "min": 0, "max": 3.1416, "step": 0.01, "label": "rotation" },
+    "intensity": { "type": "float", "default": 0.8, "min": 0, "max": 4, "step": 0.01, "label": "intensity" },
+    "tint":      { "type": "color", "default": "#fff1dc", "label": "tint" },
+    "audioPush": { "type": "float", "default": 0.8, "min": 0, "max": 3, "step": 0.01, "label": "audio sparkle" }
+  }
+}

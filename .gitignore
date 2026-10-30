@@ -15,3 +15,6 @@ demo/out/
 # regenerable demo inputs (rebuilt by demo/tools from the source video + TTS)
 demo/assets/*.mp4
 demo/narration/*.wav
+
+# Don's Halloween music video (personal, never pushed)
+demo2/

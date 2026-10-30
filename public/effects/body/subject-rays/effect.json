@@ -1,0 +1,18 @@
+{
+  "id": "subject-rays",
+  "name": "Subject Rays",
+  "category": "Body",
+  "description": "Volumetric light beams streaming outward from behind the subject's silhouette, like a stage light hidden behind them. Beams flare on the drive.",
+  "tags": ["god rays", "volumetric", "backlight", "glow", "matte"],
+  "audio": true,
+  "needsMask": true,
+  "uniforms": {
+    "rayLength": { "type": "float", "default": 0.35, "min": 0.05, "max": 1, "step": 0.01, "label": "ray length" },
+    "decay":     { "type": "float", "default": 0.93, "min": 0.8, "max": 0.995, "step": 0.001, "label": "decay" },
+    "intensity": { "type": "float", "default": 0.9, "min": 0, "max": 4, "step": 0.01, "label": "intensity" },
+    "color":     { "type": "color", "default": "#ffd9a0", "label": "light colour" },
+    "streaks":   { "type": "float", "default": 0.5, "min": 0, "max": 1, "step": 0.01, "label": "beam streaks" },
+    "offset":    { "type": "vec2", "default": [0.0, 0.08], "min": -0.5, "max": 0.5, "label": "light source offset from subject" },
+    "audioPush": { "type": "float", "default": 1.0, "min": 0, "max": 3, "step": 0.01, "label": "audio flare" }
+  }
+}

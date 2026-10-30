@@ -3,6 +3,8 @@
 // the project, the browser's audio analysis and the baked mask tracks so the server
 // renders exactly what the preview shows.
 
+import { fetchBlobChunked } from "./transfer.js";
+
 async function gzip(bytes) {
   const s = new Blob([bytes]).stream().pipeThrough(new CompressionStream("gzip"));
   return new Blob([await new Response(s).arrayBuffer()]);
@@ -41,7 +43,8 @@ export async function serverExport(opts) {
   form.append("video", file, file.name);
   form.append("project", JSON.stringify({ ...project, video: { ...project.video, width: info.width, height: info.height, fps: info.fps, frames: info.frames } }));
   const ap = analysisPayload(analysis);
-  if (ap) { form.append("analysis", JSON.stringify(ap)); form.append("fft", new Blob([analysis.fft.rows]), "fft.bin"); }
+  // analysis goes up as a file part: Starlette caps plain form fields at 1 MB (songs > ~2 min exceed it)
+  if (ap) { form.append("analysis", new Blob([JSON.stringify(ap)], { type: "application/json" }), "analysis.json"); form.append("fft", new Blob([analysis.fft.rows]), "fft.bin"); }
   const used = maskTracks.filter((t) => t.filled === t.frames);
   if (used.length) {
     form.append("masks", JSON.stringify(used.map((t) => ({ id: t.id, width: t.width, height: t.height, frames: t.frames }))));
@@ -70,9 +73,7 @@ export async function serverExport(opts) {
     else if (st.state === "error") throw new Error(st.message || "server render failed");
   }
   onProgress(0.99, "downloading…");
-  const r = await fetch(`/api/jobs/${job.id}/file`);
-  if (!r.ok) throw new Error("download failed");
-  const blob = await r.blob();
+  const blob = await fetchBlobChunked(`/api/jobs/${job.id}/file`, { type: "video/mp4", onProgress: (f) => onProgress(0.99, `downloading ${Math.round(f * 100)}%`) });
   onProgress(1, "done");
   const res = st.result;
   return { blob, stats: { frames: res.frames, width: res.width, height: res.height, fps: res.fps, codec: `server ${res.encoder}`, bitrateMode: "", audioMode: res.audioMode, bytes: blob.size, effectErrors: res.effectErrors } };

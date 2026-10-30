@@ -60,7 +60,7 @@ export default defineConfig({
     port: 5180, strictPort: false,
     proxy: { "/api": { target: "http://127.0.0.1:8790", changeOrigin: true } },
     // the demo recorder's Chrome profile holds locked files (EBUSY crashed the watcher)
-    watch: { ignored: ["**/demo/**", "**/server/**", "**/test-media/**", "**/dist/**"] },
+    watch: { ignored: ["**/demo/**", "**/demo2/**", "**/server/**", "**/test-media/**", "**/dist/**"] },
   },
   build: { target: "es2022" },
   worker: { format: "es" },

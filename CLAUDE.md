@@ -35,6 +35,12 @@ folders into `public/effects/` (no app changes).
 - `src/render/renderer.js` the ONE frame builder. `render(frame)` = source -> lanes -> scope composite -> canvas.
   History ring (16 frames, half res, rgb=source, a=mask). Multi-pass effects get their own iFrame counter that resets on seek.
 - `src/project.js` project model + `buildFrame()` (shared by preview and export). Autosave in localStorage.
+- `src/ui/projects.js` + `server/projects.py` project library: named projects in Documents\Sizzle FX\Projects\<name>  (project.sfx.json + .bak + masks/), source videos once in Documents\Sizzle FX\Media (key = name__size.ext).
+  `src/media/transfer.js`: uploads in 16 MB chunks (?offset=&total=), downloads via Range requests. Single 500+ MB
+  requests/responses through the Vite proxy dropped or stalled. A retried LAST chunk must be a no-op on the server
+  (it once re-created the finished file as zeros + the last chunk); masks are size-checked before their .json lands.
+  Open = fetch media -> File with the saved lastModified (OPFS mask key still matches) -> openVideo(file,{project})
+  -> masks missing from OPFS are adopted from the project folder. SIZZLEFX_HOME overrides the location.
 - `src/audio/analysis.js` (+ `.worker.js`) bands, kick/snare/hat envelopes, beats, uFlow, peaks, and
   SuperTool-layout 512x2 iAudioFFT rows at 100 Hz.
 - `src/media/source.js` probe (fps from PTS span, snapped), mono audio decode, timeline thumbnails.
@@ -47,6 +53,8 @@ folders into `public/effects/` (no app changes).
 - `tools/compile-all.html` compiles + renders every effect (open in browser, read the JSON).
 - `tools/e2e.js` in-page end-to-end test (open clip, stack effects, export, save via `/__dev/save`).
 - `docs/EFFECTS.md` how to write an effect. Read it before adding effects.
+- `docs/STYLES.md` reusable music-video STYLES (ROCKS = Don's rock/Halloween recipe + his rules: camera
+  shake only on sparse big hits, body glows all over in moderate stretches). READ IT before dressing a video.
 
 ## Effect format
 
@@ -143,6 +151,22 @@ Full spec in `docs/EFFECTS.md`.
   demo/** (the recording profile's locked files crashed the watcher with EBUSY); scale+crop+setsar=1 for
   non-16:9 footage (SAR 45:44 made players stretch to 1964 px).
 
+## demo2/ (git-ignored, Don's personal edits)
+
+- `demo2/` holds Don's Halloween music video edit (never pushed). `plan.json` = the timeline (8 lanes,
+  masks by name), `tools/audition.js` (in-page: loadPlan, render test-frame sheets to test-media/_out),
+  `tools/compose.sh` (FX render + side-by-side "Just Sizzle | Sizzle FX" window, source AAC copied).
+  Output: `demo2/out/halloween_sizzle_fx.mp4` (v1, 720p). v2 remake: `plan_1080.json` on `src/halloween_1080.mp4`
+  (lanczos upscale 1964x1080, crop 1920), server x264 max -> `out/halloween_remake_1080.mp4`;
+  `tools/compose_alt.sh` -> `out/halloween_remake_1080_compare.mp4` (side-by-side 3.0-6.04 s).
+  Server export with forced x264: `serverExport({..., preset:'max', encoder:'x264'})` from src/media/serverRender.js.
+- Chained chroma keys: the first key's despill shifts colours, so a second key must target the
+  DESPILLED colour (teal #0c503c became #0c3c3c).
+- Editing a module the page imported (demo2/tools/*.js) makes Vite full-reload the page: reopen the clip.
+- `demo2/v1/` = the FULL music video (Downloads\sizzle_3c1bd67e3305 VIDEO1.mp4, 2:37.7, 3784 frames):
+  `tools/make_plan.py` -> `plan.json` (43 segments, 8 lanes), master `demo2/src/video1_1080.mp4`,
+  `tools/compose_compare.sh` (ballroom chorus 72.77-78.71 s side-by-side). Outputs in `demo2/v1/out/`.
+
 ## Verified (2026-10-29/30)
 
 - Phase 5: server compile-all 129/129 (GLSL 330). Same masked/scoped/body-effect project exported both ways:
@@ -167,6 +191,14 @@ Full spec in `docs/EFFECTS.md`.
 - `npm test`: 10/10 (registry, audio analysis, fps snap, mask size/stats)
 
 ## Known gaps / gotchas
+
+- FIXED 2026-10-30: fps probe read the first 121 packets in DECODE order; x264 B-pyramid sources then spanned
+  >120 frames and gave 23.607 fps (VIDEO1 master: 3722 of 3784 frames). Now reads 153, sorts, keeps 121.
+- FIXED 2026-10-30: server render of songs > ~2 min got HTTP 400: Starlette caps plain form fields at 1 MB and
+  the analysis JSON exceeded it. The analysis now travels as a FILE part (serverRender.js + app.py).
+- FIXED 2026-10-30: downloading a very large server result (~840 MB) stalled at "downloading…"; now ranged
+  (transfer.js). The finished file is also in server/_work/<job>/out.mp4. Always full-decode big masters (`ffmpeg -v error -i f -f null -`):
+  one x264 render had a single corrupt frame (not reproducible; a re-render was clean).
 
 - In the Claude desktop Browser pane the page can run as a background tab: rAF stalls, so `requestDraw`
   falls back to setTimeout when `document.hidden`. Headless `--dump-dom` fires before async work; use the pane + JS.
@@ -222,3 +254,21 @@ END:   update Status checkboxes, Verified, Open decisions; add a dated line to t
   page with a 14-section written guide. Nothing committed yet; GitHub repo still waiting on Don.
 - 2026-10-30 git init + first commit (334 files, ~50 MB incl. the 40 MB help video). Ignored: regenerable
   demo clip + narration WAVs. Secret/personal-path scan clean. Pushed to private repo hughesdo/Sizzle_FX.
+- 2026-10-30 Don's Halloween music video (demo2/, git-ignored): keyed green screen to a purple/orange
+  gradient, aura / RGB split clone / rotational clone + silhouette echo on RVM mask, kick-zoom, glow, zoom blur,
+  drop RGB split + lightning, neon outline on the TV portrait, halation throughout; 9.03-11.71 s side-by-side
+  compare. Audio bit-identical to source (packet md5 match).
+- 2026-10-30 Halloween v2: full 1080p remake (10 lanes: + pulse clone, light bars, god rays, kaleidoscope on
+  the nebula, ghost trails on the drop, slice-glitch transitions, film grade). Server x264 max, 737/737 frames,
+  audio md5 identical to source. Alt cut with the compare moved to the 3.0-6.04 s dance phrase.
+- 2026-10-30 Halloween v3 = the FULL song (VIDEO1, 2:37.7): 43-segment timeline on a 1080p master, RVM over 3784
+  frames, server x264 max master (803 MB) + X copies capped at 20 Mbps (~375 MB): clean and with the ballroom
+  side-by-side. All full-decode clean, audio md5 = source. Fixed fps probe (B-pyramid) and the 1 MB form-field 400.
+- 2026-10-30 Don's notes on v3 -> `docs/STYLES.md` (ROCKS style: camera shake only on sparse big hits, body
+  glows all over in moderate stretches) + memory. 4 new effects (133 total, compile-all 133/133 browser + server):
+  body/rim-light, body/subject-rays, core/star-glint, core/light-leak. v4 of VIDEO1 in ROCKS style
+  (`demo2/v1/tools/make_plan_v4.py`, 51 segments, 7 camera punches): `demo2/v1/out/video1_v4_X.mp4` (+ compare).
+- 2026-10-30 Project library: named projects in Documents\Sizzle FX (save / save as / open / delete, ctrl+s,
+  `?project=<name>` deep link) with source video + masks, chunked transfers, verified cold-open round trip with
+  OPFS wiped. v5 calmer config saved as project "Halloween VIDEO1 ROCKS" (lane "CAMERA HITS") for Don's
+  hand edits. Don drives final renders himself from here.

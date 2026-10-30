@@ -103,3 +103,11 @@ Every segment gets its own buffers, so the same effect can be on the timeline tw
 1. `npm run dev`, open http://localhost:5180/tools/compile-all.html, look for your id in the JSON.
 2. In the app, drop it on a lane, open the panel, move every slider.
 3. `npm test` validates the registry.
+
+## GLSL gotchas (Chrome on Windows runs WebGL through ANGLE/D3D)
+
+- `pow(0.0, y)` can return NaN there, and one NaN in a sum blacks out the whole effect (compile-all
+  still says "rendered"). Write `(1.0 - t) * (1.0 - t)` or `pow(max(x, 1e-6), y)` instead.
+- Don't name a uniform after a GLSL built-in (`length`, `step`, `mix`, `distance`...).
+- Check a new effect on real footage too (the audition sheet in demo2/tools/audition.js, or the app),
+  not just compile-all's test pattern.

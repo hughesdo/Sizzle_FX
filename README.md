@@ -23,6 +23,14 @@ Open http://localhost:5180 (or double-click `start.bat`). Mask models: `npm run 
 Server rendering (optional): `server\start.bat` (first run builds a Python 3.11 venv), then pick
 "server gpu (python)" in the header's render menu.
 
+## Projects
+
+**projects** in the header saves, opens and deletes named projects (ctrl+s saves, ctrl+shift+s saves as).
+Each one is a folder in `Documents\Sizzle FX\Projects\<name>\`: `project.sfx.json` (the timeline,
+plain JSON you can edit and re-open; the previous save is kept as `.bak`) plus its baked masks. The
+source video is copied once into `Documents\Sizzle FX\Media\`, so a project reopens with its video,
+masks and effects. This uses the local server (`server\start.bat`); set `SIZZLEFX_HOME` to move the library.
+
 ## Help
 
 The **? help** button in the editor opens `public/help.html`: a 3-minute narrated walkthrough

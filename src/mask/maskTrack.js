@@ -79,11 +79,11 @@ async function dir(videoKey) {
   return masks.getDirectoryHandle(videoKey.replace(/[^\w.-]+/g, "_").slice(0, 120), { create: true });
 }
 
-async function gzip(bytes) {
+export async function gzip(bytes) {
   const s = new Blob([bytes]).stream().pipeThrough(new CompressionStream("gzip"));
   return new Uint8Array(await new Response(s).arrayBuffer());
 }
-async function gunzip(blob) {
+export async function gunzip(blob) {
   const s = blob.stream().pipeThrough(new DecompressionStream("gzip"));
   return new Uint8Array(await new Response(s).arrayBuffer());
 }

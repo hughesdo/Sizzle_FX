@@ -1,7 +1,7 @@
 {
  "version": 1,
- "generated": "2026-10-30T07:32:39.571Z",
- "count": 129,
+ "generated": "2026-10-30T13:48:33.335Z",
+ "count": 133,
  "effects": [
   {
    "id": "st-bit-blurry-effect-1",
@@ -1249,6 +1249,94 @@
    "path": "effects/body/rgb-split-clone"
   },
   {
+   "id": "rim-light",
+   "name": "Rim Light",
+   "category": "Body",
+   "description": "Two-tone cinematic rim light on the subject's edges, as if lit by coloured lamps from either side. The music brightens and widens it.",
+   "tags": [
+    "rim",
+    "edge",
+    "light",
+    "glow",
+    "matte"
+   ],
+   "audio": true,
+   "needsMask": true,
+   "uniforms": {
+    "angle": {
+     "type": "float",
+     "default": 0.6,
+     "min": -3.1416,
+     "max": 3.1416,
+     "step": 0.01,
+     "label": "key light angle"
+    },
+    "spin": {
+     "type": "float",
+     "default": 0.15,
+     "min": -2,
+     "max": 2,
+     "step": 0.01,
+     "label": "orbit speed"
+    },
+    "width": {
+     "type": "float",
+     "default": 14,
+     "min": 2,
+     "max": 60,
+     "step": 0.5,
+     "label": "rim width (px @1080)"
+    },
+    "colorA": {
+     "type": "color",
+     "default": "#ff8a2a",
+     "label": "key colour"
+    },
+    "colorB": {
+     "type": "color",
+     "default": "#5a7bff",
+     "label": "back colour"
+    },
+    "intensity": {
+     "type": "float",
+     "default": 1.1,
+     "min": 0,
+     "max": 4,
+     "step": 0.01,
+     "label": "intensity"
+    },
+    "bloom": {
+     "type": "float",
+     "default": 0.5,
+     "min": 0,
+     "max": 2,
+     "step": 0.01,
+     "label": "spill outside"
+    },
+    "audioPush": {
+     "type": "float",
+     "default": 0.8,
+     "min": 0,
+     "max": 3,
+     "step": 0.01,
+     "label": "audio swell"
+    }
+   },
+   "kind": "filter",
+   "needsHistory": false,
+   "passes": [
+    {
+     "name": "Image",
+     "file": "main.glsl",
+     "channels": {
+      "iChannel0": "input",
+      "iChannel1": "source"
+     }
+    }
+   ],
+   "path": "effects/body/rim-light"
+  },
+  {
    "id": "rotational-clone",
    "name": "Rotational Clone",
    "category": "Body",
@@ -1676,6 +1764,91 @@
     }
    ],
    "path": "effects/body/subject-aura"
+  },
+  {
+   "id": "subject-rays",
+   "name": "Subject Rays",
+   "category": "Body",
+   "description": "Volumetric light beams streaming outward from behind the subject's silhouette, like a stage light hidden behind them. Beams flare on the drive.",
+   "tags": [
+    "god rays",
+    "volumetric",
+    "backlight",
+    "glow",
+    "matte"
+   ],
+   "audio": true,
+   "needsMask": true,
+   "uniforms": {
+    "rayLength": {
+     "type": "float",
+     "default": 0.35,
+     "min": 0.05,
+     "max": 1,
+     "step": 0.01,
+     "label": "ray length"
+    },
+    "decay": {
+     "type": "float",
+     "default": 0.93,
+     "min": 0.8,
+     "max": 0.995,
+     "step": 0.001,
+     "label": "decay"
+    },
+    "intensity": {
+     "type": "float",
+     "default": 0.9,
+     "min": 0,
+     "max": 4,
+     "step": 0.01,
+     "label": "intensity"
+    },
+    "color": {
+     "type": "color",
+     "default": "#ffd9a0",
+     "label": "light colour"
+    },
+    "streaks": {
+     "type": "float",
+     "default": 0.5,
+     "min": 0,
+     "max": 1,
+     "step": 0.01,
+     "label": "beam streaks"
+    },
+    "offset": {
+     "type": "vec2",
+     "default": [
+      0,
+      0.08
+     ],
+     "min": -0.5,
+     "max": 0.5,
+     "label": "light source offset from subject"
+    },
+    "audioPush": {
+     "type": "float",
+     "default": 1,
+     "min": 0,
+     "max": 3,
+     "step": 0.01,
+     "label": "audio flare"
+    }
+   },
+   "kind": "filter",
+   "needsHistory": false,
+   "passes": [
+    {
+     "name": "Image",
+     "file": "main.glsl",
+     "channels": {
+      "iChannel0": "input",
+      "iChannel1": "source"
+     }
+    }
+   ],
+   "path": "effects/body/subject-rays"
   },
   {
    "id": "st-color-cycle",
@@ -5691,6 +5864,78 @@
    "path": "effects/core/light-bars"
   },
   {
+   "id": "light-leak",
+   "name": "Light Leak",
+   "category": "Light",
+   "description": "Warm film light leaks: soft blooms of colour drift in from the frame edges and swell on the drive.",
+   "tags": [
+    "light leak",
+    "film",
+    "warm",
+    "bloom",
+    "vintage"
+   ],
+   "audio": true,
+   "uniforms": {
+    "colorA": {
+     "type": "color",
+     "default": "#ff6a1a",
+     "label": "leak colour A"
+    },
+    "colorB": {
+     "type": "color",
+     "default": "#ff2d7a",
+     "label": "leak colour B"
+    },
+    "amount": {
+     "type": "float",
+     "default": 0.45,
+     "min": 0,
+     "max": 1.5,
+     "step": 0.01,
+     "label": "amount"
+    },
+    "size": {
+     "type": "float",
+     "default": 0.55,
+     "min": 0.1,
+     "max": 1.5,
+     "step": 0.01,
+     "label": "size"
+    },
+    "speed": {
+     "type": "float",
+     "default": 0.12,
+     "min": 0,
+     "max": 1,
+     "step": 0.01,
+     "label": "drift speed"
+    },
+    "audioPush": {
+     "type": "float",
+     "default": 0.6,
+     "min": 0,
+     "max": 2,
+     "step": 0.01,
+     "label": "audio swell"
+    }
+   },
+   "kind": "filter",
+   "needsMask": false,
+   "needsHistory": false,
+   "passes": [
+    {
+     "name": "Image",
+     "file": "main.glsl",
+     "channels": {
+      "iChannel0": "input",
+      "iChannel1": "source"
+     }
+    }
+   ],
+   "path": "effects/core/light-leak"
+  },
+  {
    "id": "lightning",
    "name": "Lightning Bolt",
    "category": "Light",
@@ -5982,6 +6227,88 @@
    "needsMask": false,
    "needsHistory": false,
    "path": "effects/supertool/st-pulse-vignette"
+  },
+  {
+   "id": "star-glint",
+   "name": "Star Glint",
+   "category": "Light",
+   "description": "A star-filter: thin cross flares bloom out of the brightest points (candles, jewels, chandeliers, sparkles) and sparkle with the hi-hats.",
+   "tags": [
+    "star filter",
+    "glint",
+    "sparkle",
+    "flare",
+    "highlights"
+   ],
+   "audio": true,
+   "uniforms": {
+    "threshold": {
+     "type": "float",
+     "default": 0.82,
+     "min": 0.4,
+     "max": 1,
+     "step": 0.005,
+     "label": "brightness threshold"
+    },
+    "rayLen": {
+     "type": "float",
+     "default": 60,
+     "min": 5,
+     "max": 240,
+     "step": 1,
+     "label": "ray length (px @1080)"
+    },
+    "points": {
+     "type": "int",
+     "default": 4,
+     "min": 2,
+     "max": 4,
+     "label": "star points (2 = anamorphic line)"
+    },
+    "rotation": {
+     "type": "float",
+     "default": 0.785,
+     "min": 0,
+     "max": 3.1416,
+     "step": 0.01,
+     "label": "rotation"
+    },
+    "intensity": {
+     "type": "float",
+     "default": 0.8,
+     "min": 0,
+     "max": 4,
+     "step": 0.01,
+     "label": "intensity"
+    },
+    "tint": {
+     "type": "color",
+     "default": "#fff1dc",
+     "label": "tint"
+    },
+    "audioPush": {
+     "type": "float",
+     "default": 0.8,
+     "min": 0,
+     "max": 3,
+     "step": 0.01,
+     "label": "audio sparkle"
+    }
+   },
+   "kind": "filter",
+   "needsMask": false,
+   "needsHistory": false,
+   "passes": [
+    {
+     "name": "Image",
+     "file": "main.glsl",
+     "channels": {
+      "iChannel0": "input",
+      "iChannel1": "source"
+     }
+    }
+   ],
+   "path": "effects/core/star-glint"
   },
   {
    "id": "st-strobe-flash",

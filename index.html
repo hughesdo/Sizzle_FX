@@ -24,8 +24,10 @@
       </select>
     </label>
     <button class="tl-btn" id="btn-open">open video</button>
-    <button class="tl-btn" id="btn-save" disabled>save project</button>
-    <button class="tl-btn" id="btn-load">load project</button>
+    <span class="proj-label meta" id="proj-label"></span>
+    <button class="tl-btn" id="btn-projects" title="save / open / delete projects in Documents\Sizzle FX">projects</button>
+    <button class="tl-btn" id="btn-save" disabled title="save project (ctrl+s, ctrl+shift+s = save as)">save</button>
+    <button id="btn-export-json" hidden></button>
     <a class="tl-btn help-btn" id="btn-help" href="/help.html" target="_blank" rel="noopener" title="video walkthrough + guide">? help</a>
     <input type="file" id="video-input" accept="video/*,.mp4,.mov,.webm,.mkv" hidden>
     <input type="file" id="project-input" accept=".json,.sfx.json" hidden>

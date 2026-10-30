@@ -105,6 +105,15 @@ export class MaskManager {
     this.onChange();
   }
 
+  /** add a finished track that came from elsewhere (a saved project) and persist it in OPFS */
+  async adopt(track) {
+    if (this.get(track.id)) return;
+    this.tracks.push(track);
+    this.tracks.sort((a, b) => a.id.localeCompare(b.id));
+    if (this.info) await saveTrack(videoKeyOf(this.info), track);
+    this.onChange();
+  }
+
   async rename(id, name) {
     const t = this.get(id); if (!t) return;
     t.name = name;

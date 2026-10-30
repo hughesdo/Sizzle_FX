@@ -1,0 +1,19 @@
+{
+  "id": "rim-light",
+  "name": "Rim Light",
+  "category": "Body",
+  "description": "Two-tone cinematic rim light on the subject's edges, as if lit by coloured lamps from either side. The music brightens and widens it.",
+  "tags": ["rim", "edge", "light", "glow", "matte"],
+  "audio": true,
+  "needsMask": true,
+  "uniforms": {
+    "angle":     { "type": "float", "default": 0.6, "min": -3.1416, "max": 3.1416, "step": 0.01, "label": "key light angle" },
+    "spin":      { "type": "float", "default": 0.15, "min": -2, "max": 2, "step": 0.01, "label": "orbit speed" },
+    "width":     { "type": "float", "default": 14, "min": 2, "max": 60, "step": 0.5, "label": "rim width (px @1080)" },
+    "colorA":    { "type": "color", "default": "#ff8a2a", "label": "key colour" },
+    "colorB":    { "type": "color", "default": "#5a7bff", "label": "back colour" },
+    "intensity": { "type": "float", "default": 1.1, "min": 0, "max": 4, "step": 0.01, "label": "intensity" },
+    "bloom":     { "type": "float", "default": 0.5, "min": 0, "max": 2, "step": 0.01, "label": "spill outside" },
+    "audioPush": { "type": "float", "default": 0.8, "min": 0, "max": 3, "step": 0.01, "label": "audio swell" }
+  }
+}
