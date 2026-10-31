@@ -18,12 +18,15 @@ export async function fetchBlobChunked(url, { onProgress, type } = {}) {
   for (let off = 0; off < total; off += CHUNK) {
     const end = Math.min(total, off + CHUNK) - 1;
     let buf = null;
-    for (let tries = 0; tries < 3 && !buf; tries++) {
+    for (let tries = 0; tries < 4 && !buf; tries++) {
+      // a piece can stall mid-body through the dev proxy: give up on it after 30 s and ask again
+      const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 30000);
       try {
-        const r = await fetch(url, { headers: { range: `bytes=${off}-${end}` } });
+        const r = await fetch(url, { headers: { range: `bytes=${off}-${end}` }, signal: ctl.signal, cache: "no-store" });
         if (r.status === 206 || (r.status === 200 && off === 0 && end === total - 1)) buf = await r.arrayBuffer();
         else if (!r.ok) throw new Error(`${url}: ${r.status}`);
       } catch (_) { buf = null; }
+      finally { clearTimeout(timer); }
     }
     if (!buf || buf.byteLength !== end - off + 1) throw new Error(`download of ${url} failed at ${(off / 1e6).toFixed(0)} MB`);
     parts.push(buf);
