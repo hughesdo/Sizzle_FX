@@ -3,7 +3,9 @@
 GPU shader-effects editor for video. Drop a video, drag effects onto a multi-lane
 timeline, tune each segment, preview live, export an MP4 for X / YouTube.
 
-- 129 effects (95 imported from SuperTool, 34 originals incl. 9 person-mask "Body" effects), audio-reactive to the video's own soundtrack
+**Watch the 3-minute walkthrough: https://youtu.be/RPePpgD1chE** (also built in: the editor's **? help** button).
+
+- 133 effects (95 imported from SuperTool, 38 originals incl. 11 person-mask "Body" effects), audio-reactive to the video's own soundtrack
 - Subject masks baked on your GPU: green-screen key, auto person (RVM), click-to-select (SAM 2). Any effect can be scoped to the subject or the background
 - Real effect stacking: each lane feeds the next
 - Export: H.264 High, constant-quality, BT.709, fast start; source AAC copied untouched
@@ -34,7 +36,7 @@ masks and effects. This uses the local server (`server\start.bat`); set `SIZZLEF
 ## Help
 
 The **? help** button in the editor opens `public/help.html`: a 3-minute narrated walkthrough
-(chapters for every feature) and a written guide. The walkthrough is rebuilt from `demo/`.
+(chapters for every feature, same video as https://youtu.be/RPePpgD1chE) and a written guide. The walkthrough is rebuilt from `demo/`.
 
 ## Add effects
 

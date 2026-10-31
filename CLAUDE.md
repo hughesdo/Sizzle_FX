@@ -215,8 +215,9 @@ Full spec in `docs/EFFECTS.md`.
 
 ## Open decisions
 
-- GitHub repo: https://github.com/hughesdo/Sizzle_FX (PRIVATE, Don's choice: the help video uses VIDEO2
-  footage). Ask Don before making it public.
+- GitHub repo: https://github.com/hughesdo/Sizzle_FX is PUBLIC since 2026-10-31 (Don cleared the VIDEO2
+  footage in the walkthrough). Walkthrough also on YouTube: https://youtu.be/RPePpgD1chE.
+  demo2/ (Don's music video work) stays git-ignored and is never pushed.
 - Hosting target for the static build (GitHub Pages / Cloudflare Pages); WebGPU for RVM/SAM2 needs HTTPS.
 - Keyframed uniforms vs per-segment static values (static for now).
 
