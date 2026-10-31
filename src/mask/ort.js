@@ -1,15 +1,17 @@
-// Loads ONNX Runtime Web (WebGPU + wasm fallback) from /ort/ by absolute URL so
+// Loads ONNX Runtime Web (WebGPU + wasm fallback) from <base>/ort/ by absolute URL so
 // Vite never rewrites its internal dynamic imports. Works in pages and workers.
 //
 // We use the JSEP WebGPU backend (ort.all bundle). On 1.24.1 the newer native
 // WebGPU EP (ort.webgpu bundle) dies on RVM with "Buffer used in submit while
 // destroyed" on the very first run (GTX 1080 Ti, Chrome, 2026-10-29).
+import { BASE } from "../base.js";
+
 let ortPromise = null;
 
 export function loadOrt() {
   if (!ortPromise) {
     ortPromise = (async () => {
-      const base = new URL("/ort/", self.location.origin).href;
+      const base = new URL(BASE + "ort/", self.location.origin).href;
       const ort = await import(/* @vite-ignore */ base + "ort.all.bundle.min.mjs");
       ort.env.wasm.wasmPaths = base;
       ort.env.wasm.numThreads = self.crossOriginIsolated ? Math.min(4, navigator.hardwareConcurrency || 2) : 1;
@@ -25,19 +27,19 @@ export const MODELS = {
   rvm: {
     label: "Robust Video Matting (MobileNetV3)",
     // official release (PeterL1n/RobustVideoMatting v1.0.0); self-host it in /models/ for production
-    urls: ["/models/rvm_mobilenetv3_fp32.onnx", "https://github.com/PeterL1n/RobustVideoMatting/releases/download/v1.0.0/rvm_mobilenetv3_fp32.onnx"],
+    urls: [BASE + "models/rvm_mobilenetv3_fp32.onnx", "https://github.com/PeterL1n/RobustVideoMatting/releases/download/v1.0.0/rvm_mobilenetv3_fp32.onnx"],
     // JSEP can't do AveragePool(ceil_mode=1). With frame sizes that are multiples of 32
     // and downsample 0.5, every pool sees even sizes, so ceil == floor: patch it to 0.
     patch: patchCeilMode,
   },
   sam2Encoder: {
     label: "SAM 2.1 tiny vision encoder",
-    urls: ["/models/sam2.1-tiny/vision_encoder.onnx", "https://huggingface.co/onnx-community/sam2.1-hiera-tiny-ONNX/resolve/main/onnx/vision_encoder.onnx"],
+    urls: [BASE + "models/sam2.1-tiny/vision_encoder.onnx", "https://huggingface.co/onnx-community/sam2.1-hiera-tiny-ONNX/resolve/main/onnx/vision_encoder.onnx"],
     data: "vision_encoder.onnx_data",
   },
   sam2Decoder: {
     label: "SAM 2.1 tiny prompt decoder",
-    urls: ["/models/sam2.1-tiny/prompt_encoder_mask_decoder.onnx", "https://huggingface.co/onnx-community/sam2.1-hiera-tiny-ONNX/resolve/main/onnx/prompt_encoder_mask_decoder.onnx"],
+    urls: [BASE + "models/sam2.1-tiny/prompt_encoder_mask_decoder.onnx", "https://huggingface.co/onnx-community/sam2.1-hiera-tiny-ONNX/resolve/main/onnx/prompt_encoder_mask_decoder.onnx"],
     data: "prompt_encoder_mask_decoder.onnx_data",
   },
 };

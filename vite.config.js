@@ -53,6 +53,8 @@ function copyOrtRuntime() {
 copyOrtRuntime();
 
 export default defineConfig({
+  // "/" for dev and the desktop install; the GitHub Pages workflow builds with SFX_BASE=/Sizzle_FX/
+  base: process.env.SFX_BASE || "/",
   plugins: [effectsRegistry()],
   optimizeDeps: { exclude: ["onnxruntime-web"] },
   // /api -> the Python render server (Phase 5, server/app.py on :8790)

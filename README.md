@@ -1,9 +1,11 @@
 # Sizzle FX
 
-GPU shader-effects editor for video. Drop a video, drag effects onto a multi-lane
-timeline, tune each segment, preview live, export an MP4 for X / YouTube.
+**Try it in your browser: https://hughesdo.github.io/Sizzle_FX/** (Chrome or Edge, desktop)
 
 **Watch the 3-minute walkthrough: https://youtu.be/RPePpgD1chE** (also built in: the editor's **? help** button).
+
+GPU shader-effects editor for video. Drop a video, drag effects onto a multi-lane
+timeline, tune each segment, preview live, export an MP4 for X / YouTube.
 
 - 133 effects (95 imported from SuperTool, 38 originals incl. 11 person-mask "Body" effects), audio-reactive to the video's own soundtrack
 - Subject masks baked on your GPU: green-screen key, auto person (RVM), click-to-select (SAM 2). Any effect can be scoped to the subject or the background
@@ -24,6 +26,19 @@ Open http://localhost:5180 (or double-click `start.bat`). Mask models: `npm run 
 
 Server rendering (optional): `server\start.bat` (first run builds a Python 3.11 venv), then pick
 "server gpu (python)" in the header's render menu.
+
+## Web version vs desktop install
+
+The web version (GitHub Pages, rebuilt by `.github/workflows/pages.yml` on every push to main) has the
+whole editor: all effects, audio reactivity, person masks and click-to-select, and browser MP4 export.
+Everything runs on your own GPU; your video never leaves your computer.
+
+The desktop install (`npm install` + `npm run dev`, plus `server\start.bat`) adds what needs the local
+Python server: the named project library below and server rendering (x264 / NVENC). On the web,
+**save .json** downloads the timeline instead. Mask baking is also faster locally: GitHub Pages can't
+enable the browser's multithreading, so the wasm fallback runs single-threaded there.
+
+Build the web version yourself: `SFX_BASE=/Sizzle_FX/ VITE_HOSTED=1 npm run build`.
 
 ## Projects
 

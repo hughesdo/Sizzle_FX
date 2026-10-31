@@ -12,6 +12,7 @@ import { newProject, buildFrame, autosave, loadAutosave, serialise, deserialise 
 import { MaskManager } from "./mask/masks.js";
 import { MaskPanel } from "./ui/maskPanel.js";
 import { ProjectLibrary } from "./ui/projects.js";
+import { BASE, HOSTED } from "./base.js";
 
 const $ = (s) => document.querySelector(s);
 
@@ -32,7 +33,7 @@ function toast(msg, cls = "", ttl = 5000) {
 
 // ------------------------------------------------------------------ registry
 async function loadRegistry() {
-  const res = await fetch(`/effects/index.json?v=${Date.now()}`);
+  const res = await fetch(`${BASE}effects/index.json?v=${Date.now()}`);
   const idx = await res.json();
   app.registryVersion++;
   app.effectList = idx.effects;
@@ -51,12 +52,12 @@ async function loadSources(effect) {
   if (app.sources.has(key)) return app.sources.get(key);
   const out = { __version: app.registryVersion, __textures: {} };
   for (const pass of effect.passes) {
-    const r = await fetch(`/${effect.path}/${pass.file}?v=${app.registryVersion}`);
+    const r = await fetch(`${BASE}${effect.path}/${pass.file}?v=${app.registryVersion}`);
     out[pass.name] = await r.text();
     for (const ch of Object.values(pass.channels || {})) {
       if (!ch || typeof ch !== "object" || !ch.texture || out.__textures[ch.texture]) continue;
       try {
-        const blob = await (await fetch(`/${effect.path}/${ch.texture}`)).blob();
+        const blob = await (await fetch(`${BASE}${effect.path}/${ch.texture}`)).blob();
         // WebGL ignores UNPACK_FLIP_Y for ImageBitmaps, so flip at decode time
         out.__textures[ch.texture] = await createImageBitmap(blob, { imageOrientation: "flipY" });
       } catch (err) { console.warn(`[effect ${effect.id}] texture ${ch.texture}`, err); }
@@ -307,6 +308,7 @@ const projects = new ProjectLibrary({
   onState: (busyMsg) => {
     const n = projects.name;
     $("#proj-label").textContent = busyMsg || (n ? `${n}${projects.dirty ? " •" : ""}` : (app.info ? "unsaved project" : ""));
+    if (HOSTED) { $("#proj-label").textContent = busyMsg || ""; document.title = "SIZZLE FX"; return; }
     $("#proj-label").title = n ? `project "${n}" in Documents\\Sizzle FX\\Projects${projects.dirty ? " (unsaved changes, ctrl+s)" : ""}` : "not saved yet: ctrl+s or projects → save";
     document.title = (n ? `${n}${projects.dirty ? " •" : ""} · ` : "") + "SIZZLE FX";
   },
@@ -314,6 +316,12 @@ const projects = new ProjectLibrary({
 app.projects = projects;
 $("#btn-projects").addEventListener("click", () => projects.dialog());
 $("#btn-save").addEventListener("click", () => projects.save());
+if (HOSTED) {
+  // no local server on the web build: "save" downloads the timeline as .json
+  $("#btn-save").textContent = "save .json";
+  $("#btn-save").title = "download this timeline as a .sfx.json file (ctrl+s); projects with video + masks need the desktop install";
+  $("#btn-projects").title = "export / import timeline .json";
+}
 window.addEventListener("beforeunload", (e) => { if (projects.dirty && projects.name) { e.preventDefault(); e.returnValue = ""; } });
 
 async function applyProject(p) {
@@ -432,7 +440,8 @@ async function boot() {
   const srvOpt = modeSel.querySelector('option[value="server"]');
   if (c.server) { srvOpt.disabled = false; srvOpt.textContent = "server gpu (python)"; }
   modeSel.title = c.server ? `browser: WebGL2 + WebCodecs here · server: ${c.serverInfo?.gpu || "python"} + ffmpeg (${c.serverInfo?.nvenc ? "NVENC" : "x264"})`
-    : "start server\\start.bat to enable server rendering";
+    : HOSTED ? "server rendering comes with the desktop install (see the GitHub repo)" : "start server\\start.bat to enable server rendering";
+  if (HOSTED) srvOpt.textContent = "server gpu (desktop install)";
   try { const saved = localStorage.getItem("sizzlefx:renderMode"); if (saved === "server" && c.server) modeSel.value = "server"; else modeSel.value = chooseDefaultMode(c); }
   catch (_) { modeSel.value = chooseDefaultMode(c); }
   modeSel.addEventListener("change", () => { try { localStorage.setItem("sizzlefx:renderMode", modeSel.value); } catch (_) {} });
@@ -440,7 +449,7 @@ async function boot() {
 // ?project=<name> opens a saved project straight away (a link to hand someone a ready project)
 boot().then(() => {
   const name = new URLSearchParams(location.search).get("project");
-  if (name) projects.open(name);
+  if (name && !HOSTED) projects.open(name);
 });
 
 if (import.meta.hot) import.meta.hot.on("effects-changed", (d) => { loadRegistry(); toast(`effects updated (${d.file})`, "", 2500); });

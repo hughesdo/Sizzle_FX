@@ -5,6 +5,7 @@
 import { serialise, deserialise } from "../project.js";
 import { MaskTrack, gzip, gunzip } from "../mask/maskTrack.js";
 import { fetchBlobChunked, putChunked as putWithProgress } from "../media/transfer.js";
+import { HOSTED, REPO_URL } from "../base.js";
 
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const enc = encodeURIComponent;
@@ -36,6 +37,7 @@ export class ProjectLibrary {
   async save(name = this.name) {
     const { app } = this;
     if (!app.info) { this.toast("open a video first", "warn"); return false; }
+    if (HOSTED) { document.querySelector("#btn-export-json")?.click(); return true; }
     if (!name) return this.dialog({ saveAs: true });
     if (this.busy) return false;
     this.busy = true;
@@ -181,6 +183,11 @@ export class ProjectLibrary {
     nameIn.addEventListener("keydown", (e) => { if (e.key === "Enter") doSave(); });
     if (saveAs) setTimeout(() => { nameIn.focus(); nameIn.select(); }, 0);
 
+    if (HOSTED) {
+      wrap.querySelector(".proj-save").remove();
+      $(".proj-root").innerHTML = `This is the web version. <b>export .json</b> saves the timeline; <b>import .json</b> puts it back on the same video.<br>Named projects that keep the video and its masks on your PC come with the <a href="${REPO_URL}" target="_blank" rel="noopener">desktop install</a>.`;
+      return false;
+    }
     const render = async () => {
       const lib = await this.list();
       if (!lib) {

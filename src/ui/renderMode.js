@@ -1,6 +1,8 @@
 // Detect what this browser/GPU can do and pick a render mode. "server" = the Python
 // render server (server/app.py: ModernGL + ffmpeg), offered when /api/status answers.
 
+import { HOSTED } from "../base.js";
+
 export async function detectCapabilities(w = 1920, h = 1080, fps = 30) {
   const caps = { webgl2: false, floatTargets: false, gpu: "", h264High: false, aacEncode: false, webgpu: !!navigator.gpu, server: false };
   try {
@@ -26,7 +28,7 @@ export async function detectCapabilities(w = 1920, h = 1080, fps = 30) {
       caps.aacEncode = !!r.supported;
     }
   } catch (_) {}
-  try {
+  if (!HOSTED) try {
     const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 800);
     const r = await fetch("/api/status", { signal: ctl.signal }); clearTimeout(t);
     // static hosts / the Vite dev server answer unknown paths with index.html, so require JSON

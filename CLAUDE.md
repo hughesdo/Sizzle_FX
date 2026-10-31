@@ -218,7 +218,6 @@ Full spec in `docs/EFFECTS.md`.
 - GitHub repo: https://github.com/hughesdo/Sizzle_FX is PUBLIC since 2026-10-31 (Don cleared the VIDEO2
   footage in the walkthrough). Walkthrough also on YouTube: https://youtu.be/RPePpgD1chE.
   demo2/ (Don's music video work) stays git-ignored and is never pushed.
-- Hosting target for the static build (GitHub Pages / Cloudflare Pages); WebGPU for RVM/SAM2 needs HTTPS.
 - Keyframed uniforms vs per-segment static values (static for now).
 
 ## Future TODO
@@ -273,3 +272,11 @@ END:   update Status checkboxes, Verified, Open decisions; add a dated line to t
   `?project=<name>` deep link) with source video + masks, chunked transfers, verified cold-open round trip with
   OPFS wiped. v5 calmer config saved as project "Halloween VIDEO1 ROCKS" (lane "CAMERA HITS") for Don's
   hand edits. Don drives final renders himself from here.
+- 2026-10-31 Repo made PUBLIC (Don cleared the VIDEO2 footage); README links the YouTube walkthrough.
+  Web version on GitHub Pages: https://hughesdo.github.io/Sizzle_FX/ via `.github/workflows/pages.yml`
+  (build with `SFX_BASE=/Sizzle_FX/ VITE_HOSTED=1`; `src/base.js` holds BASE/HOSTED). All asset URLs go
+  through BASE. HOSTED: no /api probe, "save" = .json download, projects dialog = export/import only,
+  `?project=` ignored. RVM is copied into the site by the workflow (its GitHub release has no CORS);
+  SAM 2 loads from Hugging Face (CORS ok, local 404 falls through in `pickUrl`). Verified on a local
+  subpath build: 133 effects, texture effects, RVM bake 143/143, SAM select from HF. Git Bash mangles
+  `SFX_BASE=/...` into a Windows path: prefix `MSYS_NO_PATHCONV=1` when building locally.
